@@ -61,14 +61,14 @@ public class Cell {
 			);
 			
 		//Calculate the spacial parameters inside of the cell
-			p.InnerHeight = Ceiling.transform.localScale.y - (Floor.transform.localScale.y / 2.0f) - (Ceiling.transform.localScale.y / 2.0f);
-			p.OuterHeight = Ceiling.transform.localScale.y;
+			p.InnerHeight = Ceiling.transform.position.y - (Ceiling.transform.localScale.y / 2.0f) - (Floor.transform.localScale.y / 2.0f);
+			p.OuterHeight = Ceiling.transform.position.y;
 
-			p.InnerLength = Ceiling.transform.localScale.z - (Walls.North == null ? 0 : (Walls.North.Wall.transform.localScale.z / 2.0f)) - (Walls.South == null ? 0 : (Walls.South.Wall.transform.localScale.z / 2.0f));
-			p.OuterLength = Ceiling.transform.localScale.z;
+			p.InnerLength = Ceiling.transform.position.z - (Walls.North == null ? 0 : (Walls.North.Wall.transform.localScale.z / 2.0f)) - (Walls.South == null ? 0 : (Walls.South.Wall.transform.localScale.z / 2.0f));
+			p.OuterLength = Ceiling.transform.position.z;
 
-			p.InnerWidth = Ceiling.transform.localScale.x - (Walls.East == null ? 0 : (Walls.East.Wall.transform.localScale.z / 2.0f)) - (Walls.West == null ? 0 : (Walls.West.Wall.transform.localScale.z / 2.0f));
-			p.OuterWidth = Ceiling.transform.localScale.x;
+			p.InnerWidth = Ceiling.transform.position.x - (Walls.East == null ? 0 : (Walls.East.Wall.transform.localScale.z / 2.0f)) - (Walls.West == null ? 0 : (Walls.West.Wall.transform.localScale.z / 2.0f));
+			p.OuterWidth = Ceiling.transform.position.x;
 
 			return p;
 		}

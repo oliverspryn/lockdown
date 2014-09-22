@@ -364,9 +364,10 @@ public class Maze : MonoBehaviour {
 	}
 
 /// <summary>
-/// Place Light prefab objects randomly throughout the maze.
+/// Place the Light prefab object randomly throughout the maze.
 /// </summary>
 	private void PlaceLights() {
+		Vector3 pos;
 		System.Random rand = new System.Random();
 		int x, y;
 
@@ -377,9 +378,11 @@ public class Maze : MonoBehaviour {
 		//Prevent two lights from being placed within the same cell
 			if(Cells[x, y].Light == null) {
 				GameObject light = Instantiate(Light) as GameObject;
+				pos = Cells[x, y].Parameters.Center3D;
+				pos.y = Cells[x, y].Parameters.InnerHeight - 1.0f;
 
 				Cells[x, y].Light = light;
-				light.transform.position = Cells[x, y].Parameters.Center3D;
+				light.transform.position = pos;
 			} else {
 				--i;
 			}
