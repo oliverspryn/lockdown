@@ -106,7 +106,6 @@ Transform:
   - {fileID: 121578284}
   - {fileID: 1678657586}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!114 &89344415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,8 +244,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &121578283
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -266,7 +266,6 @@ Transform:
   m_LocalScale: {x: .400000006, y: .5, z: .400000006}
   m_Children: []
   m_Father: {fileID: 89344414}
-  m_RootOrder: 0
 --- !u!1 &896435930
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +312,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1001 &1310057787
 Prefab:
   m_ObjectHideFlags: 0
@@ -389,7 +387,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 89344414}
-  m_RootOrder: 1
 --- !u!81 &1678657587
 AudioListener:
   m_ObjectHideFlags: 0
@@ -461,8 +458,5 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
