@@ -18,27 +18,30 @@ public class Maze : MonoBehaviour {
 	private Cell[,] Cells;
 
 /// <summary>
-/// A default <c>GameObject</c> to assign as the "inner walls" of the master
-/// grid until appropriate walls can be knocked down and new ones added 
-/// where they should be.
-/// </summary>
-	private GameObject DefaultGO;
-
-/// <summary>
 /// A reference to a floor prefab.
 /// </summary>
 	public GameObject Floor;
 
 /// <summary>
-/// Get the height of the maze, including the height of all the cells and
-/// the length of all the walls which construct the overall height of the
-/// maze.
+/// Get the length of the maze (Z-direction), including the length of all
+/// the cells and the length of all the walls which construct the outer
+/// boundary of the maze.
 /// </summary>
-	public float Height {
+	public float Length {
 		get {
-			return Size.y * Y + Size.z * (Y - 1);
+			return Size.x * Y + Size.z;
 		}
 	}
+
+/// <summary>
+/// A reference to a light prefab.
+/// </summary>
+	public GameObject Light;
+
+/// <summary>
+/// The number of lights to place randomly throughout the maze.
+/// </summary>
+	public int LightCount = 20;
 
 /// <summary>
 /// The dimensions of the prefab walls which is used to construct the
@@ -52,13 +55,13 @@ public class Maze : MonoBehaviour {
 	public GameObject Wall;
 
 /// <summary>
-/// Get the width of the maze, including the width of all the cells and
-/// the width of all the walls which construct the overall width of the
-/// maze.
+/// Get the width of the maze (X-direction), including the width of all
+/// the cells and the width of all the walls which construct the outer
+/// boundary of the maze.
 /// </summary>
 	public float Width {
 		get {
-			return Size.x * X + Size.z * (X - 1);
+			return Size.x * X + Size.z;
 		}
 	}
 
@@ -83,8 +86,6 @@ public class Maze : MonoBehaviour {
 /// be used to create the 3D environment.
 /// </summary>
 	public void Start() {
-		DefaultGO = new GameObject();
-
 	//Measure the size of the prefab walls
 		GameObject basis = Instantiate(Wall) as GameObject;
 		Size = basis.transform.localScale;
@@ -94,77 +95,12 @@ public class Maze : MonoBehaviour {
 		CreateCells();
 		CreateMaze();
 		ConstructWalls();
+		PlaceLights();
 	}
 
 	#endregion
 
 	#region Helper Methods
-
-/// <summary>
-/// Creates a grid of <c>Cell</c> objects for the maze generation algorithm
-/// to modify when creating a maze.
-/// </summary>
-	private void CreateCells() {
-	//Create the grid of cells
-		Cells = new Cell[X, Y];
-
-		for(int i = 0; i < X; ++i) {
-			for(int j = 0; j < Y; ++j) {
-				Cells[i, j] = new Cell(new IVector2(i, j));
-			}
-		}
-
-	//Now join the tangent cells with each other and add in temporary "walls" for the grid
-		for(int i = 0; i < X; ++i) {
-			for(int j = 0; j < Y; ++j) {
-			//Join the cells
-				Cells[i, j].Tangent.North = (j < Y - 1) ? Cells[i, j + 1] : null;
-				Cells[i, j].Tangent.South = (j > 0)     ? Cells[i, j - 1] : null;
-				Cells[i, j].Tangent.East  = (i < X - 1) ? Cells[i + 1, j] : null;
-				Cells[i, j].Tangent.West  = (i > 0)     ? Cells[i - 1, j] : null;
-
-			//Add the walls
-				Cells[i, j].Walls.North = (j < Y - 1) ? DefaultGO : null;
-				Cells[i, j].Walls.South = (j > 0)     ? DefaultGO : null;
-				Cells[i, j].Walls.East  = (i < X - 1) ? DefaultGO : null;
-				Cells[i, j].Walls.West  = (i > 0)     ? DefaultGO : null;
-			}
-		}
-	}
-
-/// <summary>
-/// Utilize a pre-established grid of <c>Cell</c> objects to generate a 
-/// maze.
-/// </summary>
-	private void CreateMaze() {
-	//Select a random cell
-		System.Random rand = new System.Random();
-		Cell current = Cells[rand.Next(X), rand.Next(Y)];
-
-	//Initialize the stack and total number of cells
-		Stack<Cell> stack = new Stack<Cell>();
-		int total = X * Y;
-		int visited = 1;
-
-	//Build out the cells
-		List<Cell> unvisited;
-		Cell random;
-
-		while(visited < total) {
-			unvisited = GetUnvisitedNeighbors(ref current);
-
-			if(unvisited.Count > 0) {
-				random = unvisited.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
-				DestroyWalls(ref current, ref random);
-
-				stack.Push(current);
-				current = random;
-				++visited;
-			} else {
-				current = stack.Pop();
-			}
-		}
-	}
 
 /// <summary>
 /// Once the algorithm has generated the data structure which represents 
@@ -212,72 +148,62 @@ public class Maze : MonoBehaviour {
 		}
 
 	//Create the walls, ceilings, and floors
-		int merryXMax = (X % 2 == 0) ? X : (X);
-		int merryYMax = (Y % 2 == 0) ? Y : (Y);
 		Vector3 scale = new Vector3(Size.x, 0.1f, Size.x);
 
-		for(int i = 0; i < merryXMax; ++i) {
-			for(int j = 0; j < merryYMax; ++j) {
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
 				position.y = Size.y / 2.0f;
 
 			//Nothern walls
-				if(Cells[i, j].Walls.North != null || j == Y - 1) {
-				//Build the wall
-					GameObject wall = Instantiate(Wall) as GameObject;
-					position.x = XPos[i];
-					position.z = YPos[j] + (Size.x / 2.0f);// - (Size.x / 2.0f); //+ (Size.x / 2.0f);
+				GameObject wall = Instantiate(Cells[i, j].Walls.North.Wall) as GameObject;
+				position.x = XPos[i];
+				position.y = !Cells[i, j].Walls.North.Enabled ? -1 * (Size.y / 2.0f) : Size.y / 2.0f;
+				position.z = YPos[j] + (Size.x / 2.0f);// - (Size.x / 2.0f); //+ (Size.x / 2.0f);
 
-					wall.transform.position = position;
+				wall.transform.position = position;
+				Cells[i, j].Walls.North.Wall = wall;
 
-				//Assign this wall to the cell
-					Cells[i, j].Walls.North = wall;
-
-					if(j < Y - 1)
-						Cells[i, j + 1].Walls.South = wall;
-				}
+				if(j < Y - 1)
+					Cells[i, j + 1].Walls.South.Wall = wall;
 
 			//Southern walls, run only for the bottom row
 				if(j == 0) {
-				//Build the wall
-					GameObject wall = Instantiate(Wall) as GameObject;
+					Cells[i, j].Walls.South.Enabled = true;
+
+					wall = Instantiate(Cells[i, j].Walls.South.Wall) as GameObject;
 					position.x = XPos[i];
+					position.y = Size.y / 2.0f;
 					position.z = YPos[j] - (Size.x / 2.0f);
 
 					wall.transform.position = position;
-
-				//Assign this wall to the cell
-					Cells[i, j].Walls.South = wall;
+					Cells[i, j].Walls.South.Wall = wall;
 				}
 
 			//Eastern walls
-				if(Cells[i, j].Walls.East != null || i == X - 1) {
-				//Build the wall
-					GameObject wall = Instantiate(Wall) as GameObject;
-					position.x = XPos[i] + (Size.x / 2.0f);//- (Size.x / 2.0f);// + (Size.x / 2.0f);
-					position.z = YPos[j];
+				wall = Instantiate(Cells[i, j].Walls.East.Wall) as GameObject;
+				position.x = XPos[i] + (Size.x / 2.0f);//- (Size.x / 2.0f);// + (Size.x / 2.0f);
+				position.y = !Cells[i, j].Walls.East.Enabled ? -1 * (Size.y / 2.0f) : Size.y / 2.0f;
+				position.z = YPos[j];
 
-					wall.transform.position = position;
-					wall.transform.Rotate(wall.transform.rotation.x, 90.0f, wall.transform.rotation.z);
+				wall.transform.position = position;
+				wall.transform.Rotate(wall.transform.rotation.x, 90.0f, wall.transform.rotation.z);
+				Cells[i, j].Walls.East.Wall = wall;
 
-				//Assign this wall to the cell
-					Cells[i, j].Walls.East = wall;
-
-					if(i < X - 1)
-						Cells[i, j].Walls.West = wall;
-				}
+				if(i < X - 1)
+					Cells[i, j].Walls.West.Wall = wall;
 
 			//Western walls
 				if(i == 0) {
-				//Build the wall
-					GameObject wall = Instantiate(Wall) as GameObject;
+					Cells[i, j].Walls.West.Enabled = true;
+
+					wall = Instantiate(Cells[i, j].Walls.West.Wall) as GameObject;
 					position.x = XPos[i] - (Size.x / 2.0f);
+					position.y = Size.y / 2.0f;
 					position.z = YPos[j];
 
 					wall.transform.position = position;
-					wall.transform.Rotate(wall.transform.rotation.x, 90.0f, wall.transform.rotation.z);
-
-				//Assign this wall to the cell
-					Cells[i, j].Walls.West = wall;
+					wall.transform.Rotate(wall.transform.rotation.x, 180.0f, wall.transform.rotation.z);
+					Cells[i, j].Walls.West.Wall = wall;
 				}
 
 			//Floor
@@ -297,6 +223,77 @@ public class Maze : MonoBehaviour {
 				ceiling.transform.localScale = scale;
 				ceiling.transform.position = position;
 				Cells[i, j].Ceiling = ceiling;
+			}
+		}
+	}
+
+/// <summary>
+/// Creates a grid of <c>Cell</c> objects for the maze generation algorithm
+/// to modify when creating a maze.
+/// </summary>
+	private void CreateCells() {
+	//Create the grid of cells
+		Cells = new Cell[X, Y];
+
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				Cells[i, j] = new Cell(new IVector2(i, j));
+			}
+		}
+
+	//Now join the tangent cells with each other and add in temporary "walls" for the grid
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+			//Join the cells
+				Cells[i, j].Tangent.North = (j < Y - 1) ? Cells[i, j + 1] : null;
+				Cells[i, j].Tangent.South = (j > 0)     ? Cells[i, j - 1] : null;
+				Cells[i, j].Tangent.East  = (i < X - 1) ? Cells[i + 1, j] : null;
+				Cells[i, j].Tangent.West  = (i > 0)     ? Cells[i - 1, j] : null;
+
+			//Add the walls
+				Cells[i, j].Walls.North = new Walls(Wall);
+				Cells[i, j].Walls.South = new Walls(Wall);
+				Cells[i, j].Walls.East  = new Walls(Wall);
+				Cells[i, j].Walls.West  = new Walls(Wall);
+
+				Cells[i, j].Walls.North.Enabled = (j < Y - 1);
+				Cells[i, j].Walls.South.Enabled = (j > 0);
+				Cells[i, j].Walls.East.Enabled  = (i < X - 1);
+				Cells[i, j].Walls.West.Enabled  = (i > 0);
+			}
+		}
+	}
+
+/// <summary>
+/// Utilize a pre-established grid of <c>Cell</c> objects to generate a 
+/// maze.
+/// </summary>
+	private void CreateMaze() {
+	//Select a random cell
+		System.Random rand = new System.Random();
+		Cell current = Cells[rand.Next(X), rand.Next(Y)];
+
+	//Initialize the stack and total number of cells
+		Stack<Cell> stack = new Stack<Cell>();
+		int total = X * Y;
+		int visited = 1;
+
+	//Build out the cells
+		List<Cell> unvisited;
+		Cell random;
+
+		while(visited < total) {
+			unvisited = GetUnvisitedNeighbors(ref current);
+
+			if(unvisited.Count > 0) {
+				random = unvisited.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+				DestroyWalls(ref current, ref random);
+
+				stack.Push(current);
+				current = random;
+				++visited;
+			} else {
+				current = stack.Pop();
 			}
 		}
 	}
@@ -323,19 +320,19 @@ public class Maze : MonoBehaviour {
 
 	//CellTwo is North of CellOne
 		if(cellTwo.Position == N)
-			cellOne.Walls.North = cellTwo.Walls.South = null;
+			cellOne.Walls.North.Enabled = cellTwo.Walls.South.Enabled = false;
 
 	//CellTwo is South of CellOne
 		if(cellTwo.Position == S)
-			cellOne.Walls.South = cellTwo.Walls.North = null;
+			cellOne.Walls.South.Enabled = cellTwo.Walls.North.Enabled = false;
 
 	//CellTwo is East of CellOne
 		if(cellTwo.Position == E)
-			cellOne.Walls.East = cellTwo.Walls.West = null;
+			cellOne.Walls.East.Enabled = cellTwo.Walls.West.Enabled = false;
 
 	//CellTwo is West of CellOne
 		if(cellTwo.Position == W)
-			cellOne.Walls.West = cellTwo.Walls.East = null;
+			cellOne.Walls.West.Enabled = cellTwo.Walls.East.Enabled = false;
 
 		cellOne.Visited = cellTwo.Visited = true;
 	}
@@ -363,6 +360,29 @@ public class Maze : MonoBehaviour {
 			ret.Add(current.Tangent.West);
 
 		return ret;
+	}
+
+/// <summary>
+/// Place Light prefab objects randomly throughout the maze.
+/// </summary>
+	private void PlaceLights() {
+		System.Random rand = new System.Random();
+		int x, y;
+
+		for(int i = 0; i < LightCount; ++i) {
+			x = rand.Next(X);
+			y = rand.Next(Y);
+
+		//Prevent two lights from being placed within the same cell
+			if(Cells[x, y].Light == null) {
+				GameObject light = Instantiate(Light) as GameObject;
+
+				Cells[x, y].Light = light;
+				light.transform.position = Cells[x, y].Parameters.Center3D;
+			} else {
+				--i;
+			}
+		}
 	}
 
 	#endregion
