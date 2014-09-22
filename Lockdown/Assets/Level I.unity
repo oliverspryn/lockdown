@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ceiling: {fileID: 100000, guid: b85187005b27b874abfc03be72a88f8f, type: 2}
+  HiddenWallDelta: .100000001
   Floor: {fileID: 100000, guid: e92d25c0bc1c82f4398a019aaec4cde2, type: 2}
   Light: {fileID: 100000, guid: f3f88daced3e30f4bba6f037b63304c2, type: 2}
   LightCount: 20

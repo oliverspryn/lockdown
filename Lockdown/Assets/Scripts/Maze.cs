@@ -18,6 +18,12 @@ public class Maze : MonoBehaviour {
 	private Cell[,] Cells;
 
 /// <summary>
+/// When a wall is unused and slid into the ground, how far above the floor
+/// should it project in order to indicate that a sliding wall is present?
+/// </summary>
+	public float HiddenWallDelta = 0.1f;
+
+/// <summary>
 /// A reference to a floor prefab.
 /// </summary>
 	public GameObject Floor;
@@ -157,7 +163,7 @@ public class Maze : MonoBehaviour {
 			//Nothern walls
 				GameObject wall = Instantiate(Cells[i, j].Walls.North.Wall) as GameObject;
 				position.x = XPos[i];
-				position.y = !Cells[i, j].Walls.North.Enabled ? -1 * (Size.y / 2.0f) : Size.y / 2.0f;
+				position.y = -1 * (Size.y / 2.0f) + HiddenWallDelta;
 				position.z = YPos[j] + (Size.x / 2.0f);// - (Size.x / 2.0f); //+ (Size.x / 2.0f);
 
 				wall.transform.position = position;
@@ -182,7 +188,7 @@ public class Maze : MonoBehaviour {
 			//Eastern walls
 				wall = Instantiate(Cells[i, j].Walls.East.Wall) as GameObject;
 				position.x = XPos[i] + (Size.x / 2.0f);//- (Size.x / 2.0f);// + (Size.x / 2.0f);
-				position.y = !Cells[i, j].Walls.East.Enabled ? -1 * (Size.y / 2.0f) : Size.y / 2.0f;
+				position.y = -1 * (Size.y / 2.0f) + HiddenWallDelta;
 				position.z = YPos[j];
 
 				wall.transform.position = position;
@@ -255,11 +261,6 @@ public class Maze : MonoBehaviour {
 				Cells[i, j].Walls.South = new Walls(Wall);
 				Cells[i, j].Walls.East  = new Walls(Wall);
 				Cells[i, j].Walls.West  = new Walls(Wall);
-
-				Cells[i, j].Walls.North.Enabled = (j < Y - 1);
-				Cells[i, j].Walls.South.Enabled = (j > 0);
-				Cells[i, j].Walls.East.Enabled  = (i < X - 1);
-				Cells[i, j].Walls.West.Enabled  = (i > 0);
 			}
 		}
 	}
@@ -381,6 +382,28 @@ public class Maze : MonoBehaviour {
 				light.transform.position = Cells[x, y].Parameters.Center3D;
 			} else {
 				--i;
+			}
+		}
+	}
+
+	public void Update() {
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				if(Cells[i, j].Walls.East.Enabled) {
+					Vector3 A = Cells[i, j].Walls.East.Wall.transform.position;
+					Vector3 B = A;
+					B.y = (Size.y / 2.0f);
+
+					Cells[i, j].Walls.East.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
+				}
+
+				if(Cells[i, j].Walls.North.Enabled) {
+					Vector3 A = Cells[i, j].Walls.North.Wall.transform.position;
+					Vector3 B = A;
+					B.y = (Size.y / 2.0f);
+
+					Cells[i, j].Walls.North.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
+				}
 			}
 		}
 	}
