@@ -11,7 +11,7 @@ function OnControllerColliderHit (hit : ControllerColliderHit)
 	 
 	 if(hit.moveDirection.y < -.3)
 	 	return;
-	 var pushDir : Vector3 = Vector3(hit.moveDirection.x, 0, hit.moveDirection.x);
+	 var pushDir : Vector3 = Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 	 
 	 body.velocity = pushDir * pushPower;
 }
