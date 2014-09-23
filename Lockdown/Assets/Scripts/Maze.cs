@@ -258,9 +258,9 @@ public class Maze : MonoBehaviour {
 
 			//Add the walls
 				Cells[i, j].Walls.North = new Walls(Wall);
-				Cells[i, j].Walls.South = new Walls(Wall);
+				Cells[i, j].Walls.South = new Walls(Wall);// = (j > 0) ? Cells[i, j - 1].Walls.North : new Walls(Wall);
 				Cells[i, j].Walls.East  = new Walls(Wall);
-				Cells[i, j].Walls.West  = new Walls(Wall);
+				Cells[i, j].Walls.West  = new Walls(Wall);//  = (i > 0) ? Cells[i - 1, j].Walls.East  : new Walls(Wall);
 			}
 		}
 	}
