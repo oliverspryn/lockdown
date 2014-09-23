@@ -32,22 +32,28 @@ public class MouseLook : MonoBehaviour {
 
 	void Update ()
 	{
+		string playerInputSuffix = ""; // default to player 1
+		if(gameObject.tag == "Player 1")
+			playerInputSuffix = "";
+		else if(gameObject.tag == "Player 2")
+			playerInputSuffix = " P2";
+
 		if (axes == RotationAxes.MouseXAndY)
 		{
-			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X" + playerInputSuffix) * sensitivityX;
 			
-			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+			rotationY += Input.GetAxis("Mouse Y" + playerInputSuffix) * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
 			transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
 		}
 		else if (axes == RotationAxes.MouseX)
 		{
-			transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+			transform.Rotate(0, Input.GetAxis("Mouse X" + playerInputSuffix) * sensitivityX, 0);
 		}
 		else
 		{
-			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+			rotationY += Input.GetAxis("Mouse Y" + playerInputSuffix) * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);

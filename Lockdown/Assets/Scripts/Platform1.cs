@@ -15,11 +15,10 @@ public class Platform1 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Vector3 startpos;
-		startpos.x = start_x;
-		startpos.y = start_y;
-		startpos.z = start_z;
-		gameObject.rigidbody.position = startpos;
+		Vector3 startpos = gameObject.rigidbody.position;
+		start_x = startpos.x;
+		start_y = startpos.y;
+		start_z = startpos.z;
 	}
 	
 	// Update is called once per frame
