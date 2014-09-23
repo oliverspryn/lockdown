@@ -44,7 +44,7 @@ public class MouseLook : MonoBehaviour {
 			
 			rotationY += Input.GetAxis("Mouse Y" + playerInputSuffix) * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-			
+
 			transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
 		}
 		else if (axes == RotationAxes.MouseX)
