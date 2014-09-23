@@ -32,7 +32,7 @@ public class MouseLook : MonoBehaviour {
 
 	void Update ()
 	{
-		string playerInputSuffix = null;
+		string playerInputSuffix = ""; // default to player 1
 		if(gameObject.tag == "Player 1")
 			playerInputSuffix = "";
 		else if(gameObject.tag == "Player 2")
