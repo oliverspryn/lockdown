@@ -258,9 +258,9 @@ public class Maze : MonoBehaviour {
 
 			//Add the walls
 				Cells[i, j].Walls.North = new Walls(Wall);
-				Cells[i, j].Walls.South = new Walls(Wall);
+				Cells[i, j].Walls.South = new Walls(Wall);// = (j > 0) ? Cells[i, j - 1].Walls.North : new Walls(Wall);
 				Cells[i, j].Walls.East  = new Walls(Wall);
-				Cells[i, j].Walls.West  = new Walls(Wall);
+				Cells[i, j].Walls.West  = new Walls(Wall);//  = (i > 0) ? Cells[i - 1, j].Walls.East  : new Walls(Wall);
 			}
 		}
 	}
@@ -379,7 +379,9 @@ public class Maze : MonoBehaviour {
 			if(Cells[x, y].Light == null) {
 				GameObject light = Instantiate(Light) as GameObject;
 				pos = Cells[x, y].Parameters.Center3D;
+				pos.x -= light.transform.localScale.x;
 				pos.y = Cells[x, y].Parameters.InnerHeight - 1.0f;
+				pos.z += light.transform.localScale.z / 2.0f;
 
 				Cells[x, y].Light = light;
 				light.transform.position = pos;
