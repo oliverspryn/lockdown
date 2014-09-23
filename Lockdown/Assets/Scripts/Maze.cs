@@ -18,6 +18,12 @@ public class Maze : MonoBehaviour {
 	private Cell[,] Cells;
 
 /// <summary>
+/// Whether or not the walls should slide into place whenever they are out
+/// of place, of if they should wait until this value is true.
+/// </summary>
+	public bool EnableSliding = false;
+
+/// <summary>
 /// When a wall is unused and slid into the ground, how far above the floor
 /// should it project in order to indicate that a sliding wall is present?
 /// </summary>
@@ -388,6 +394,9 @@ public class Maze : MonoBehaviour {
 	}
 
 	public void Update() {
+		if(!EnableSliding)
+			return;
+
 		for(int i = 0; i < X; ++i) {
 			for(int j = 0; j < Y; ++j) {
 				if(Cells[i, j].Walls.East.Enabled) {

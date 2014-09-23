@@ -9920,6 +9920,58 @@ MeshFilter:
   m_PrefabInternal: {fileID: 589349562}
   m_GameObject: {fileID: 741312156}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &742443596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 742443598}
+  - 65: {fileID: 742443597}
+  - 114: {fileID: 742443599}
+  m_Layer: 0
+  m_Name: Wall Riser Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &742443597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742443596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &742443598
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742443596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 99.8381271, y: 9.23607063, z: -89.7977676}
+  m_LocalScale: {x: 1, y: 15.1047916, z: 18.220314}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &742443599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742443596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c59f51f9769c36498033ccd9e33f569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Maze: {fileID: 896435930}
 --- !u!1 &750270850
 GameObject:
   m_ObjectHideFlags: 0
@@ -11773,6 +11825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ceiling: {fileID: 100000, guid: b85187005b27b874abfc03be72a88f8f, type: 2}
+  EnableSliding: 0
   HiddenWallDelta: .100000001
   Floor: {fileID: 100000, guid: e92d25c0bc1c82f4398a019aaec4cde2, type: 2}
   Light: {fileID: 100000, guid: d16beff9099ebed4aa7e348440ee7cf1, type: 2}
