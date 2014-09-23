@@ -7,8 +7,14 @@ function Awake () {
 
 // Update is called once per frame
 function Update () {
+	var playerInputSuffix;
+	if(gameObject.tag == "Player 1")
+		playerInputSuffix = "";
+	else if(gameObject.tag == "Player 2")
+		playerInputSuffix = " P2";
+
 	// Get the input vector from keyboard or analog stick
-	var directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+	var directionVector = new Vector3(Input.GetAxis("Horizontal" + playerInputSuffix), 0, Input.GetAxis("Vertical" + playerInputSuffix));
 	
 	if (directionVector != Vector3.zero) {
 		// Get the length of the directon vector and then normalize it
@@ -29,7 +35,7 @@ function Update () {
 	
 	// Apply the direction to the CharacterMotor
 	motor.inputMoveDirection = transform.rotation * directionVector;
-	motor.inputJump = Input.GetButton("Jump");
+	motor.inputJump = Input.GetButton("Jump" + playerInputSuffix);
 }
 
 // Require a character controller to be attached to the same game object
