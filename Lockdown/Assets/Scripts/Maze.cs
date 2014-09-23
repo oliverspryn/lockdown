@@ -102,6 +102,11 @@ public class Maze : MonoBehaviour {
 		CreateMaze();
 		ConstructWalls();
 		PlaceLights();
+
+	//Punch out some walls
+		Cells[X - 1, 0].Walls.East.Enabled = false;
+		Cells[X - 1, Y - 1].Walls.East.Enabled = false;
+		Cells[0, (int)Math.Floor(Y / 2.0f)].Walls.West.Enabled = false;
 	}
 
 	#endregion
