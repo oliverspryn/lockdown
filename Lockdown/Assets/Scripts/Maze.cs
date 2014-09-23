@@ -163,19 +163,14 @@ public class Maze : MonoBehaviour {
 			//Nothern walls
 				GameObject wall = Instantiate(Cells[i, j].Walls.North.Wall) as GameObject;
 				position.x = XPos[i];
-				position.y = -1 * (Size.y / 2.0f) + HiddenWallDelta;
+				position.y = (j < Y - 1) ? -1 * (Size.y / 2.0f) + HiddenWallDelta : Size.y / 2.0f;
 				position.z = YPos[j] + (Size.x / 2.0f);// - (Size.x / 2.0f); //+ (Size.x / 2.0f);
 
 				wall.transform.position = position;
 				Cells[i, j].Walls.North.Wall = wall;
 
-				if(j < Y - 1)
-					Cells[i, j + 1].Walls.South.Wall = wall;
-
 			//Southern walls, run only for the bottom row
 				if(j == 0) {
-					Cells[i, j].Walls.South.Enabled = true;
-
 					wall = Instantiate(Cells[i, j].Walls.South.Wall) as GameObject;
 					position.x = XPos[i];
 					position.y = Size.y / 2.0f;
@@ -188,27 +183,22 @@ public class Maze : MonoBehaviour {
 			//Eastern walls
 				wall = Instantiate(Cells[i, j].Walls.East.Wall) as GameObject;
 				position.x = XPos[i] + (Size.x / 2.0f);//- (Size.x / 2.0f);// + (Size.x / 2.0f);
-				position.y = -1 * (Size.y / 2.0f) + HiddenWallDelta;
+				position.y = (i < X - 1) ? -1 * (Size.y / 2.0f) + HiddenWallDelta : Size.y / 2.0f;
 				position.z = YPos[j];
 
 				wall.transform.position = position;
 				wall.transform.Rotate(wall.transform.rotation.x, 90.0f, wall.transform.rotation.z);
 				Cells[i, j].Walls.East.Wall = wall;
 
-				if(i < X - 1)
-					Cells[i, j].Walls.West.Wall = wall;
-
 			//Western walls
 				if(i == 0) {
-					Cells[i, j].Walls.West.Enabled = true;
-
 					wall = Instantiate(Cells[i, j].Walls.West.Wall) as GameObject;
 					position.x = XPos[i] - (Size.x / 2.0f);
 					position.y = Size.y / 2.0f;
 					position.z = YPos[j];
 
 					wall.transform.position = position;
-					wall.transform.Rotate(wall.transform.rotation.x, 180.0f, wall.transform.rotation.z);
+					wall.transform.Rotate(wall.transform.rotation.x, 90.0f, wall.transform.rotation.z);
 					Cells[i, j].Walls.West.Wall = wall;
 				}
 
