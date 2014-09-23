@@ -379,7 +379,9 @@ public class Maze : MonoBehaviour {
 			if(Cells[x, y].Light == null) {
 				GameObject light = Instantiate(Light) as GameObject;
 				pos = Cells[x, y].Parameters.Center3D;
+				pos.x -= light.transform.localScale.x;
 				pos.y = Cells[x, y].Parameters.InnerHeight - 1.0f;
+				pos.z += light.transform.localScale.z / 2.0f;
 
 				Cells[x, y].Light = light;
 				light.transform.position = pos;
