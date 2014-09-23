@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class Button2 : MonoBehaviour {
-	public Platform1 platform1 = new Platform1();
-	public Platform1 platform2 = new Platform1();
-	public Platform1 platform3 = new Platform1();
+	public Platform1 platform1;
+	public Platform1 platform2;
+	public Platform1 platform3;
 	// Use this for initialization
 	void Start () {
 	

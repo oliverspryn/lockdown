@@ -11,10 +11,10 @@ GameObject:
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
-  - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Platform1
+  m_Name: Linked Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,9 +26,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: .00276213326, y: 0, z: 0, w: .999996185}
-  m_LocalPosition: {x: -.653739929, y: -7.95934153, z: -56.1080284}
-  m_LocalScale: {x: 6, y: .100000001, z: 6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.497757, y: -5.57024431, z: -136.335815}
+  m_LocalScale: {x: 4, y: .100000001, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +44,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 9b0d409fa3ba7ec469a1735a23699b34, type: 2}
+  - {fileID: 2100000, guid: 5f96bba110848b541859cbfc503fe662, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -94,16 +94,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b82a87efdbf5f34d8ccefff0bc1ddbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cd73eb809bad4444a9b584e53c53a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start_x: 0
-  start_y: -8
-  start_z: -58
-  Velocity: 3
-  switchflipped: 0
-  pause: 1
-  counter: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
