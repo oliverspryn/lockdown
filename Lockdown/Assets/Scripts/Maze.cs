@@ -258,9 +258,9 @@ public class Maze : MonoBehaviour {
 
 			//Add the walls
 				Cells[i, j].Walls.North = new Walls(Wall);
-				Cells[i, j].Walls.South = new Walls(Wall);// = (j > 0) ? Cells[i, j - 1].Walls.North : new Walls(Wall);
+				Cells[i, j].Walls.South = (j > 0) ? Cells[i, j - 1].Walls.North : new Walls(Wall);
 				Cells[i, j].Walls.East  = new Walls(Wall);
-				Cells[i, j].Walls.West  = new Walls(Wall);//  = (i > 0) ? Cells[i - 1, j].Walls.East  : new Walls(Wall);
+				Cells[i, j].Walls.West  = (i > 0) ? Cells[i - 1, j].Walls.East  : new Walls(Wall);
 			}
 		}
 	}
@@ -347,7 +347,7 @@ public class Maze : MonoBehaviour {
 /// <returns>A list of <c>Cell</c> objects with neighbors which have not been visited</returns>
 	private List<Cell> GetUnvisitedNeighbors(ref Cell current) {
 		List<Cell> ret = new List<Cell>();
-		
+
 		if(current.Tangent.North != null && !current.Tangent.North.Visited)
 			ret.Add(current.Tangent.North);
 
@@ -378,6 +378,7 @@ public class Maze : MonoBehaviour {
 		//Prevent two lights from being placed within the same cell
 			if(Cells[x, y].Light == null) {
 				GameObject light = Instantiate(Light) as GameObject;
+
 				pos = Cells[x, y].Parameters.Center3D;
 				pos.x -= light.transform.localScale.x;
 				pos.y = Cells[x, y].Parameters.InnerHeight - 1.0f;
