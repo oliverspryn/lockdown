@@ -7,7 +7,7 @@ function Awake () {
 
 // Update is called once per frame
 function Update () {
-	var playerInputSuffix;
+	var playerInputSuffix = ""; // default to player 1
 	if(gameObject.tag == "Player 1")
 		playerInputSuffix = "";
 	else if(gameObject.tag == "Player 2")
