@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Button1 : MonoBehaviour {
 
-	public Platform1 platform = new Platform1();
+	public Platform1 platform;
 
 	// Use this for initialization
 	void Start () {
