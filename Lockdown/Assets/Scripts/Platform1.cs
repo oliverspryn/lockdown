@@ -23,28 +23,25 @@ public class Platform1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Vector3 tempvel = gameObject.rigidbody.velocity;
+		tempvel.x = 0;
+		tempvel.z = 0;
 		if (switchflipped && gameObject.rigidbody.position.y < 2) {
-						Vector3 tempvel = gameObject.rigidbody.velocity;
+						
 						tempvel.y = Velocity;
-						gameObject.rigidbody.velocity = tempvel;
 				} else if (counter < pause && switchflipped) {
 						counter += Time.deltaTime;
-						Vector3 tempvel = gameObject.rigidbody.velocity;
 						tempvel.y = 0;
-						gameObject.rigidbody.velocity = tempvel;
 				} else if (gameObject.rigidbody.position.y > start_y) {
 			switchflipped = false;
-			Vector3 tempvel = gameObject.rigidbody.velocity;
 			tempvel.y = -Velocity;
-			gameObject.rigidbody.velocity = tempvel;
 		} else {
 			switchflipped = false;
 			counter = 0;
-			Vector3 tempvel = gameObject.rigidbody.velocity;
 			tempvel.y = 0;
-			gameObject.rigidbody.velocity = tempvel;
+
 		}
-		
+		gameObject.rigidbody.velocity = tempvel;
 	}
 	public void Platform1switch ()
 	{
