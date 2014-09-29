@@ -24,6 +24,16 @@ public class Maze : MonoBehaviour {
 	public bool EnableSliding = false;
 
 /// <summary>
+/// An array of prefabs which will be used as graffiti through out the maze.
+/// </summary>
+	public GameObject[] Graffiti;
+
+/// <summary>
+/// The number of graffiti markings to display throughout the maze.
+/// </summary>
+	public int GraffitiTotal = 40;
+
+/// <summary>
 /// When a wall is unused and slid into the ground, how far above the floor
 /// should it project in order to indicate that a sliding wall is present?
 /// </summary>
@@ -108,6 +118,7 @@ public class Maze : MonoBehaviour {
 		CreateMaze();
 		ConstructWalls();
 		PlaceLights();
+		DrawGraffiti();
 
 	//Punch out some walls
 		Cells[X - 1, 0].Walls.East.Enabled = false;
@@ -337,6 +348,23 @@ public class Maze : MonoBehaviour {
 			cellOne.Walls.West.Enabled = cellTwo.Walls.East.Enabled = false;
 
 		cellOne.Visited = cellTwo.Visited = true;
+	}
+
+	private void DrawGraffiti() {
+		GameObject current;
+		Vector3 pos = new Vector3(0.0f, 10.0f, 0.0f);
+		System.Random rand = new System.Random();
+		Parameters size;
+
+		for(int i = 0; i < GraffitiTotal; ++i) {
+			current = Instantiate(Graffiti[rand.Next(0, Graffiti.Length)]) as GameObject;
+			size = Cells[rand.Next(0, X), rand.Next(0, Y)].Parameters;
+
+			pos.x = size.Center3D.x;// + (size.InnerWidth / 2.0f);
+			pos.z = size.Center3D.z + (size.InnerWidth);
+
+			current.transform.position = pos;
+		}
 	}
 
 /// <summary>
