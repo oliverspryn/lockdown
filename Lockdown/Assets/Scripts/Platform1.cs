@@ -48,4 +48,9 @@ public class Platform1 : MonoBehaviour {
 		switchflipped = true;
 		counter = 0;
 	}
+	public void Platform1inverseswitch ()
+	{
+		switchflipped = false;
+		counter = 6;
+	}
 }
