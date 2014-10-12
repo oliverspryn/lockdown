@@ -18,7 +18,7 @@ RenderSettings:
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientLight: {r: .108996548, g: .667225361, b: .823529422, a: 1}
+  m_AmbientLight: {r: .210856393, g: .390793949, b: .441176474, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 1
   m_FlareStrength: 1
@@ -4173,7 +4173,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 348574661}
-  - 111: {fileID: 348574662}
+  - 95: {fileID: 348574662}
   m_Layer: 0
   m_Name: vincent
   m_TagString: Untagged
@@ -4195,21 +4195,21 @@ Transform:
   - {fileID: 1227661920}
   m_Father: {fileID: 907236864}
   m_RootOrder: 1
---- !u!111 &348574662
-Animation:
+--- !u!95 &348574662
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11100000, guid: 4e9542c6c6b9ab94d8b855530bc4b031,
+  m_PrefabParentObject: {fileID: 9500000, guid: 4e9542c6c6b9ab94d8b855530bc4b031,
     type: 2}
   m_PrefabInternal: {fileID: 1357537775}
   m_GameObject: {fileID: 348574660}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
+  m_Avatar: {fileID: 9000000, guid: 014dd983c047b9e439e3151e0eee3133, type: 3}
+  m_Controller: {fileID: 9100000, guid: 22ca8e20a0923c241b05fb19b3d31441, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &351195355
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,7 +5464,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: a9ada8f360426d4409222cfcfa827428, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9ada8f360426d4409222cfcfa827428, type: 2}
@@ -6609,7 +6609,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 595538049}
-  - 111: {fileID: 595538052}
+  - 95: {fileID: 595538050}
   m_Layer: 0
   m_Name: carl
   m_TagString: Untagged
@@ -6631,21 +6631,21 @@ Transform:
   - {fileID: 1994125545}
   m_Father: {fileID: 1591036953}
   m_RootOrder: 1
---- !u!111 &595538052
-Animation:
+--- !u!95 &595538050
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11100002, guid: 4e9542c6c6b9ab94d8b855530bc4b031,
+  m_PrefabParentObject: {fileID: 9500002, guid: 4e9542c6c6b9ab94d8b855530bc4b031,
     type: 2}
   m_PrefabInternal: {fileID: 1357537775}
   m_GameObject: {fileID: 595538048}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
+  m_Avatar: {fileID: 9000000, guid: 86bb10e9b2f91644d9f697f5d6603919, type: 3}
+  m_Controller: {fileID: 9100000, guid: 22ca8e20a0923c241b05fb19b3d31441, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &600327521
 GameObject:
   m_ObjectHideFlags: 0
@@ -9978,6 +9978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canControl: 1
   useFixedUpdate: 1
+  animator: {fileID: 348574662}
   movement:
     maxForwardSpeed: 20
     maxSidewaysSpeed: 20
@@ -16896,6 +16897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canControl: 1
   useFixedUpdate: 1
+  animator: {fileID: 595538050}
   movement:
     maxForwardSpeed: 20
     maxSidewaysSpeed: 20

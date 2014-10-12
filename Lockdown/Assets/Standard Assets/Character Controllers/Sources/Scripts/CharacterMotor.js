@@ -7,6 +7,8 @@ var canControl : boolean = true;
 
 var useFixedUpdate : boolean = true;
 
+public var animator : Animator;
+
 // For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
 // Very handy for organization!
 
@@ -334,6 +336,12 @@ function FixedUpdate () {
 function Update () {
 	if (!useFixedUpdate)
 		UpdateFunction();
+	if(animator)
+	{
+		var dir = Vector3(GetDirection().x,0,GetDirection().z);
+		animator.SetFloat("Speed", Vector3.Dot(movement.velocity, dir)/movement.velocity.magnitude);
+		//animator.SetLookAtPosition(dir);
+	}
 }
 
 private function ApplyInputVelocityChange (velocity : Vector3) {	
