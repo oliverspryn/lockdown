@@ -50,27 +50,13 @@ public class Cell {
 /// </summary>
 	public Parameters Parameters {
 		get {
-			Parameters p = new Parameters();
+			return new Parameters(this);
+		}
+	}
 
-		//Calculate the location of the object
-			p.Center2D = new Vector2(Floor.transform.position.x, Floor.transform.position.z);
-			p.Center3D = new Vector3(
-				Floor.transform.position.x,
-				(Ceiling.transform.position.y - Floor.transform.position.y) / 2.0f,
-				Floor.transform.position.z
-			);
-			
-		//Calculate the spacial parameters inside of the cell
-			p.InnerHeight = Ceiling.transform.position.y - (Ceiling.transform.localScale.y / 2.0f) - (Floor.transform.localScale.y / 2.0f);
-			p.OuterHeight = Ceiling.transform.position.y;
-
-			p.InnerLength = Ceiling.transform.position.z - (Walls.North == null ? 0 : (Walls.North.Wall.transform.localScale.z / 2.0f)) - (Walls.South == null ? 0 : (Walls.South.Wall.transform.localScale.z / 2.0f));
-			p.OuterLength = Ceiling.transform.position.z;
-
-			p.InnerWidth = Ceiling.transform.position.x - (Walls.East == null ? 0 : (Walls.East.Wall.transform.localScale.z / 2.0f)) - (Walls.West == null ? 0 : (Walls.West.Wall.transform.localScale.z / 2.0f));
-			p.OuterWidth = Ceiling.transform.position.x;
-
-			return p;
+	public POI3D POI {
+		get {
+			return new POI3D(this, Compass.North);
 		}
 	}
 

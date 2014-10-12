@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 public class Maze : MonoBehaviour {
 	#region Fields
@@ -176,6 +177,7 @@ public class Maze : MonoBehaviour {
 		}
 
 	//Create the walls, ceilings, and floors
+		System.Random rand = new System.Random();
 		Vector3 scale = new Vector3(Size.x, 0.1f, Size.x);
 
 		for(int i = 0; i < X; ++i) {
@@ -240,6 +242,7 @@ public class Maze : MonoBehaviour {
 
 				ceiling.transform.localScale = scale;
 				ceiling.transform.position = position;
+				ceiling.transform.Rotate(0.0f, 90.0f * rand.Next(4), 0.0f);
 				Cells[i, j].Ceiling = ceiling;
 			}
 		}
@@ -354,26 +357,45 @@ public class Maze : MonoBehaviour {
 		GameObject current;
 		Vector3 pos = new Vector3(0.0f, 10.0f, 0.0f);
 		System.Random rand = new System.Random();
-		Parameters size;
+		POI3D size;
 
 		for(int i = 0; i < GraffitiTotal; ++i) {
 			current = Instantiate(Graffiti[rand.Next(0, Graffiti.Length)]) as GameObject;
-			size = Cells[rand.Next(0, X), rand.Next(0, Y)].Parameters;
+			size = Cells[rand.Next(0, X), rand.Next(0, Y)].POI;
 
-			pos.x = size.Center3D.x;// + (size.InnerWidth / 2.0f);
-			pos.z = size.Center3D.z + (size.InnerWidth);
+			pos.x = size.C.x;
+			pos.z = size.C.z;
 
 			current.transform.position = pos;
 		}
 	}
 
-/// <summary>
-/// Obtain a listing of neighboring cells which have not yet been visited
-/// by the maze generation algorithm.
-/// </summary>
-/// 
-/// <param name="current">A <c>Cell</c> object whose neighbors should be analyzed</param>
-/// <returns>A list of <c>Cell</c> objects with neighbors which have not been visited</returns>
+	private Walls GetRandomWall(Cell cell) {
+		List<Walls> walls = new List<Walls>() {
+			cell.Walls.East,
+			cell.Walls.North,
+			cell.Walls.South,
+			cell.Walls.West
+		};
+		
+	//Is the randomly selected wall actually up?
+		IEnumerable<Walls> wallsRandom = walls.OrderBy(x => Guid.NewGuid());
+
+		foreach(Walls random in wallsRandom) {
+			if(random.Enabled)
+				return random;
+		}
+
+		return wallsRandom.FirstOrDefault();
+	}
+
+	/// <summary>
+	/// Obtain a listing of neighboring cells which have not yet been visited
+	/// by the maze generation algorithm.
+	/// </summary>
+	/// 
+	/// <param name="current">A <c>Cell</c> object whose neighbors should be analyzed</param>
+	/// <returns>A list of <c>Cell</c> objects with neighbors which have not been visited</returns>
 	private List<Cell> GetUnvisitedNeighbors(ref Cell current) {
 		List<Cell> ret = new List<Cell>();
 
@@ -444,6 +466,37 @@ public class Maze : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	#endregion
+
+	#region Overloaded Methods
+
+/// <summary>
+/// Serialize the maze, its size, and which of its walls are enabled, so that
+/// an exact replica of it can be rebuilt elseware. This does not serialize
+/// any of the contents of an array.
+/// </summary>
+/// 
+/// <returns>A serialized representation of the array</returns>
+	public override string ToString() {
+		StringBuilder sb = new StringBuilder();
+
+	//Input the size of the maze
+		sb.Append(X);
+		sb.Append("-");
+		sb.Append(Y);
+		sb.Append("_");
+
+	//Log which cells have north and eastern walls
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				if(Cells[i, j].Walls.North.Enabled) sb.Append("N");
+				if(Cells[i, j].Walls.East.Enabled) sb.Append("E");
+			}
+		}
+
+		return sb.ToString();
 	}
 
 	#endregion
