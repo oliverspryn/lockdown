@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -40,34 +37,33 @@ using UnityEngine;
 ///     |                         |
 ///     | X          X          X |
 ///     +=========================+
-/// 
 /// </summary>
 public class POI3D {
 	#region Fields
 
 /// <summary>
-/// Calculate the center point.
+/// Calculate the C point.
 /// </summary>
 	public Vector3 C {
 		get {
 			switch(Direction) {
 				case Compass.Ceiling:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Center]);
 
 				case Compass.East:
-					return new Vector3(POIX[Point3D.LLeft] + Abutted[Compass.East], POIY[Point3D.Center], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.LLeft] - Abutted[Compass.East] - Offset, POIY[Point3D.Center], POIZ[Point3D.Center]);
 
 				case Compass.Floor:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Center]);
 
 				case Compass.North:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Center], POIZ[Point3D.FForward] + Abutted[Compass.North]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Center], POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
 
 				case Compass.South:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Center], POIZ[Point3D.BBackward] + Abutted[Compass.South]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Center], POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
 
 				case Compass.West:
-					return new Vector3(POIX[Point3D.RRight] - Abutted[Compass.West], POIY[Point3D.Center], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.RRight] + Abutted[Compass.West] + Offset, POIY[Point3D.Center], POIZ[Point3D.Center]);
 			}
 
 			return new Vector3();
@@ -75,28 +71,173 @@ public class POI3D {
 	}
 
 /// <summary>
-/// Calculate the north-center most point.
+/// Calculate the N1 point.
 /// </summary>
 	public Vector3 N1 {
 		get {
 			switch(Direction) {
 				case Compass.Ceiling:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling], POIZ[Point3D.FForward] - Abutted[Compass.North]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Forward]);
 
 				case Compass.East:
-					return new Vector3(POIX[Point3D.LLeft] - Abutted[Compass.East], POIY[Point3D.UUp] - Abutted[Compass.Ceiling], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.RRight] - Abutted[Compass.East] - Offset, POIY[Point3D.Up], POIZ[Point3D.Center]);
 
 				case Compass.Floor:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor], POIZ[Point3D.FForward] - Abutted[Compass.North]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Forward]);
 
 				case Compass.North:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling], POIZ[Point3D.FForward] - Abutted[Compass.North]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Up], POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
 
 				case Compass.South:
-					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling], POIZ[Point3D.BBackward] + Abutted[Compass.South]);
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Up], POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
 
 				case Compass.West:
-					return new Vector3(POIX[Point3D.LLeft] + Abutted[Compass.West], POIY[Point3D.UUp] - Abutted[Compass.Ceiling], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.LLeft] + Abutted[Compass.West] + Offset, POIY[Point3D.Up], POIZ[Point3D.Center]);
+			}
+
+			return new Vector3();
+		}
+	}
+
+/// <summary>
+/// Calculate the N2 point.
+/// </summary>
+	public Vector3 N2 {
+		get {
+			switch(Direction) {
+				case Compass.Ceiling:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
+
+				case Compass.East:
+					return new Vector3(POIX[Point3D.RRight] - Abutted[Compass.East] - Offset, POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Center]);
+
+				case Compass.Floor:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
+
+				case Compass.North:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
+
+				case Compass.South:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
+
+				case Compass.West:
+					return new Vector3(POIX[Point3D.LLeft] + Abutted[Compass.West] + Offset, POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Center]);
+			}
+
+			return new Vector3();
+		}
+	}
+
+/// <summary>
+/// Calculate the S1 point.
+/// </summary>
+	public Vector3 S1 {
+		get {
+			switch(Direction) {
+				case Compass.Ceiling:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Backward]);
+
+				case Compass.East:
+					return new Vector3(POIX[Point3D.RRight] - Abutted[Compass.East] - Offset, POIY[Point3D.Down], POIZ[Point3D.Center]);
+
+				case Compass.Floor:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Backward]);
+
+				case Compass.North:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Down], POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
+
+				case Compass.South:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Down], POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
+
+				case Compass.West:
+					return new Vector3(POIX[Point3D.LLeft] + Abutted[Compass.West] + Offset, POIY[Point3D.Down], POIZ[Point3D.Center]);
+			}
+
+			return new Vector3();
+		}
+	}
+
+/// <summary>
+/// Calculate the S2 point.
+/// </summary>
+	public Vector3 S2 {
+		get {
+			switch(Direction) {
+				case Compass.Ceiling:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
+
+				case Compass.East:
+					return new Vector3(POIX[Point3D.RRight] - Abutted[Compass.East] - Offset, POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Center]);
+
+				case Compass.Floor:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
+
+				case Compass.North:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
+
+				case Compass.South:
+					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
+
+				case Compass.West:
+					return new Vector3(POIX[Point3D.LLeft] + Abutted[Compass.West] + Offset, POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Center]);
+			}
+
+			return new Vector3();
+		}
+	}
+
+/// <summary>
+/// Calculate the W1 point.
+/// </summary>
+	public Vector3 W1 {
+		get {
+			switch(Direction) {
+				case Compass.Ceiling:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Center]);
+
+				case Compass.East:
+					return new Vector3(POIX[Point3D.LLeft] - Abutted[Compass.East] - Offset, POIY[Point3D.Center], POIZ[Point3D.Forward]);
+
+				case Compass.Floor:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Center]);
+
+				case Compass.North:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.Center], POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
+
+				case Compass.South:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.Center], POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
+
+				case Compass.West:
+					return new Vector3(POIX[Point3D.RRight] + Abutted[Compass.West] + Offset, POIY[Point3D.Center], POIZ[Point3D.Backward]);
+			}
+
+			return new Vector3();
+		}
+	}
+
+/// <summary>
+/// Calculate the W2 point.
+/// </summary>
+	public Vector3 W2 {
+		get {
+			switch(Direction) {
+				case Compass.Ceiling:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Center]);
+
+				case Compass.East:
+					return new Vector3(POIX[Point3D.LLeft] - Abutted[Compass.East] - Offset, POIY[Point3D.Center], POIZ[Point3D.Forward]);
+
+				case Compass.Floor:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Center]);
+
+				case Compass.North:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.Center], POIZ[Point3D.FForward] - Abutted[Compass.North] - Offset);
+
+				case Compass.South:
+					return new Vector3(POIX[Point3D.Left], POIY[Point3D.Center], POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
+
+				case Compass.West:
+					return new Vector3(POIX[Point3D.RRight] + Abutted[Compass.West] + Offset, POIY[Point3D.Center], POIZ[Point3D.Backward]);
 			}
 
 			return new Vector3();
@@ -126,6 +267,11 @@ public class POI3D {
 	private Compass Direction;
 
 /// <summary>
+/// A small offset for caluclated values to avoid z-index fighting.
+/// </summary>
+	private float Offset;
+
+/// <summary>
 /// A dictionary of pre-calculated POI on the object which span in the X
 /// direction.
 /// </summary>
@@ -143,11 +289,6 @@ public class POI3D {
 /// </summary>
 	private Dictionary<Point3D, float> POIZ;
 
-/// <summary>
-/// The <c>Wall</c> object which to measure.
-/// </summary>
-	private Walls Wall;
-
 	#endregion
 
 	#region Constructors
@@ -160,9 +301,11 @@ public class POI3D {
 /// 
 /// <param name="cell">The Cell object which contains boundaries, such as walls and a floor, to measure</param>
 /// <param name="direction">The direction of the wall with respect to its associated Cell</param>
-	public POI3D(Cell cell, Compass direction) {
+/// <param name="calcZIndexFighting">Whether or not to calculate a small offset for returned values to avoid z-index fighting</param>
+	public POI3D(Cell cell, Compass direction, bool calcZIndexFighting = true) {
 		Cell = cell;
 		Direction = direction;
+		Offset = calcZIndexFighting ? 0.05f : 0.0f;
 
 	//Precalculate a grid of POI locations
 		Vector3 center = cell.Parameters.Center3D;
@@ -170,14 +313,14 @@ public class POI3D {
 		POIY = new Dictionary<Point3D, float>();
 		POIZ = new Dictionary<Point3D, float>();
 
-		float fifthX = cell.Floor.transform.localScale.x / 5.0f;
+		float fifthX = cell.Floor.transform.localScale.x / 4.0f;
 		POIX[Point3D.LLeft]  = center.x - (fifthX * 2.0f);
 		POIX[Point3D.Left]   = center.x - (fifthX * 1.0f);
 		POIX[Point3D.Center] = center.x + (fifthX * 0.0f);
 		POIX[Point3D.Right]  = center.x + (fifthX * 1.0f);
 		POIX[Point3D.RRight] = center.x + (fifthX * 2.0f);
 
-		float fifthY = (cell.Ceiling.transform.position.y - cell.Floor.transform.position.y) / 5.0f;
+		float fifthY = (cell.Ceiling.transform.position.y - cell.Floor.transform.position.y) / 4.0f;
 		POIY[Point3D.UUp]    = center.y + (fifthY * 2.0f);
 		POIY[Point3D.Up]     = center.y + (fifthY * 1.0f);
 		POIY[Point3D.Center] = center.y + (fifthY * 0.0f);
@@ -199,67 +342,6 @@ public class POI3D {
 		Abutted[Compass.North]   = Cell.Walls.North.Enabled ? Cell.Walls.North.Wall.transform.localScale.z / 2.0f : 0.0f;
 		Abutted[Compass.South]   = Cell.Walls.South.Enabled ? Cell.Walls.South.Wall.transform.localScale.z / 2.0f : 0.0f;
 		Abutted[Compass.West]    = Cell.Walls.West.Enabled  ? Cell.Walls.West.Wall.transform.localScale.z / 2.0f : 0.0f;
-
-	//Precalculate if these objects are abutted with another
-		/*
-		Abutted = new Dictionary<Compass, bool>();
-
-		switch(direction) {
-			case Compass.Ceiling:
-				Abutted.Add(Compass.Ceiling, false);
-				Abutted.Add(Compass.East,    Cell.Walls.East.Enabled);
-				Abutted.Add(Compass.Floor,   false);
-				Abutted.Add(Compass.North,   Cell.Walls.North.Enabled);
-				Abutted.Add(Compass.South,   Cell.Walls.South.Enabled);
-				Abutted.Add(Compass.West,    Cell.Walls.West.Enabled);
-				break;
-
-			case Compass.East:
-				Abutted.Add(Compass.Ceiling, true);
-				Abutted.Add(Compass.East,    false);
-				Abutted.Add(Compass.Floor,   true);
-				Abutted.Add(Compass.North,   Cell.Walls.North.Enabled);
-				Abutted.Add(Compass.South,   Cell.Walls.South.Enabled);
-				Abutted.Add(Compass.West,    false);
-				break;
-
-			case Compass.Floor:
-				Abutted.Add(Compass.Ceiling, false);
-				Abutted.Add(Compass.East,    Cell.Walls.East.Enabled);
-				Abutted.Add(Compass.Floor,   false);
-				Abutted.Add(Compass.North,   Cell.Walls.North.Enabled);
-				Abutted.Add(Compass.South,   Cell.Walls.South.Enabled);
-				Abutted.Add(Compass.West,    Cell.Walls.West.Enabled);
-				break;
-
-			case Compass.North:
-				Abutted.Add(Compass.Ceiling, true);
-				Abutted.Add(Compass.East,    Cell.Walls.East.Enabled);
-				Abutted.Add(Compass.Floor,   true);
-				Abutted.Add(Compass.North,   false);
-				Abutted.Add(Compass.South,   false);
-				Abutted.Add(Compass.West,    Cell.Walls.West.Enabled);
-				break;
-
-			case Compass.South:
-				Abutted.Add(Compass.Ceiling, true);
-				Abutted.Add(Compass.East,    Cell.Walls.East.Enabled);
-				Abutted.Add(Compass.Floor,   true);
-				Abutted.Add(Compass.North,   false);
-				Abutted.Add(Compass.South,   false);
-				Abutted.Add(Compass.West,    Cell.Walls.West.Enabled);
-				break;
-
-			case Compass.West:
-				Abutted.Add(Compass.Ceiling, true);
-				Abutted.Add(Compass.East,    false);
-				Abutted.Add(Compass.Floor,   true);
-				Abutted.Add(Compass.North,   Cell.Walls.North.Enabled);
-				Abutted.Add(Compass.South,   Cell.Walls.South.Enabled);
-				Abutted.Add(Compass.West,    false);
-				break;
-		}
-		*/
 	}
 
 	#endregion

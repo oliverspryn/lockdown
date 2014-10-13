@@ -67,6 +67,18 @@ public class Maze : MonoBehaviour {
 	public int LightCount = 20;
 
 /// <summary>
+/// A reference to an outer wall prefab, which is seperate from the standard,
+/// inner wall prefab.
+/// </summary>
+	public GameObject OuterWall;
+
+/// <summary>
+/// A seed value used to replcate multiple instances of a maze across multiple
+/// locations or machines.
+/// </summary>
+	private int Seed;
+
+/// <summary>
 /// The dimensions of the prefab walls which is used to construct the
 /// walls of the maze.
 /// </summary>
@@ -109,6 +121,8 @@ public class Maze : MonoBehaviour {
 /// be used to create the 3D environment.
 /// </summary>
 	public void Start() {
+		Seed = 1413162377;
+
 	//Measure the size of the prefab walls
 		GameObject basis = Instantiate(Wall) as GameObject;
 		Size = basis.transform.localScale;
@@ -177,7 +191,7 @@ public class Maze : MonoBehaviour {
 		}
 
 	//Create the walls, ceilings, and floors
-		System.Random rand = new System.Random();
+		System.Random rand = new System.Random(Seed + 100);
 		Vector3 scale = new Vector3(Size.x, 0.1f, Size.x);
 
 		for(int i = 0; i < X; ++i) {
@@ -272,10 +286,10 @@ public class Maze : MonoBehaviour {
 				Cells[i, j].Tangent.West  = (i > 0)     ? Cells[i - 1, j] : null;
 
 			//Add the walls
-				Cells[i, j].Walls.North = new Walls(Wall);
-				Cells[i, j].Walls.South = (j > 0) ? Cells[i, j - 1].Walls.North : new Walls(Wall);
-				Cells[i, j].Walls.East  = new Walls(Wall);
-				Cells[i, j].Walls.West  = (i > 0) ? Cells[i - 1, j].Walls.East  : new Walls(Wall);
+				Cells[i, j].Walls.North = (j != Y - 1) ? new Walls(Wall)             : new Walls(OuterWall);
+				Cells[i, j].Walls.South = (j > 0)      ? Cells[i, j - 1].Walls.North : new Walls(OuterWall);
+				Cells[i, j].Walls.East  = (i != X - 1) ? new Walls(Wall)             : new Walls(OuterWall);
+				Cells[i, j].Walls.West  = (i > 0)      ? Cells[i - 1, j].Walls.East  : new Walls(OuterWall);
 			}
 		}
 	}
@@ -286,7 +300,7 @@ public class Maze : MonoBehaviour {
 /// </summary>
 	private void CreateMaze() {
 	//Select a random cell
-		System.Random rand = new System.Random();
+		System.Random rand = new System.Random(Seed + 200);
 		Cell current = Cells[rand.Next(X), rand.Next(Y)];
 
 	//Initialize the stack and total number of cells
@@ -302,7 +316,7 @@ public class Maze : MonoBehaviour {
 			unvisited = GetUnvisitedNeighbors(ref current);
 
 			if(unvisited.Count > 0) {
-				random = unvisited.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+				random = unvisited[rand.Next(unvisited.Count)];
 				DestroyWalls(ref current, ref random);
 
 				stack.Push(current);
@@ -355,18 +369,14 @@ public class Maze : MonoBehaviour {
 
 	private void DrawGraffiti() {
 		GameObject current;
-		Vector3 pos = new Vector3(0.0f, 10.0f, 0.0f);
-		System.Random rand = new System.Random();
+		System.Random rand = new System.Random(Seed + 300);
 		POI3D size;
 
 		for(int i = 0; i < GraffitiTotal; ++i) {
 			current = Instantiate(Graffiti[rand.Next(0, Graffiti.Length)]) as GameObject;
 			size = Cells[rand.Next(0, X), rand.Next(0, Y)].POI;
 
-			pos.x = size.C.x;
-			pos.z = size.C.z;
-
-			current.transform.position = pos;
+			current.transform.position = size.N1;
 		}
 	}
 
@@ -379,23 +389,22 @@ public class Maze : MonoBehaviour {
 		};
 		
 	//Is the randomly selected wall actually up?
-		IEnumerable<Walls> wallsRandom = walls.OrderBy(x => Guid.NewGuid());
+		System.Random rand = new System.Random(Seed + 500);
+		int chosenOne = rand.Next(4);
 
-		foreach(Walls random in wallsRandom) {
-			if(random.Enabled)
-				return random;
+		for(int i = chosenOne; true; chosenOne = (chosenOne + 1) % 4) {
+			if(walls[i].Enabled)
+				return walls[i];
 		}
-
-		return wallsRandom.FirstOrDefault();
 	}
 
-	/// <summary>
-	/// Obtain a listing of neighboring cells which have not yet been visited
-	/// by the maze generation algorithm.
-	/// </summary>
-	/// 
-	/// <param name="current">A <c>Cell</c> object whose neighbors should be analyzed</param>
-	/// <returns>A list of <c>Cell</c> objects with neighbors which have not been visited</returns>
+/// <summary>
+/// Obtain a listing of neighboring cells which have not yet been visited
+/// by the maze generation algorithm.
+/// </summary>
+/// 
+/// <param name="current">A <c>Cell</c> object whose neighbors should be analyzed</param>
+/// <returns>A list of <c>Cell</c> objects with neighbors which have not been visited</returns>
 	private List<Cell> GetUnvisitedNeighbors(ref Cell current) {
 		List<Cell> ret = new List<Cell>();
 
@@ -419,7 +428,7 @@ public class Maze : MonoBehaviour {
 /// </summary>
 	private void PlaceLights() {
 		Vector3 pos;
-		System.Random rand = new System.Random();
+		System.Random rand = new System.Random(Seed + 400);
 		int x, y;
 
 		for(int i = 0; i < LightCount; ++i) {
