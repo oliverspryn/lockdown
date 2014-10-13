@@ -142,7 +142,9 @@ public class Maze : MonoBehaviour {
 
 	#region Public Methods
 
-	public void Init() {
+	public void Init(int seed = -1) {
+		if(seed != -1) Seed = seed;
+
 		CreateMaze();
 		//ConstructWalls();
 		PlaceLights();
