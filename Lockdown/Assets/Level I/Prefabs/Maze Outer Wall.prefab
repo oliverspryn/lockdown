@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   m_Layer: 0
-  m_Name: Maze Wall
+  m_Name: Maze Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .682550073, y: 3.00000119, z: .97367686}
+  m_LocalPosition: {x: 67.7777328, y: .793401241, z: 80.814064}
   m_LocalScale: {x: 20, y: 18, z: .25}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 382cb8f1206748f4d933496b52f1990c, type: 2}
+  - {fileID: 2100000, guid: 0ef396720c5964c458e6b025ccdd4d3f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 public class Maze : MonoBehaviour {
 	#region Fields
@@ -66,6 +67,18 @@ public class Maze : MonoBehaviour {
 	public int LightCount = 20;
 
 /// <summary>
+/// A reference to an outer wall prefab, which is seperate from the standard,
+/// inner wall prefab.
+/// </summary>
+	public GameObject OuterWall;
+
+/// <summary>
+/// A seed value used to replcate multiple instances of a maze across multiple
+/// locations or machines.
+/// </summary>
+	private int Seed;
+
+/// <summary>
 /// The dimensions of the prefab walls which is used to construct the
 /// walls of the maze.
 /// </summary>
@@ -108,6 +121,8 @@ public class Maze : MonoBehaviour {
 /// be used to create the 3D environment.
 /// </summary>
 	public void Start() {
+		Seed = 1413162377;
+
 	//Measure the size of the prefab walls
 		GameObject basis = Instantiate(Wall) as GameObject;
 		Size = basis.transform.localScale;
@@ -176,6 +191,7 @@ public class Maze : MonoBehaviour {
 		}
 
 	//Create the walls, ceilings, and floors
+		System.Random rand = new System.Random(Seed + 100);
 		Vector3 scale = new Vector3(Size.x, 0.1f, Size.x);
 
 		for(int i = 0; i < X; ++i) {
@@ -240,6 +256,7 @@ public class Maze : MonoBehaviour {
 
 				ceiling.transform.localScale = scale;
 				ceiling.transform.position = position;
+				ceiling.transform.Rotate(0.0f, 90.0f * rand.Next(4), 0.0f);
 				Cells[i, j].Ceiling = ceiling;
 			}
 		}
@@ -269,10 +286,10 @@ public class Maze : MonoBehaviour {
 				Cells[i, j].Tangent.West  = (i > 0)     ? Cells[i - 1, j] : null;
 
 			//Add the walls
-				Cells[i, j].Walls.North = new Walls(Wall);
-				Cells[i, j].Walls.South = (j > 0) ? Cells[i, j - 1].Walls.North : new Walls(Wall);
-				Cells[i, j].Walls.East  = new Walls(Wall);
-				Cells[i, j].Walls.West  = (i > 0) ? Cells[i - 1, j].Walls.East  : new Walls(Wall);
+				Cells[i, j].Walls.North = (j != Y - 1) ? new Walls(Wall)             : new Walls(OuterWall);
+				Cells[i, j].Walls.South = (j > 0)      ? Cells[i, j - 1].Walls.North : new Walls(OuterWall);
+				Cells[i, j].Walls.East  = (i != X - 1) ? new Walls(Wall)             : new Walls(OuterWall);
+				Cells[i, j].Walls.West  = (i > 0)      ? Cells[i - 1, j].Walls.East  : new Walls(OuterWall);
 			}
 		}
 	}
@@ -283,7 +300,7 @@ public class Maze : MonoBehaviour {
 /// </summary>
 	private void CreateMaze() {
 	//Select a random cell
-		System.Random rand = new System.Random();
+		System.Random rand = new System.Random(Seed + 200);
 		Cell current = Cells[rand.Next(X), rand.Next(Y)];
 
 	//Initialize the stack and total number of cells
@@ -299,7 +316,7 @@ public class Maze : MonoBehaviour {
 			unvisited = GetUnvisitedNeighbors(ref current);
 
 			if(unvisited.Count > 0) {
-				random = unvisited.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+				random = unvisited[rand.Next(unvisited.Count)];
 				DestroyWalls(ref current, ref random);
 
 				stack.Push(current);
@@ -352,18 +369,32 @@ public class Maze : MonoBehaviour {
 
 	private void DrawGraffiti() {
 		GameObject current;
-		Vector3 pos = new Vector3(0.0f, 10.0f, 0.0f);
-		System.Random rand = new System.Random();
-		Parameters size;
+		System.Random rand = new System.Random(Seed + 300);
+		POI3D size;
 
 		for(int i = 0; i < GraffitiTotal; ++i) {
 			current = Instantiate(Graffiti[rand.Next(0, Graffiti.Length)]) as GameObject;
-			size = Cells[rand.Next(0, X), rand.Next(0, Y)].Parameters;
+			size = Cells[rand.Next(0, X), rand.Next(0, Y)].POI;
 
-			pos.x = size.Center3D.x;// + (size.InnerWidth / 2.0f);
-			pos.z = size.Center3D.z + (size.InnerWidth);
+			current.transform.position = size.N1;
+		}
+	}
 
-			current.transform.position = pos;
+	private Walls GetRandomWall(Cell cell) {
+		List<Walls> walls = new List<Walls>() {
+			cell.Walls.East,
+			cell.Walls.North,
+			cell.Walls.South,
+			cell.Walls.West
+		};
+		
+	//Is the randomly selected wall actually up?
+		System.Random rand = new System.Random(Seed + 500);
+		int chosenOne = rand.Next(4);
+
+		for(int i = chosenOne; true; chosenOne = (chosenOne + 1) % 4) {
+			if(walls[i].Enabled)
+				return walls[i];
 		}
 	}
 
@@ -397,7 +428,7 @@ public class Maze : MonoBehaviour {
 /// </summary>
 	private void PlaceLights() {
 		Vector3 pos;
-		System.Random rand = new System.Random();
+		System.Random rand = new System.Random(Seed + 400);
 		int x, y;
 
 		for(int i = 0; i < LightCount; ++i) {
@@ -444,6 +475,37 @@ public class Maze : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	#endregion
+
+	#region Overloaded Methods
+
+/// <summary>
+/// Serialize the maze, its size, and which of its walls are enabled, so that
+/// an exact replica of it can be rebuilt elseware. This does not serialize
+/// any of the contents of an array.
+/// </summary>
+/// 
+/// <returns>A serialized representation of the array</returns>
+	public override string ToString() {
+		StringBuilder sb = new StringBuilder();
+
+	//Input the size of the maze
+		sb.Append(X);
+		sb.Append("-");
+		sb.Append(Y);
+		sb.Append("_");
+
+	//Log which cells have north and eastern walls
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				if(Cells[i, j].Walls.North.Enabled) sb.Append("N");
+				if(Cells[i, j].Walls.East.Enabled) sb.Append("E");
+			}
+		}
+
+		return sb.ToString();
 	}
 
 	#endregion

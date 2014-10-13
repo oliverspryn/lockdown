@@ -4210,6 +4210,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &351195355
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,7 +5465,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: a9ada8f360426d4409222cfcfa827428, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9ada8f360426d4409222cfcfa827428, type: 2}
@@ -6646,6 +6647,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &600327521
 GameObject:
   m_ObjectHideFlags: 0
@@ -9802,7 +9804,7 @@ GameObject:
   - 4: {fileID: 896435932}
   - 114: {fileID: 896435931}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Maze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9830,6 +9832,7 @@ MonoBehaviour:
   Floor: {fileID: 100000, guid: e92d25c0bc1c82f4398a019aaec4cde2, type: 2}
   Light: {fileID: 100000, guid: d16beff9099ebed4aa7e348440ee7cf1, type: 2}
   LightCount: 20
+  OuterWall: {fileID: 100000, guid: 2513c96018991e54d887a67ce9414857, type: 2}
   Wall: {fileID: 100000, guid: 7122e5edf9d5e0641b624a85e9c43ae7, type: 2}
   X: 10
   Y: 10
@@ -14373,7 +14376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4e9542c6c6b9ab94d8b855530bc4b031, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e9542c6c6b9ab94d8b855530bc4b031, type: 2}
