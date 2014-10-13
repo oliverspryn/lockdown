@@ -120,7 +120,7 @@ public class Maze : MonoBehaviour {
 /// The walls, floor, and ceiling prefabs which are supplied by Unity will
 /// be used to create the 3D environment.
 /// </summary>
-	public void Start() {
+	public void Awake() {
 		Seed = Seed == -1 ? (int)(DateTime.Now - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds : Seed;
 
 	//Measure the size of the prefab walls
