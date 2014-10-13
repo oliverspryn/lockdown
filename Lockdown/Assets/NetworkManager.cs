@@ -69,12 +69,20 @@ public class NetworkManager : MonoBehaviour {
 		// (for now, just the maze)
 		// Note: if an object has a NetworkView attached directly to it, it needs to be initialized at
 		// runtime, using Network.Initialize(), here.
+
+		if(Network.isServer)
+		{
+			Maze mazeScript = maze.GetComponent<Maze>();
+			mazeScript.Init ();
+		}
 	}
 
 	// Offline version of the above - spawns objects that would be networked if we were in online mode
 	void offlineSpawnNetworkedObjects()
 	{
-		// In networked mode, this happens in InitMaze(), which is RPC called by OnPlayerConnected()
+		// In networked mode, this happens in:
+		//		Server: spawnNetworkedObjects()
+		// 		Client: InitMaze(), which is RPC called by OnPlayerConnected()
 		Maze mazeScript = maze.GetComponent<Maze>();
 		mazeScript.Init ();
 	}
@@ -103,9 +111,8 @@ public class NetworkManager : MonoBehaviour {
 	{
 		// Get the maze seed we (the server) generated locally
 		Maze mazeScript = maze.GetComponent<Maze>();
-		int[] rpcArgs = { mazeScript.Seed };
 
-		networkView.RPC ("InitMaze", player, rpcArgs);
+		networkView.RPC ("InitMaze", player, mazeScript.Seed);
 	}
 
 	// ** Clean up networked game objects (maybe these are only for "directly observed" objects? not sure) **
@@ -138,8 +145,8 @@ public class NetworkManager : MonoBehaviour {
 		}
 	}
 
-	// To be called by clients on the server to get the maze seed -
-	// the clients will then initialize their own mazes based on this seed.
+	// To be called by on the clients by the server when they connect -
+	// this will build the client's maze using the server's seed.
 	[RPC]
 	void InitMaze(int seed)
 	{

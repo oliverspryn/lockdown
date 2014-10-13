@@ -11608,8 +11608,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &1095558306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11640,7 +11641,6 @@ Transform:
   m_LocalScale: {x: .5, y: 1, z: .25}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
 --- !u!1 &1118129263
 GameObject:
   m_ObjectHideFlags: 0
@@ -18850,13 +18850,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f3aee957946c747a3fd9b06328cd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkingOn: 0
-  isServer: 0
+  networkingOn: 1
+  isServer: 1
   gameName: Lockdown-NetworkTest1
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
-  useAWSserver: 0
-  AWS_URL: 
+  useAWSserver: 1
+  AWS_URL: 54.69.3.209
   maze: {fileID: 896435930}
 --- !u!4 &1730906203
 Transform:
