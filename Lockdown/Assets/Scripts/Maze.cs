@@ -76,7 +76,7 @@ public class Maze : MonoBehaviour {
 /// A seed value used to replcate multiple instances of a maze across multiple
 /// locations or machines.
 /// </summary>
-	private int Seed = -1;
+	public int Seed = -1;
 
 /// <summary>
 /// The dimensions of the prefab walls which is used to construct the
@@ -130,15 +130,23 @@ public class Maze : MonoBehaviour {
 
 	//Create the maze
 		CreateCells();
-		CreateMaze();
 		ConstructWalls();
-		PlaceLights();
-		DrawGraffiti();
 
 	//Punch out some walls
 		Cells[X - 1, 0].Walls.East.Enabled = false;
 		Cells[X - 1, Y - 1].Walls.East.Enabled = false;
 		Cells[0, (int)Math.Floor(Y / 2.0f)].Walls.West.Enabled = false;
+	}
+
+	#endregion
+
+	#region Public Methods
+
+	public void Init() {
+		CreateMaze();
+		//ConstructWalls();
+		PlaceLights();
+		DrawGraffiti();
 	}
 
 	#endregion
