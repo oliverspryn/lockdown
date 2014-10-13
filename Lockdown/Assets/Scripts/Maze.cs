@@ -76,7 +76,7 @@ public class Maze : MonoBehaviour {
 /// A seed value used to replcate multiple instances of a maze across multiple
 /// locations or machines.
 /// </summary>
-	private int Seed;
+	private int Seed = -1;
 
 /// <summary>
 /// The dimensions of the prefab walls which is used to construct the
@@ -121,7 +121,7 @@ public class Maze : MonoBehaviour {
 /// be used to create the 3D environment.
 /// </summary>
 	public void Start() {
-		Seed = 1413162377;
+		Seed = Seed == -1 ? (int)(DateTime.Now - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds : Seed;
 
 	//Measure the size of the prefab walls
 		GameObject basis = Instantiate(Wall) as GameObject;
