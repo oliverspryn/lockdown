@@ -9,6 +9,11 @@ public class Maze : MonoBehaviour {
 	#region Fields
 
 /// <summary>
+/// A reference to an alarm prefab.
+/// </summary>
+	public GameObject Alarm;
+
+/// <summary>
 /// A reference to a ceiling prefab.
 /// </summary>
 	public GameObject Ceiling;
@@ -131,6 +136,7 @@ public class Maze : MonoBehaviour {
 	//Create the maze
 		CreateCells();
 		ConstructWalls();
+		PlaceAlarms();
 
 	//Punch out some walls
 		Cells[X - 1, 0].Walls.East.Enabled = false;
@@ -431,6 +437,12 @@ public class Maze : MonoBehaviour {
 			ret.Add(current.Tangent.West);
 
 		return ret;
+	}
+
+	private void PlaceAlarms() {
+		GameObject alarm = Instantiate(Alarm) as GameObject;
+		alarm.GetComponent<Alarm>().Activated = true;
+		alarm.transform.position = Cells[0, 2].POI.N1;
 	}
 
 /// <summary>
