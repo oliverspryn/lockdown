@@ -1,17 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-public class Maze : MonoBehaviour {
+public abstract class Maze : MonoBehaviour {
 	#region Fields
-
-/// <summary>
-/// A reference to an alarm prefab.
-/// </summary>
-	public GameObject Alarm;
 
 /// <summary>
 /// A reference to a ceiling prefab.
@@ -21,23 +14,13 @@ public class Maze : MonoBehaviour {
 /// <summary>
 /// An array of all of the cells within the maze.
 /// </summary>
-	private Cell[,] Cells;
+	protected Cell[,] Cells;
 
 /// <summary>
 /// Whether or not the walls should slide into place whenever they are out
 /// of place, of if they should wait until this value is true.
 /// </summary>
 	public bool EnableSliding = false;
-
-/// <summary>
-/// An array of prefabs which will be used as graffiti through out the maze.
-/// </summary>
-	public GameObject[] Graffiti;
-
-/// <summary>
-/// The number of graffiti markings to display throughout the maze.
-/// </summary>
-	public int GraffitiTotal = 40;
 
 /// <summary>
 /// When a wall is unused and slid into the ground, how far above the floor
@@ -57,19 +40,9 @@ public class Maze : MonoBehaviour {
 /// </summary>
 	public float Length {
 		get {
-			return Size.x * Y + Size.z;
+			return Size.x * Y + OuterWall.transform.localScale.z;
 		}
 	}
-
-/// <summary>
-/// A reference to a light prefab.
-/// </summary>
-	public GameObject Light;
-
-/// <summary>
-/// The number of lights to place randomly throughout the maze.
-/// </summary>
-	public int LightCount = 20;
 
 /// <summary>
 /// A reference to an outer wall prefab, which is seperate from the standard,
@@ -85,9 +58,9 @@ public class Maze : MonoBehaviour {
 
 /// <summary>
 /// The dimensions of the prefab walls which is used to construct the
-/// walls of the maze.
+/// inner walls of the maze.
 /// </summary>
-	private Vector3 Size;
+	protected Vector3 Size;
 
 /// <summary>
 /// A reference to a wall prefab.
@@ -101,7 +74,7 @@ public class Maze : MonoBehaviour {
 /// </summary>
 	public float Width {
 		get {
-			return Size.x * X + Size.z;
+			return Size.x * X + OuterWall.transform.localScale.z;
 		}
 	}
 
@@ -136,25 +109,122 @@ public class Maze : MonoBehaviour {
 	//Create the maze
 		CreateCells();
 		ConstructWalls();
-		PlaceAlarms();
-
-	//Punch out some walls
-		Cells[X - 1, 0].Walls.East.Enabled = false;
-		Cells[X - 1, Y - 1].Walls.East.Enabled = false;
-		Cells[0, (int)Math.Floor(Y / 2.0f)].Walls.West.Enabled = false;
 	}
 
 	#endregion
 
 	#region Public Methods
 
+/// <summary>
+/// Destroy a <c>Wall</c> which borders a particular <c>Cell</c>.
+/// </summary>
+/// 
+/// <param name="cell">The targeted Cell</param>
+/// <param name="compass">The wall, ceiling, or floor which to delete</param>
+/// <param name="nuke">Whether the wall (if selected) should slide under the floor or really be destroyed</param>
+	public void DestroyWall(Cell cell, Compass compass, bool nuke = false) {
+		Vector3 position;
+		GameObject wall = null;
+
+		switch(compass) {
+			case Compass.Ceiling:
+				Destroy(cell.Ceiling);
+				return;
+
+			case Compass.East:
+				cell.Walls.East.Enabled = false;
+				wall = cell.Walls.East.Wall;
+
+				if(nuke) {
+					Destroy(wall);
+					return;
+				}
+
+				break;
+
+			case Compass.Floor:
+				Destroy(cell.Floor);
+				return;
+
+			case Compass.North:
+				cell.Walls.North.Enabled = false;
+				wall = cell.Walls.North.Wall;
+
+				if(nuke) {
+					Destroy(wall);
+					return;
+				}
+
+				break;
+
+			case Compass.South:
+				cell.Walls.South.Enabled = false;
+				wall = cell.Walls.South.Wall;
+
+				if(nuke) {
+					Destroy(wall);
+					return;
+				}
+
+				break;
+
+			case Compass.West:
+				cell.Walls.West.Enabled = false;
+				wall = cell.Walls.West.Wall;
+
+				if(nuke) {
+					Destroy(wall);
+					return;
+				}
+
+				break;
+		}
+
+	//If the wall was simply supposted to move under the floor, then do that here
+		position = wall.transform.position;
+		position.y = -1 * (Size.y / 2.0f) + HiddenWallDelta;
+
+		wall.transform.position = position;
+	}
+
+/// <summary>
+/// Create a maze out of the grid of cells.
+/// </summary>
+/// 
+/// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
 	public void Init(int seed = -1) {
 		if(seed != -1) Seed = seed;
 
 		CreateMaze();
-		//ConstructWalls();
-		PlaceLights();
-		DrawGraffiti();
+	}
+
+/// <summary>
+/// Animate the walls sliding out of the floor, if the Walls are
+/// configured to do so.
+/// </summary>
+	public void Update() {
+		if(!EnableSliding)
+			return;
+
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				if(Cells[i, j].Walls.East.Enabled) {
+					Vector3 A = Cells[i, j].Walls.East.Wall.transform.position;
+					Vector3 B = A;
+					B.y = (Size.y / 2.0f);
+
+					Cells[i, j].Walls.East.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
+				}
+
+				if(Cells[i, j].Walls.North.Enabled) {
+					Vector3 A = Cells[i, j].Walls.North.Wall.transform.position;
+					Vector3 B = A;
+					B.y = (Size.y / 2.0f);
+
+					Cells[i, j].Walls.North.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
+				}
+			}
+		}
 	}
 
 	#endregion
@@ -166,7 +236,7 @@ public class Maze : MonoBehaviour {
 /// the maze, use the wall prefabs to construct the physical boundaries
 /// of the maze, including the floor and ceiling.
 /// </summary>
-	private void ConstructWalls() {
+	protected void ConstructWalls() {
 		Vector3 position = new Vector3(0.0f, Size.y / 2.0f, 0.0f);
 
 	//Precalculate the locations of each row and column of walls
@@ -282,7 +352,7 @@ public class Maze : MonoBehaviour {
 /// Creates a grid of <c>Cell</c> objects for the maze generation algorithm
 /// to modify when creating a maze.
 /// </summary>
-	private void CreateCells() {
+	protected void CreateCells() {
 	//Create the grid of cells
 		Cells = new Cell[X, Y];
 
@@ -314,7 +384,7 @@ public class Maze : MonoBehaviour {
 /// Utilize a pre-established grid of <c>Cell</c> objects to generate a 
 /// maze.
 /// </summary>
-	private void CreateMaze() {
+	protected void CreateMaze() {
 	//Select a random cell
 		System.Random rand = new System.Random(Seed + 200);
 		Cell current = Cells[rand.Next(X), rand.Next(Y)];
@@ -354,7 +424,7 @@ public class Maze : MonoBehaviour {
 /// 
 /// <param name="cellOne">A <c>Cell</c> object within the grid</param>
 /// <param name="cellTwo">Another <c>Cell</c> object between which to create a passage</param>
-	private void DestroyWalls(ref Cell cellOne, ref Cell cellTwo) {
+	protected void DestroyWalls(ref Cell cellOne, ref Cell cellTwo) {
 		IVector2 N = new IVector2(cellOne.Position.X, cellOne.Position.Y);
 		N.Y++;
 		IVector2 S = new IVector2(cellOne.Position.X, cellOne.Position.Y);
@@ -383,20 +453,13 @@ public class Maze : MonoBehaviour {
 		cellOne.Visited = cellTwo.Visited = true;
 	}
 
-	private void DrawGraffiti() {
-		GameObject current;
-		System.Random rand = new System.Random(Seed + 300);
-		POI3D size;
-
-		for(int i = 0; i < GraffitiTotal; ++i) {
-			current = Instantiate(Graffiti[rand.Next(0, Graffiti.Length)]) as GameObject;
-			size = Cells[rand.Next(0, X), rand.Next(0, Y)].POI;
-
-			current.transform.position = size.N1;
-		}
-	}
-
-	private Walls GetRandomWall(Cell cell) {
+/// <summary>
+/// Select a random, enabled wall which is tanget to a particular <c>Cell</c>.
+/// </summary>
+/// 
+/// <param name="cell">The Cell whose wall should be fetched</param>
+/// <returns>A random Wall object which is tangent to the given Cell object</returns>
+	protected Walls GetRandomWall(Cell cell) {
 		List<Walls> walls = new List<Walls>() {
 			cell.Walls.East,
 			cell.Walls.North,
@@ -421,7 +484,7 @@ public class Maze : MonoBehaviour {
 /// 
 /// <param name="current">A <c>Cell</c> object whose neighbors should be analyzed</param>
 /// <returns>A list of <c>Cell</c> objects with neighbors which have not been visited</returns>
-	private List<Cell> GetUnvisitedNeighbors(ref Cell current) {
+	protected List<Cell> GetUnvisitedNeighbors(ref Cell current) {
 		List<Cell> ret = new List<Cell>();
 
 		if(current.Tangent.North != null && !current.Tangent.North.Visited)
@@ -437,97 +500,6 @@ public class Maze : MonoBehaviour {
 			ret.Add(current.Tangent.West);
 
 		return ret;
-	}
-
-	private void PlaceAlarms() {
-		GameObject alarm = Instantiate(Alarm) as GameObject;
-		alarm.GetComponent<Alarm>().Activated = true;
-		alarm.transform.position = Cells[0, 2].POI.N1;
-	}
-
-/// <summary>
-/// Place the Light prefab object randomly throughout the maze.
-/// </summary>
-	private void PlaceLights() {
-		Vector3 pos;
-		System.Random rand = new System.Random(Seed + 400);
-		int x, y;
-
-		for(int i = 0; i < LightCount; ++i) {
-			x = rand.Next(X);
-			y = rand.Next(Y);
-
-		//Prevent two lights from being placed within the same cell
-			if(Cells[x, y].Light == null) {
-				GameObject light = Instantiate(Light) as GameObject;
-
-				pos = Cells[x, y].Parameters.Center3D;
-				pos.x -= light.transform.localScale.x;
-				pos.y = Cells[x, y].Parameters.InnerHeight - 1.0f;
-				pos.z += light.transform.localScale.z / 2.0f;
-
-				Cells[x, y].Light = light;
-				light.transform.position = pos;
-			} else {
-				--i;
-			}
-		}
-	}
-
-	public void Update() {
-		if(!EnableSliding)
-			return;
-
-		for(int i = 0; i < X; ++i) {
-			for(int j = 0; j < Y; ++j) {
-				if(Cells[i, j].Walls.East.Enabled) {
-					Vector3 A = Cells[i, j].Walls.East.Wall.transform.position;
-					Vector3 B = A;
-					B.y = (Size.y / 2.0f);
-
-					Cells[i, j].Walls.East.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
-				}
-
-				if(Cells[i, j].Walls.North.Enabled) {
-					Vector3 A = Cells[i, j].Walls.North.Wall.transform.position;
-					Vector3 B = A;
-					B.y = (Size.y / 2.0f);
-
-					Cells[i, j].Walls.North.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
-				}
-			}
-		}
-	}
-
-	#endregion
-
-	#region Overloaded Methods
-
-/// <summary>
-/// Serialize the maze, its size, and which of its walls are enabled, so that
-/// an exact replica of it can be rebuilt elseware. This does not serialize
-/// any of the contents of an array.
-/// </summary>
-/// 
-/// <returns>A serialized representation of the array</returns>
-	public override string ToString() {
-		StringBuilder sb = new StringBuilder();
-
-	//Input the size of the maze
-		sb.Append(X);
-		sb.Append("-");
-		sb.Append(Y);
-		sb.Append("_");
-
-	//Log which cells have north and eastern walls
-		for(int i = 0; i < X; ++i) {
-			for(int j = 0; j < Y; ++j) {
-				if(Cells[i, j].Walls.North.Enabled) sb.Append("N");
-				if(Cells[i, j].Walls.East.Enabled) sb.Append("E");
-			}
-		}
-
-		return sb.ToString();
 	}
 
 	#endregion
