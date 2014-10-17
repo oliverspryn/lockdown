@@ -3,18 +3,13 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public abstract class Maze : MonoBehaviour {
+public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 	#region Fields
 
 /// <summary>
 /// A reference to a ceiling prefab.
 /// </summary>
 	public GameObject Ceiling;
-
-/// <summary>
-/// An array of all of the cells within the maze.
-/// </summary>
-	protected Cell[,] Cells;
 
 /// <summary>
 /// Whether or not the walls should slide into place whenever they are out
@@ -57,12 +52,6 @@ public abstract class Maze : MonoBehaviour {
 	public int Seed = -1;
 
 /// <summary>
-/// The dimensions of the prefab walls which is used to construct the
-/// inner walls of the maze.
-/// </summary>
-	protected Vector3 Size;
-
-/// <summary>
 /// A reference to a wall prefab.
 /// </summary>
 	public GameObject Wall;
@@ -90,6 +79,27 @@ public abstract class Maze : MonoBehaviour {
 
 	#endregion
 
+	#region Private Members
+
+/// <summary>
+/// An array of all of the cells within the maze.
+/// </summary>
+	protected T[,] Cells;
+
+/// <summary>
+/// A random generator instance used throughout the maze generation 
+/// process.
+/// </summary>
+	protected System.Random Random;
+
+/// <summary>
+/// The dimensions of the prefab walls which is used to construct the
+/// inner walls of the maze.
+/// </summary>
+	protected Vector3 Size;
+
+	#endregion
+
 	#region Constructors
 
 /// <summary>
@@ -100,6 +110,7 @@ public abstract class Maze : MonoBehaviour {
 /// </summary>
 	public void Awake() {
 		Seed = Seed == -1 ? (int)(DateTime.Now - new DateTime(1970, 1, 1).ToLocalTime()).TotalSeconds : Seed;
+		Random = new System.Random(Seed);
 
 	//Measure the size of the prefab walls
 		GameObject basis = Instantiate(Wall) as GameObject;
@@ -122,7 +133,7 @@ public abstract class Maze : MonoBehaviour {
 /// <param name="cell">The targeted Cell</param>
 /// <param name="compass">The wall, ceiling, or floor which to delete</param>
 /// <param name="nuke">Whether the wall (if selected) should slide under the floor or really be destroyed</param>
-	public void DestroyWall(Cell cell, Compass compass, bool nuke = false) {
+	public void DestroyWall(T cell, Compass compass, bool nuke = false) {
 		Vector3 position;
 		GameObject wall = null;
 
@@ -193,7 +204,10 @@ public abstract class Maze : MonoBehaviour {
 /// 
 /// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
 	public void Init(int seed = -1) {
-		if(seed != -1) Seed = seed;
+		if(seed != -1) {
+			Seed = seed;
+			Random = new System.Random(Seed);
+		}
 
 		CreateMaze();
 	}
@@ -277,7 +291,6 @@ public abstract class Maze : MonoBehaviour {
 		}
 
 	//Create the walls, ceilings, and floors
-		System.Random rand = new System.Random(Seed + 100);
 		Vector3 scale = new Vector3(Size.x, 0.1f, Size.x);
 
 		for(int i = 0; i < X; ++i) {
@@ -342,7 +355,7 @@ public abstract class Maze : MonoBehaviour {
 
 				ceiling.transform.localScale = scale;
 				ceiling.transform.position = position;
-				ceiling.transform.Rotate(0.0f, 90.0f * rand.Next(4), 0.0f);
+				ceiling.transform.Rotate(0.0f, 90.0f * Random.Next(4), 0.0f);
 				Cells[i, j].Ceiling = ceiling;
 			}
 		}
@@ -354,11 +367,12 @@ public abstract class Maze : MonoBehaviour {
 /// </summary>
 	protected void CreateCells() {
 	//Create the grid of cells
-		Cells = new Cell[X, Y];
+		Cells = new T[X, Y];
 
 		for(int i = 0; i < X; ++i) {
 			for(int j = 0; j < Y; ++j) {
-				Cells[i, j] = new Cell(new IVector2(i, j));
+				Cells[i, j] = new T();
+				Cells[i, j].Position = new IVector2(i, j);
 			}
 		}
 
@@ -386,23 +400,22 @@ public abstract class Maze : MonoBehaviour {
 /// </summary>
 	protected void CreateMaze() {
 	//Select a random cell
-		System.Random rand = new System.Random(Seed + 200);
-		Cell current = Cells[rand.Next(X), rand.Next(Y)];
+		T current = Cells[Random.Next(X), Random.Next(Y)];
 
 	//Initialize the stack and total number of cells
-		Stack<Cell> stack = new Stack<Cell>();
+		Stack<T> stack = new Stack<T>();
 		int total = X * Y;
 		int visited = 1;
 
 	//Build out the cells
-		List<Cell> unvisited;
-		Cell random;
+		List<T> unvisited;
+		T random;
 
 		while(visited < total) {
 			unvisited = GetUnvisitedNeighbors(ref current);
 
 			if(unvisited.Count > 0) {
-				random = unvisited[rand.Next(unvisited.Count)];
+				random = unvisited[Random.Next(unvisited.Count)];
 				DestroyWalls(ref current, ref random);
 
 				stack.Push(current);
@@ -424,7 +437,7 @@ public abstract class Maze : MonoBehaviour {
 /// 
 /// <param name="cellOne">A <c>Cell</c> object within the grid</param>
 /// <param name="cellTwo">Another <c>Cell</c> object between which to create a passage</param>
-	protected void DestroyWalls(ref Cell cellOne, ref Cell cellTwo) {
+	protected void DestroyWalls(ref T cellOne, ref T cellTwo) {
 		IVector2 N = new IVector2(cellOne.Position.X, cellOne.Position.Y);
 		N.Y++;
 		IVector2 S = new IVector2(cellOne.Position.X, cellOne.Position.Y);
@@ -459,7 +472,7 @@ public abstract class Maze : MonoBehaviour {
 /// 
 /// <param name="cell">The Cell whose wall should be fetched</param>
 /// <returns>A random Wall object which is tangent to the given Cell object</returns>
-	protected Walls GetRandomWall(Cell cell) {
+	protected RandomWall GetRandomWall(T cell) {
 		List<Walls> walls = new List<Walls>() {
 			cell.Walls.East,
 			cell.Walls.North,
@@ -468,12 +481,32 @@ public abstract class Maze : MonoBehaviour {
 		};
 		
 	//Is the randomly selected wall actually up?
-		System.Random rand = new System.Random(Seed + 500);
-		int chosenOne = rand.Next(4);
+		int chosenOne = Random.Next(4);
 
-		for(int i = chosenOne; true; chosenOne = (chosenOne + 1) % 4) {
-			if(walls[i].Enabled)
-				return walls[i];
+		for(int i = chosenOne; true; i = (i + 1) % 4) {
+			if(walls[i].Enabled) {
+				RandomWall r = new RandomWall();
+				r.Wall = walls[i];
+
+			//Determine the direction of the wall
+				switch(i) {
+					case 0:
+						r.Direction = Compass.East;
+						return r;
+
+					case 1:
+						r.Direction = Compass.North;
+						return r;
+
+					case 2:
+						r.Direction = Compass.South;
+						return r;
+
+					case 3:
+						r.Direction = Compass.West;
+						return r;
+				}
+			}
 		}
 	}
 
@@ -484,20 +517,20 @@ public abstract class Maze : MonoBehaviour {
 /// 
 /// <param name="current">A <c>Cell</c> object whose neighbors should be analyzed</param>
 /// <returns>A list of <c>Cell</c> objects with neighbors which have not been visited</returns>
-	protected List<Cell> GetUnvisitedNeighbors(ref Cell current) {
-		List<Cell> ret = new List<Cell>();
+	protected List<T> GetUnvisitedNeighbors(ref T current) {
+		List<T> ret = new List<T>();
 
 		if(current.Tangent.North != null && !current.Tangent.North.Visited)
-			ret.Add(current.Tangent.North);
+			ret.Add(current.Tangent.North as T);
 
 		if(current.Tangent.South != null && !current.Tangent.South.Visited)
-			ret.Add(current.Tangent.South);
+			ret.Add(current.Tangent.South as T);
 
 		if(current.Tangent.East != null && !current.Tangent.East.Visited)
-			ret.Add(current.Tangent.East);
+			ret.Add(current.Tangent.East as T);
 
 		if(current.Tangent.West != null && !current.Tangent.West.Visited)
-			ret.Add(current.Tangent.West);
+			ret.Add(current.Tangent.West as T);
 
 		return ret;
 	}

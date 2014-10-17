@@ -7,16 +7,15 @@
 /// or not this <c>Cell</c> has been visited by the generation algorithm.
 /// </summary>
 
-public class Cell {
+public abstract class Cell {
 	#region Constructors
 
 /// <summary>
 /// Create a new <c>Cell</c> object, with all of the walls intact
 /// and set the cell as unvisited by the generation algorithm.
 /// </summary>
-	public Cell(IVector2 position) {
-		Light = null;
-		Position = position;
+	public Cell() {
+		Position = new IVector2(0, 0);
 		Tangent = new Direction<Cell>();
 		Visited = false;
 		Walls = new Direction<Walls>();
@@ -39,24 +38,12 @@ public class Cell {
 	public GameObject Floor { get; set; }
 
 /// <summary>
-/// A reference to the <c>GameObject</c> which represents the light
-/// within a particular <c>Cell</c>.
-/// </summary>
-	public GameObject Light { get; set; }
-
-/// <summary>
 /// Obtain the 3D location and sizing parameters of this <c>Cell</c>
 /// object.
 /// </summary>
 	public Parameters Parameters {
 		get {
 			return new Parameters(this);
-		}
-	}
-
-	public POI3D POI {
-		get {
-			return new POI3D(this, Compass.North);
 		}
 	}
 
@@ -83,6 +70,21 @@ public class Cell {
 /// divide each of the maze cells.
 /// </summary>
 	public Direction<Walls> Walls { get; set; }
+
+	#endregion
+
+	#region Public Methods
+
+/// <summary>
+/// Get several points of interest on the floor, ceiling, and various walls
+/// which surround a <c>Cell.</c>
+/// </summary>
+/// 
+/// <param name="direction">Whether to measure a wall, floor, or ceiling</param>
+/// <returns>Several points of interested on the selected object</returns>
+	public POI3D GetPOI(Compass selection) {
+		return new POI3D(this, selection);
+	}
 
 	#endregion
 }

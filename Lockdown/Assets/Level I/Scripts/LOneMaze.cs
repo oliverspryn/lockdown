@@ -6,7 +6,7 @@ using System;
 /// Generate and populate a maze which is specific to level one
 /// for this game.
 /// </summary>
-public class LOneMaze : Maze {
+public class LOneMaze : Maze<LOneCell> {
 	#region Fields
 
 /// <summary>
@@ -22,7 +22,7 @@ public class LOneMaze : Maze {
 /// <summary>
 /// The number of graffiti markings to display throughout the maze.
 /// </summary>
-	public int GraffitiTotal = 40;
+	public int GraffitiTotal = 20;
 
 /// <summary>
 /// A reference to a light prefab.
@@ -46,12 +46,51 @@ public class LOneMaze : Maze {
 	public new void Awake() {
 		base.Awake();
 		PlaceLights();
-		DrawGraffiti();
 
 	//Punch out some walls to access and exit the maze
 		DestroyWall(Cells[X - 1, 0], Compass.East);
 		DestroyWall(Cells[X - 1, Y - 1], Compass.East);
 		DestroyWall(Cells[0, (int)Math.Floor(Y / 2.0f)], Compass.West);
+	}
+
+	#endregion
+
+	#region Public Methods
+
+/// <summary>
+/// Generate the maze and place graffiti on the walls.
+/// </summary>
+	public void Init() {
+		base.Init();
+		DrawGraffiti();
+	}
+
+	public new void Update() {
+		if(!EnableSliding)
+			return;
+
+		base.Update();
+
+	//Slide up the graffiti
+		Cell cell = null;
+
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				if(Cells[i, j].Graffiti != null) {
+					Vector3 A = Cells[i, j].Graffiti.transform.position;
+					Vector3 B = A;
+					B.y = (Size.y / 4.0f);
+
+					cell = Cells[i, j];
+					Cells[i, j].Graffiti.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
+
+					/*if(cell.Position.X == 0       && wall.Direction == Compass.West  || 
+					   cell.Position.X == (X - 1) && wall.Direction == Compass.East  ||
+					   cell.Position.Y == 0       && wall.Direction == Compass.South ||
+					   cell.Position.Y == (Y - 1) && wall.Direction == Compass.North) {*/
+				}
+			}
+		}
 	}
 
 	#endregion
@@ -62,15 +101,50 @@ public class LOneMaze : Maze {
 /// Draw graffiti randomly throughout the maze.
 /// </summary>
 	private void DrawGraffiti() {
-		GameObject current;
-		System.Random rand = new System.Random(Seed + 300);
-		POI3D size;
+		LOneCell cell;
+		GameObject graffiti;
+		Vector3 size;
+		RandomWall wall;
 
 		for(int i = 0; i < GraffitiTotal; ++i) {
-			current = Instantiate(Graffiti[rand.Next(0, Graffiti.Length)]) as GameObject;
-			size = Cells[rand.Next(0, X), rand.Next(0, Y)].POI;
+			cell = Cells[Random.Next(0, X), Random.Next(0, Y)];
 
-			current.transform.position = size.N1;
+			if(cell.Graffiti == null) {
+				graffiti = Instantiate(Graffiti[Random.Next(0, Graffiti.Length)]) as GameObject;
+				wall = GetRandomWall(cell);
+				cell.Graffiti = graffiti;
+
+			//Position the graffiti
+				size = cell.GetPOI(wall.Direction).S1;
+
+				if(cell.Position.X == 0       && wall.Direction == Compass.West  || 
+				   cell.Position.X == (X - 1) && wall.Direction == Compass.East  ||
+				   cell.Position.Y == 0       && wall.Direction == Compass.South ||
+				   cell.Position.Y == (Y - 1) && wall.Direction == Compass.North) {
+					//This is an outer wall, keep the graffiti above the ground
+				} else {
+					size.y -= wall.Wall.Wall.transform.localScale.y;
+				}
+
+				graffiti.transform.position = size;
+
+			//Rotate the graffiti
+				switch(wall.Direction) {
+					case Compass.East:
+						graffiti.transform.Rotate(0.0f, 90.0f, 0.0f);
+						break;
+
+					case Compass.South:
+						graffiti.transform.Rotate(0.0f, 180.0f, 0.0f);
+						break;
+
+					case Compass.West:
+						graffiti.transform.Rotate(0.0f, 270.0f, 0.0f);
+						break;
+				}
+			} else {
+				--i;
+			}
 		}
 	}
 
@@ -80,7 +154,7 @@ public class LOneMaze : Maze {
 	private void PlaceAlarms() {
 		GameObject alarm = Instantiate(Alarm) as GameObject;
 		alarm.GetComponent<Alarm>().Activated = true;
-		alarm.transform.position = Cells[0, 2].POI.N1;
+		alarm.transform.position = Cells[0, 2].GetPOI(Compass.North).N1;
 	}
 
 /// <summary>
@@ -88,12 +162,11 @@ public class LOneMaze : Maze {
 /// </summary>
 	private void PlaceLights() {
 		Vector3 pos;
-		System.Random rand = new System.Random(Seed + 400);
 		int x, y;
 
 		for(int i = 0; i < LightCount; ++i) {
-			x = rand.Next(X);
-			y = rand.Next(Y);
+			x = Random.Next(X);
+			y = Random.Next(Y);
 
 			//Prevent two lights from being placed within the same cell
 			if(Cells[x, y].Light == null) {

@@ -5,7 +5,7 @@ public class WallRiser : MonoBehaviour {
 	public GameObject Maze;
 
 	public void OnTriggerEnter(Collider c) {
-		Maze m = Maze.GetComponent<Maze>();
+		LOneMaze m = Maze.GetComponent<LOneMaze>();
 		m.EnableSliding = true;
 	}
 }

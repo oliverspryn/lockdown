@@ -72,7 +72,7 @@ public class NetworkManager : MonoBehaviour {
 
 		if(Network.isServer)
 		{
-			Maze mazeScript = maze.GetComponent<Maze>();
+			LOneMaze mazeScript = maze.GetComponent<LOneMaze>();
 			mazeScript.Init ();
 		}
 	}
@@ -83,7 +83,7 @@ public class NetworkManager : MonoBehaviour {
 		// In networked mode, this happens in:
 		//		Server: spawnNetworkedObjects()
 		// 		Client: InitMaze(), which is RPC called by OnPlayerConnected()
-		Maze mazeScript = maze.GetComponent<Maze>();
+		LOneMaze mazeScript = maze.GetComponent<LOneMaze>();
 		mazeScript.Init ();
 	}
 
@@ -110,7 +110,7 @@ public class NetworkManager : MonoBehaviour {
 	void OnPlayerConnected(NetworkPlayer player)
 	{
 		// Get the maze seed we (the server) generated locally
-		Maze mazeScript = maze.GetComponent<Maze>();
+		LOneMaze mazeScript = maze.GetComponent<LOneMaze>();
 
 		networkView.RPC ("InitMaze", player, mazeScript.Seed);
 	}
@@ -150,7 +150,7 @@ public class NetworkManager : MonoBehaviour {
 	[RPC]
 	void InitMaze(int seed)
 	{
-		Maze mazeScript = maze.GetComponent<Maze>();
+		LOneMaze mazeScript = maze.GetComponent<LOneMaze>();
 		mazeScript.Init (seed);
 	}
 }
