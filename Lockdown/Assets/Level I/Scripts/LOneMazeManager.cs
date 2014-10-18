@@ -132,8 +132,8 @@ public class LOneMazeManager : MonoBehaviour {
 		seed = (seed == -1) ? Seed : seed;
 
 		Left.Script.Init(seed);
-		Center.Script.Init(seed);
-		Right.Script.Init(seed);
+		Center.Script.Init(seed + 42);
+		Right.Script.Init(seed + 84);
 	}
 
 	#endregion
