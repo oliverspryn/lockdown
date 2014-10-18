@@ -14,6 +14,11 @@ public class Rotator : MonoBehaviour {
 	public RotatorAxis Axis = RotatorAxis.X;
 
 /// <summary>
+/// Set the direction of rotation.
+/// </summary>
+	public Rotation Rotation = Rotation.CounterClockwise;
+
+/// <summary>
 /// The object to rotate.
 /// </summary>
 	public GameObject Item;
@@ -26,10 +31,12 @@ public class Rotator : MonoBehaviour {
 /// Rotate the object along a given axis.
 /// </summary>
 	public void Update() {
+		float rotation = (Rotation == Rotation.CounterClockwise) ? 1.0f : -1.0f;
+
 		Item.transform.Rotate(
-			Axis == RotatorAxis.X ? 1.0f : 0.0f,
-			Axis == RotatorAxis.Y ? 1.0f : 0.0f,
-			Axis == RotatorAxis.Z ? 1.0f : 0.0f
+			Axis == RotatorAxis.X ? rotation : 0.0f,
+			Axis == RotatorAxis.Y ? rotation : 0.0f,
+			Axis == RotatorAxis.Z ? rotation : 0.0f
 		);
 	}
 
