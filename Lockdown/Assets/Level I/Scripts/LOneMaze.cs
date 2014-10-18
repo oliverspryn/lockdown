@@ -105,6 +105,12 @@ public class LOneMaze : Maze<LOneCell> {
 				wall = GetRandomWall(cell);
 				cell.Graffiti = graffiti;
 
+			//Does this cell not have any bounding walls? Try again, then.
+				if(wall == null) {
+					--i;
+					continue;
+				}
+
 			//Position the graffiti
 				size = cell.GetPOI(wall.Direction).S1;
 

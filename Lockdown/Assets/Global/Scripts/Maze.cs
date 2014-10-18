@@ -509,9 +509,10 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 		};
 		
 	//Is the randomly selected wall actually up?
+		int counter = 0;
 		int chosenOne = Random.Next(4);
 
-		for(int i = chosenOne; true; i = (i + 1) % 4) {
+		for(int i = chosenOne; counter <= 5; i = (i + 1) % 4, ++counter) {
 			if(walls[i].Enabled) {
 				RandomWall r = new RandomWall();
 				r.Wall = walls[i];
@@ -536,6 +537,8 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 				}
 			}
 		}
+
+		return null;
 	}
 
 /// <summary>

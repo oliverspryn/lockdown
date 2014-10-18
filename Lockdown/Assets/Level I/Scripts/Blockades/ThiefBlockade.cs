@@ -1,28 +1,29 @@
 ﻿using UnityEngine;
 
-public class ThiefBlockade : MonoBehaviour, IBlockade {
-	#region Fields
+/// <summary>
+/// This is the controller class to allow passage through a
+/// blockade designed specifically for the Thief role to 
+/// open.
+/// </summary>
+public class ThiefBlockade : Blockade {
+	#region Public Methods
 
 /// <summary>
-/// An array of objects to destroy when the blockade is opening.
+/// Open the door through the blockade and destroy all indicators
+/// use to show that this blockade must be unlocked.
 /// </summary>
-	public GameObject[] Dest;
+	public override void Open() {
+		base.Open();
 
-/// <summary>
-/// The door to open to allow passage.
-/// </summary>
-	public GameObject Door;
+	//Open the door
+		Door.transform.position = new Vector3(
+			Door.transform.position.x - 0.6f,
+			Door.transform.position.y,
+			Door.transform.position.z - 1.2f
+		);
+
+		Door.transform.Rotate(0.0f, 90.0f, 0.0f);
+	}
 
 	#endregion
-
-	public void Open() {
-	//Open the door
-		Door.transform.position = new Vector3(5.554642f, -7.199772f, -1.363853f);
-		Door.transform.Rotate(0.0f, 180.0f, 0.0f);
-
-	//Destory stuff
-		for(int i = 0; i < Dest.Length; ++i) {
-			Destroy(Dest[i]);
-		}
-	}
 }
