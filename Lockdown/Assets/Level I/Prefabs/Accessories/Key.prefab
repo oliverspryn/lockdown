@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837d4bf591efc854d8bb9825174590bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Axis: 0
   Item: {fileID: 100002}
 --- !u!1001 &100100000
 Prefab:

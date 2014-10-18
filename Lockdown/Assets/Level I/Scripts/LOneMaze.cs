@@ -55,7 +55,7 @@ public class LOneMaze : Maze<LOneCell> {
 /// </summary>
 ///
 /// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
-	public void Init(int seed = -1) {
+	public new void Init(int seed = -1) {
 		base.Init();
 		DrawGraffiti();
 	}

@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// An interface which all blockade prefabs must implement in order
 /// to open, or grant passage through, the blockade.
 /// </summary>
@@ -8,7 +10,7 @@ public interface IBlockade {
 /// <summary>
 /// Open, or grant passage through, the blockade.
 /// </summary>
-	public void Open();
+	void Open();
 
 	#endregion
 }
