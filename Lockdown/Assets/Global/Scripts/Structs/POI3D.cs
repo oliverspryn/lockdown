@@ -51,7 +51,7 @@ public class POI3D {
 					return new Vector3(POIX[Point3D.Center], POIY[Point3D.UUp] - Abutted[Compass.Ceiling] - Offset, POIZ[Point3D.Center]);
 
 				case Compass.East:
-					return new Vector3(POIX[Point3D.LLeft] - Abutted[Compass.East] - Offset, POIY[Point3D.Center], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.RRight] - Abutted[Compass.East] - Offset, POIY[Point3D.Center], POIZ[Point3D.Center]);
 
 				case Compass.Floor:
 					return new Vector3(POIX[Point3D.Center], POIY[Point3D.DDown] + Abutted[Compass.Floor] + Offset, POIZ[Point3D.Center]);
@@ -63,7 +63,7 @@ public class POI3D {
 					return new Vector3(POIX[Point3D.Center], POIY[Point3D.Center], POIZ[Point3D.BBackward] + Abutted[Compass.South] + Offset);
 
 				case Compass.West:
-					return new Vector3(POIX[Point3D.RRight] + Abutted[Compass.West] + Offset, POIY[Point3D.Center], POIZ[Point3D.Center]);
+					return new Vector3(POIX[Point3D.LLeft] + Abutted[Compass.West] + Offset, POIY[Point3D.Center], POIZ[Point3D.Center]);
 			}
 
 			return new Vector3();

@@ -12,6 +12,11 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 	public GameObject Ceiling;
 
 /// <summary>
+/// An array of all of the cells within the maze.
+/// </summary>
+	public T[,] Cells;
+
+/// <summary>
 /// Whether or not the walls should slide into place whenever they are out
 /// of place, of if they should wait until this value is true.
 /// </summary>
@@ -38,6 +43,11 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 			return Size.x * Y + OuterWall.transform.localScale.z;
 		}
 	}
+
+/// <summary>
+/// The location of the maze within the scene.
+/// </summary>
+	public Vector3 MazeLocation;
 
 /// <summary>
 /// A reference to an outer wall prefab, which is seperate from the standard,
@@ -82,9 +92,10 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 	#region Private Members
 
 /// <summary>
-/// An array of all of the cells within the maze.
+/// Hold the destination location of the walls, the location the walls
+/// should be slid into.
 /// </summary>
-	protected T[,] Cells;
+	protected float DestLocation = float.NegativeInfinity;
 
 /// <summary>
 /// A random generator instance used throughout the maze generation 
@@ -130,14 +141,27 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 /// Destroy a <c>Wall</c> which borders a particular <c>Cell</c>.
 /// </summary>
 /// 
-/// <param name="cell">The targeted Cell</param>
-/// <param name="compass">The wall, ceiling, or floor which to delete</param>
+/// <param name="x">The x-position of the targeted Cell</param>
+/// <param name="y">The x-position of the targeted Cell</param>
+/// <param name="direction">The wall, ceiling, or floor which to delete</param>
 /// <param name="nuke">Whether the wall (if selected) should slide under the floor or really be destroyed</param>
-	public void DestroyWall(T cell, Compass compass, bool nuke = false) {
+	public void DestroyWall(int x, int y, Compass direction, bool nuke = false) {
+		if(x <= X && y <= Y)
+			DestroyWall(Cells[x, y], direction, nuke);
+	}
+
+/// <summary>
+/// Destroy a <c>Wall</c> which borders a particular <c>Cell</c>.
+/// </summary>
+/// 
+/// <param name="cell">The targeted Cell</param>
+/// <param name="direction">The wall, ceiling, or floor which to delete</param>
+/// <param name="nuke">Whether the wall (if selected) should slide under the floor or really be destroyed</param>
+	public void DestroyWall(T cell, Compass direction, bool nuke = false) {
 		Vector3 position;
 		GameObject wall = null;
 
-		switch(compass) {
+		switch(direction) {
 			case Compass.Ceiling:
 				Destroy(cell.Ceiling);
 				return;
@@ -193,7 +217,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 
 	//If the wall was simply supposted to move under the floor, then do that here
 		position = wall.transform.position;
-		position.y = -1 * (Size.y / 2.0f) + HiddenWallDelta;
+		position.y = -1 * (Size.y / 2.0f) + HiddenWallDelta + MazeLocation.y;
 
 		wall.transform.position = position;
 	}
@@ -220,12 +244,16 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 		if(!EnableSliding)
 			return;
 
+		if(DestLocation == float.NegativeInfinity) {
+			DestLocation = Cells[0, 0].Walls.North.Wall.transform.position.y + Size.y;
+		}
+
 		for(int i = 0; i < X; ++i) {
 			for(int j = 0; j < Y; ++j) {
 				if(Cells[i, j].Walls.East.Enabled) {
 					Vector3 A = Cells[i, j].Walls.East.Wall.transform.position;
 					Vector3 B = A;
-					B.y = (Size.y / 2.0f);
+					B.y = DestLocation;
 
 					Cells[i, j].Walls.East.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
 				}
@@ -233,7 +261,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 				if(Cells[i, j].Walls.North.Enabled) {
 					Vector3 A = Cells[i, j].Walls.North.Wall.transform.position;
 					Vector3 B = A;
-					B.y = (Size.y / 2.0f);
+					B.y = DestLocation;
 
 					Cells[i, j].Walls.North.Wall.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
 				}
@@ -303,7 +331,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 				position.y = (j < Y - 1) ? -1 * (Size.y / 2.0f) + HiddenWallDelta : Size.y / 2.0f;
 				position.z = YPos[j] + (Size.x / 2.0f);// - (Size.x / 2.0f); //+ (Size.x / 2.0f);
 
-				wall.transform.position = position;
+				wall.transform.position = position + MazeLocation;
 				Cells[i, j].Walls.North.Wall = wall;
 
 			//Southern walls, run only for the bottom row
@@ -313,7 +341,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 					position.y = Size.y / 2.0f;
 					position.z = YPos[j] - (Size.x / 2.0f);
 
-					wall.transform.position = position;
+					wall.transform.position = position + MazeLocation;
 					Cells[i, j].Walls.South.Wall = wall;
 				}
 
@@ -323,7 +351,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 				position.y = (i < X - 1) ? -1 * (Size.y / 2.0f) + HiddenWallDelta : Size.y / 2.0f;
 				position.z = YPos[j];
 
-				wall.transform.position = position;
+				wall.transform.position = position + MazeLocation;
 				wall.transform.Rotate(wall.transform.rotation.x, 90.0f, wall.transform.rotation.z);
 				Cells[i, j].Walls.East.Wall = wall;
 
@@ -334,7 +362,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 					position.y = Size.y / 2.0f;
 					position.z = YPos[j];
 
-					wall.transform.position = position;
+					wall.transform.position = position + MazeLocation;
 					wall.transform.Rotate(wall.transform.rotation.x, 90.0f, wall.transform.rotation.z);
 					Cells[i, j].Walls.West.Wall = wall;
 				}
@@ -346,7 +374,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 				position.z = YPos[j];
 
 				floor.transform.localScale = scale;
-				floor.transform.position = position;
+				floor.transform.position = position + MazeLocation;
 				Cells[i, j].Floor = floor;
 
 			//Ceiling
@@ -354,7 +382,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 				position.y = Size.y;
 
 				ceiling.transform.localScale = scale;
-				ceiling.transform.position = position;
+				ceiling.transform.position = position + MazeLocation;
 				ceiling.transform.Rotate(0.0f, 90.0f * Random.Next(4), 0.0f);
 				Cells[i, j].Ceiling = ceiling;
 			}

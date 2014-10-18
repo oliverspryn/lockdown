@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Maze
+  m_TagString: Maze
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0b91ca7336bd44a85365c6b1f23ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ceiling: {fileID: 100000, guid: b85187005b27b874abfc03be72a88f8f, type: 2}
+  EnableSliding: 0
+  HiddenWallDelta: .100000001
+  Floor: {fileID: 100000, guid: e92d25c0bc1c82f4398a019aaec4cde2, type: 2}
+  MazeLocation: {x: 0, y: 0, z: 0}
+  OuterWall: {fileID: 100000, guid: 2513c96018991e54d887a67ce9414857, type: 2}
+  Seed: -1
+  Wall: {fileID: 100000, guid: 7122e5edf9d5e0641b624a85e9c43ae7, type: 2}
+  X: 4
+  Y: 12
+  Alarm: {fileID: 100002, guid: 9cb5a9e29e4fd0d44815569565a99271, type: 2}
+  Graffiti:
+  - {fileID: 100000, guid: dc074e8f91ff81d41bd2590ab53a0b1b, type: 2}
+  - {fileID: 100000, guid: 0e56ed06506aaef4a9599b37e705c529, type: 2}
+  - {fileID: 100000, guid: b342458257dbaa942866938940ca49ed, type: 2}
+  GraffitiTotal: 40
+  Light: {fileID: 100026, guid: 2e717eec255e0894790b9784f3cfa617, type: 2}
+  LightCount: 20
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

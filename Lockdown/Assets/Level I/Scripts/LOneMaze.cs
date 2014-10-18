@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 
 /// <summary>
@@ -43,14 +42,8 @@ public class LOneMaze : Maze<LOneCell> {
 /// and this method will add additional objects to the maze which are 
 /// specific to level one.
 /// </summary>
-	public new void Awake() {
-		base.Awake();
+	public void Start() {
 		PlaceLights();
-
-	//Punch out some walls to access and exit the maze
-		DestroyWall(Cells[X - 1, 0], Compass.East);
-		DestroyWall(Cells[X - 1, Y - 1], Compass.East);
-		DestroyWall(Cells[0, (int)Math.Floor(Y / 2.0f)], Compass.West);
 	}
 
 	#endregion
@@ -60,34 +53,32 @@ public class LOneMaze : Maze<LOneCell> {
 /// <summary>
 /// Generate the maze and place graffiti on the walls.
 /// </summary>
-	public void Init() {
+///
+/// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
+	public void Init(int seed = -1) {
 		base.Init();
 		DrawGraffiti();
 	}
-
+	
+/// <summary>
+/// Slide the graffiti into place whenever the walls are sliding
+/// into place.s
+/// </summary>
 	public new void Update() {
+		base.Update();
+
 		if(!EnableSliding)
 			return;
 
-		base.Update();
-
 	//Slide up the graffiti
-		Cell cell = null;
-
 		for(int i = 0; i < X; ++i) {
 			for(int j = 0; j < Y; ++j) {
 				if(Cells[i, j].Graffiti != null) {
 					Vector3 A = Cells[i, j].Graffiti.transform.position;
 					Vector3 B = A;
-					B.y = (Size.y / 4.0f);
+					B.y = DestLocation - (Size.y / 4.0f);
 
-					cell = Cells[i, j];
 					Cells[i, j].Graffiti.transform.position = Vector3.Lerp(A, B, Time.deltaTime / 3.0f);
-
-					/*if(cell.Position.X == 0       && wall.Direction == Compass.West  || 
-					   cell.Position.X == (X - 1) && wall.Direction == Compass.East  ||
-					   cell.Position.Y == 0       && wall.Direction == Compass.South ||
-					   cell.Position.Y == (Y - 1) && wall.Direction == Compass.North) {*/
 				}
 			}
 		}
@@ -126,6 +117,7 @@ public class LOneMaze : Maze<LOneCell> {
 					size.y -= wall.Wall.Wall.transform.localScale.y;
 				}
 
+				size.y += MazeLocation.y;
 				graffiti.transform.position = size;
 
 			//Rotate the graffiti
@@ -174,11 +166,11 @@ public class LOneMaze : Maze<LOneCell> {
 
 				pos = Cells[x, y].Parameters.Center3D;
 				pos.x -= light.transform.localScale.x;
-				pos.y = -0.5f;
+				pos.y = -0.5f + MazeLocation.y;
 				pos.z += light.transform.localScale.z / 2.0f;
 
 				Cells[x, y].Light = light;
-				light.transform.position = pos;
+				light.transform.position = pos; //+ MazeLocation;
 			} else {
 				--i;
 			}
