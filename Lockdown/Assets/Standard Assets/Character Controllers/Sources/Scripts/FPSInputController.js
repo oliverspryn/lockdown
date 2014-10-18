@@ -12,6 +12,10 @@ function Update () {
 		playerInputSuffix = "";
 	else if(gameObject.tag == "Player 2")
 		playerInputSuffix = " P2";
+	else if(gameObject.tag == "Player 3")
+		playerInputSuffix = " P3";
+	else if(gameObject.tag == "Player 4")
+		playerInputSuffix = " P4";
 
 	// Get the input vector from keyboard or analog stick
 	var directionVector = new Vector3(Input.GetAxis("Horizontal" + playerInputSuffix), 0, Input.GetAxis("Vertical" + playerInputSuffix));
