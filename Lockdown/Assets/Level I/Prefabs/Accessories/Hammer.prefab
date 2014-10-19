@@ -60,6 +60,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
+  - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -110,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 145.182419, y: 1.96820247, z: -111.756027}
+  m_LocalPosition: {x: 89.7659607, y: 4.99633837, z: 72.0570679}
   m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 400004}
@@ -173,6 +174,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_Mesh: {fileID: 4300002, guid: 1587db1f299b17645ae14fc2fe1c35df, type: 3}
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.8999996, y: 4.36000013, z: 55.3400002}
+  m_Center: {x: -1.10000002, y: -.699999988, z: -.99000001}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -198,8 +211,8 @@ Light:
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 1.5
+  m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -235,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Axis: 2
+  Rotation: 0
   Item: {fileID: 100006}
 --- !u!1001 &100100000
 Prefab:

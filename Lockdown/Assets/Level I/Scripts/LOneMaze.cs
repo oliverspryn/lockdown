@@ -14,6 +14,17 @@ public class LOneMaze : Maze<LOneCell> {
 	public GameObject Alarm;
 
 /// <summary>
+/// An array of blockades to put in the players' path.
+/// </summary>
+	public GameObject[] Blockades;
+
+/// <summary>
+/// An array of objects to disperse throughout the maze which a player can
+/// pick up.
+/// </summary>
+	public GameObject[] Collectables;
+
+/// <summary>
 /// An array of prefabs which will be used as graffiti through out the maze.
 /// </summary>
 	public GameObject[] Graffiti;
@@ -43,6 +54,7 @@ public class LOneMaze : Maze<LOneCell> {
 /// specific to level one.
 /// </summary>
 	public void Start() {
+		PlaceCollectables();
 		PlaceLights();
 	}
 
@@ -156,6 +168,29 @@ public class LOneMaze : Maze<LOneCell> {
 	}
 
 /// <summary>
+/// Place objects a player can pick up randomly throughout the maze.
+/// </summary>
+	private void PlaceCollectables() {
+		LOneCell cell;
+		GameObject collectable;
+		Vector3 pos;
+
+		for(int i = 0; i < Collectables.Length; ++i) {
+			cell = Cells[Random.Next(X), Random.Next(Y)];
+
+			if(cell.Collectable == null) {
+				collectable = Instantiate(Collectables[i]) as GameObject;
+				pos = cell.GetPOI(Compass.Floor).C;
+				pos.y = cell.GetPOI(Compass.North).C.y;
+
+				collectable.transform.position = pos;
+			} else {
+				--i;
+			}
+		}
+	}
+
+/// <summary>
 /// Place the Light prefab object randomly throughout the maze.
 /// </summary>
 	private void PlaceLights() {
@@ -166,7 +201,7 @@ public class LOneMaze : Maze<LOneCell> {
 			x = Random.Next(X);
 			y = Random.Next(Y);
 
-			//Prevent two lights from being placed within the same cell
+		//Prevent two lights from being placed within the same cell
 			if(Cells[x, y].Light == null) {
 				GameObject light = Instantiate(Light) as GameObject;
 
@@ -176,7 +211,7 @@ public class LOneMaze : Maze<LOneCell> {
 				pos.z += light.transform.localScale.z / 2.0f;
 
 				Cells[x, y].Light = light;
-				light.transform.position = pos; //+ MazeLocation;
+				light.transform.position = pos;
 			} else {
 				--i;
 			}

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Blank
+  m_Name: Energy Beam
   m_Shader: {fileID: 10753, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 5494df044ad21f14e999c7e742762fb8, type: 3}
+          m_Texture: {fileID: 2800000, guid: 1f288bce2b244df4bb7e2ff4bf169c17, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -29,4 +29,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: .0557103157, b: 1, a: 1}
+        second: {r: .117241383, g: 0, b: 1, a: 1}
