@@ -290,7 +290,7 @@ public class LOneMaze : Maze<LOneCell> {
 				continue;
 			}
 
-			Blockades[i].GetComponent<Blockade>().OpenOnStart = true;
+			Blockades[i].GetComponent<Blockade>().OpenOnStart = false;
 		}
 	}
 
