@@ -28,6 +28,17 @@ public class NetworkManager : MonoBehaviour {
 	
 	// Objects that the manager has instantiated at runtime - handles for later runtime use
 	private GameObject player1, player2, player3, player4;
+
+	void Awake()
+	{
+		// See comments in MouseLook.cs or FPSInputController.js to explain
+		// this utter bizarreness
+		GameObject netOnOffFoobarThing = (GameObject)Object.Instantiate(new GameObject("Network OnOff Foobar Thing"));
+		if(networkingOn)
+			netOnOffFoobarThing.SetActive (true);
+		else
+			netOnOffFoobarThing.SetActive (false);
+	}
 	
 	// Use this for initialization
 	void Start () {
