@@ -54,7 +54,6 @@ public class LOneMaze : Maze<LOneCell> {
 /// specific to level one.
 /// </summary>
 	public void Start() {
-		PlaceCollectables();
 		PlaceLights();
 	}
 
@@ -63,13 +62,15 @@ public class LOneMaze : Maze<LOneCell> {
 	#region Public Methods
 
 /// <summary>
-/// Generate the maze and place graffiti on the walls.
+/// Generate the maze and place objects throughout the maze.
 /// </summary>
 ///
 /// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
 	public new void Init(int seed = -1) {
 		base.Init();
 		DrawGraffiti();
+		PlaceBlockades();
+		PlaceCollectables();
 	}
 	
 /// <summary>
@@ -168,22 +169,78 @@ public class LOneMaze : Maze<LOneCell> {
 	}
 
 /// <summary>
+/// Randomly place blockades throughout the maze to block the player from
+/// having free access throughout the maze.
+/// </summary>
+	private void PlaceBlockades() {
+		LOneCell cell;
+		Vector3 pos;
+
+		for(int i = 0; i < Blockades.Length; ++i) {
+			cell = Cells[Random.Next(X - 1), Random.Next(Y - 1)];
+
+			if(Random.Next(1) == 0 && !cell.Walls.North.Enabled && cell.Blockade == null) {
+			//Create a position the blockade
+				cell.Blockade = Instantiate(Blockades[i]) as GameObject;
+
+				pos = cell.GetPOI(Compass.North).C;
+				pos.x += 2.7f;
+				pos.y -= cell.Blockade.GetComponent<Blockade>().Height + 7.03f;
+				pos.z += 5.27f;
+
+				cell.Blockade.transform.position = pos;
+				cell.Blockade.transform.Rotate(0.0f, 90.0f, 0.0f);
+
+			//Replace the wall that was there
+				Destroy(cell.Walls.North.Wall);
+
+				cell.Walls.North.Enabled = true;
+				cell.Walls.North.Wall = cell.Blockade;
+				cell.Tangent.North.Walls.South.Enabled = true;
+				cell.Tangent.North.Walls.South.Wall = cell.Blockade;
+			} else if(!cell.Walls.East.Enabled && cell.Blockade == null) {
+			//Create a position the blockade
+				cell.Blockade = Instantiate(Blockades[i]) as GameObject;
+
+				pos = cell.GetPOI(Compass.East).C;
+				pos.x -= 5.03f;
+				pos.y -= cell.Blockade.GetComponent<Blockade>().Height + 7.03f;
+				pos.z += 2.69f;
+
+				cell.Blockade.transform.position = pos;
+
+			//Replace the wall that was there
+				Destroy(cell.Walls.East.Wall);
+
+				cell.Walls.East.Enabled = true;
+				cell.Walls.East.Wall = cell.Blockade;
+				cell.Tangent.East.Walls.West.Enabled = true;
+				cell.Tangent.East.Walls.West.Wall = cell.Blockade;
+			} else {
+				--i;
+				continue;
+			}
+
+			Blockades[i].GetComponent<Blockade>().OpenOnStart = true;
+		}
+	}
+
+/// <summary>
 /// Place objects a player can pick up randomly throughout the maze.
 /// </summary>
 	private void PlaceCollectables() {
 		LOneCell cell;
-		GameObject collectable;
 		Vector3 pos;
 
 		for(int i = 0; i < Collectables.Length; ++i) {
 			cell = Cells[Random.Next(X), Random.Next(Y)];
 
 			if(cell.Collectable == null) {
-				collectable = Instantiate(Collectables[i]) as GameObject;
+				cell.Collectable = Instantiate(Collectables[i]) as GameObject;
 				pos = cell.GetPOI(Compass.Floor).C;
 				pos.y = cell.GetPOI(Compass.North).C.y;
 
-				collectable.transform.position = pos;
+				cell.Collectable.transform.position = pos;
 			} else {
 				--i;
 			}
