@@ -14,8 +14,8 @@ GameObject:
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Linked Platform
-  m_TagString: Untagged
+  m_Name: LinkedPlatform 1
+  m_TagString: Platformcenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.497757, y: -5.57024431, z: -136.335815}
-  m_LocalScale: {x: 4, y: .100000001, z: 4}
+  m_LocalPosition: {x: -69.3826218, y: 11.0070038, z: -877.269409}
+  m_LocalScale: {x: 20, y: .100000001, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -97,6 +97,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd73eb809bad4444a9b584e53c53a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform1: {fileID: 0}
+  platform2: {fileID: 0}
+  platform3: {fileID: 0}
+  platform4: {fileID: 0}
+  platform5: {fileID: 0}
+  platform6: {fileID: 0}
+  start_x: -2
+  start_y: 0
+  start_z: -58
+  Velocity: 30
+  switchflipped: 0
+  pause: 5
+  counter: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

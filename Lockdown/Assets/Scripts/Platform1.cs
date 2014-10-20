@@ -15,7 +15,7 @@ public class Platform1 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Vector3 startpos = gameObject.rigidbody.position;
+		Vector3 startpos = gameObject.transform.position;
 		start_x = startpos.x;
 		start_y = startpos.y;
 		start_z = startpos.z;
@@ -26,7 +26,7 @@ public class Platform1 : MonoBehaviour {
 		Vector3 tempvel = gameObject.rigidbody.velocity;
 		tempvel.x = 0;
 		tempvel.z = 0;
-		if (switchflipped && gameObject.rigidbody.position.y < 2) {
+		if (switchflipped && gameObject.transform.position.y < 54.4f) {
 						
 						tempvel.y = Velocity;
 				} else if (counter < pause && switchflipped) {
@@ -36,7 +36,6 @@ public class Platform1 : MonoBehaviour {
 			switchflipped = false;
 			tempvel.y = -Velocity;
 		} else {
-			switchflipped = false;
 			counter = 0;
 			tempvel.y = 0;
 

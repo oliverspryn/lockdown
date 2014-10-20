@@ -10,6 +10,9 @@ TagManager:
   - Maze
   - Player 3
   - Player 4
+  - Platformside
+  - Platformcenter
+  - Platformcorner
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
