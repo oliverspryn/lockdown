@@ -19,4 +19,8 @@ public class Button1 : MonoBehaviour {
 	{
 		platform.Platform1switch ();
 	}
+	void OnTriggerExit(Collider other)
+	{
+		platform.Platform1inverseswitch ();
+	}
 }
