@@ -9,6 +9,12 @@ public class LOneCell : Cell {
 	#region Fields
 
 /// <summary>
+/// A referece to a blockade used to block free access throughout
+/// the maze.
+/// </summary>
+	public GameObject Blockade;
+
+/// <summary>
 /// A reference to an object a player can pick up.
 /// </summary>
 	public GameObject Collectable;
@@ -32,6 +38,7 @@ public class LOneCell : Cell {
 /// Create a <c>LOneCell</c> with no lights or graffiti.
 /// </summary>
 	public LOneCell() : base() {
+		Blockade = null;
 		Collectable = null;
 		Graffiti = null;
 		Light = null;
