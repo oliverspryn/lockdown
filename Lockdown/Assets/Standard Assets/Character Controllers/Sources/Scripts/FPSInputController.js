@@ -1,13 +1,15 @@
 private var motor : CharacterMotor;
+private var playerInputSuffix : String;
 
 // Use this for initialization
 function Awake () {
 	motor = GetComponent(CharacterMotor);
 }
 
-// Update is called once per frame
-function Update () {
-	var playerInputSuffix = ""; // default to player 1
+function Start()
+{
+	// Determine which controller we should be receiving input from
+	playerInputSuffix = ""; // default to player 1
 	if(gameObject.tag == "Player 1")
 		playerInputSuffix = "";
 	else if(gameObject.tag == "Player 2")
@@ -16,7 +18,10 @@ function Update () {
 		playerInputSuffix = " P3";
 	else if(gameObject.tag == "Player 4")
 		playerInputSuffix = " P4";
+}
 
+// Update is called once per frame
+function Update () {
 	// Get the input vector from keyboard or analog stick
 	var directionVector = new Vector3(Input.GetAxis("Horizontal" + playerInputSuffix), 0, Input.GetAxis("Vertical" + playerInputSuffix));
 	

@@ -29,15 +29,28 @@ public class MouseLook : MonoBehaviour {
 	public float maximumY = 60F;
 
 	float rotationY = 0F;
+	string playerInputSuffix;
 
-	void Update ()
+	void Start ()
 	{
-		string playerInputSuffix = ""; // default to player 1
+		// Make the rigid body not change rotation
+		if (GetComponent<Rigidbody>())
+			GetComponent<Rigidbody>().freezeRotation = true;
+
+		// Determine which controller we should be receiving input from
+		playerInputSuffix = ""; // default to player 1
 		if(gameObject.tag == "Player 1")
 			playerInputSuffix = "";
 		else if(gameObject.tag == "Player 2")
 			playerInputSuffix = " P2";
+		else if(gameObject.tag == "Player 3")
+			playerInputSuffix = " P3";
+		else if(gameObject.tag == "Player 4")
+			playerInputSuffix = " P4";
+	}
 
+	void Update ()
+	{
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X" + playerInputSuffix) * sensitivityX;
@@ -58,12 +71,5 @@ public class MouseLook : MonoBehaviour {
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
-	}
-	
-	void Start ()
-	{
-		// Make the rigid body not change rotation
-		if (GetComponent<Rigidbody>())
-			GetComponent<Rigidbody>().freezeRotation = true;
 	}
 }
