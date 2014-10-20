@@ -9,6 +9,11 @@ public class LOneCell : Cell {
 	#region Fields
 
 /// <summary>
+/// A reference to an alarm prefab.
+/// </summary>
+	public GameObject Alarm;
+
+/// <summary>
 /// A referece to a blockade used to block free access throughout
 /// the maze.
 /// </summary>
@@ -38,6 +43,7 @@ public class LOneCell : Cell {
 /// Create a <c>LOneCell</c> with no lights or graffiti.
 /// </summary>
 	public LOneCell() : base() {
+		Alarm = null;
 		Blockade = null;
 		Collectable = null;
 		Graffiti = null;

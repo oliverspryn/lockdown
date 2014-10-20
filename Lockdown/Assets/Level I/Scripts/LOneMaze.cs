@@ -14,6 +14,11 @@ public class LOneMaze : Maze<LOneCell> {
 	public GameObject Alarm;
 
 /// <summary>
+/// The number of alarms to create in the maze.
+/// </summary>
+	public int AlarmTotal = 7;
+
+/// <summary>
 /// An array of blockades to put in the players' path.
 /// </summary>
 	public GameObject[] Blockades;
@@ -69,6 +74,7 @@ public class LOneMaze : Maze<LOneCell> {
 	public new void Init(int seed = -1) {
 		base.Init();
 		DrawGraffiti();
+		PlaceAlarms();
 		PlaceBlockades();
 		PlaceCollectables();
 	}
@@ -163,9 +169,34 @@ public class LOneMaze : Maze<LOneCell> {
 /// Place break out alarms in pre-defined locations throughout the maze.
 /// </summary>
 	private void PlaceAlarms() {
-		GameObject alarm = Instantiate(Alarm) as GameObject;
-		alarm.GetComponent<Alarm>().Activated = true;
-		alarm.transform.position = Cells[0, 2].GetPOI(Compass.North).N1;
+		LOneCell cell;
+		int[] XLoc = new int[] { 0, X - 1 };
+
+		for(int i = 0; i < AlarmTotal; ++i) {
+			cell = Cells[XLoc[Random.Next(2)], Random.Next(Y - 1)];
+
+		//Does an alarm already exist here?
+			if(cell.Alarm != null) {
+				--i;
+				continue;
+			}
+
+		//Place the alarm in the cell
+			cell.Alarm = Instantiate(Alarm) as GameObject;
+
+			if(cell.Position.X == 0) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.West).N1;
+				cell.Alarm.transform.Rotate(0.0f, 90.0f, 0.0f);
+			} else if(cell.Position.Y == 0) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.South).N1;
+				cell.Alarm.transform.Rotate(0.0f, 180.0f, 0.0f);
+			} else if(cell.Position.X == X - 1) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.East).N1;
+				cell.Alarm.transform.Rotate(0.0f, 270.0f, 0.0f);
+			} else if(cell.Position.Y == Y - 1) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.North).N1;
+			}
+		}
 	}
 
 /// <summary>
