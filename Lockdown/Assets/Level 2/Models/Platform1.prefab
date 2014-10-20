@@ -100,7 +100,7 @@ MonoBehaviour:
   start_x: 0
   start_y: -8
   start_z: -58
-  Velocity: 3
+  Velocity: 30
   switchflipped: 0
   pause: 1
   counter: 0

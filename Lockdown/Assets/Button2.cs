@@ -20,4 +20,10 @@ public class Button2 : MonoBehaviour {
 		platform2.Platform1switch ();
 		platform3.Platform1switch ();
 	}
+	void OnTriggerExit(Collider other)
+	{
+		platform1.Platform1inverseswitch ();
+		platform2.Platform1inverseswitch ();
+		platform3.Platform1inverseswitch ();
+	}
 }
