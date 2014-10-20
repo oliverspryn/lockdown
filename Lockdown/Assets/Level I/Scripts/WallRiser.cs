@@ -34,6 +34,7 @@ public class WallRiser : MonoBehaviour {
 
 		LOneMaze m = Maze.GetComponent<LOneMaze>();
 		m.EnableSliding = true;
+		m.SoundAlarm();
 	}
 
 	#endregion

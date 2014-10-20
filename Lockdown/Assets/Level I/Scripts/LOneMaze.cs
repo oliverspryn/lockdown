@@ -51,6 +51,15 @@ public class LOneMaze : Maze<LOneCell> {
 
 	#endregion
 
+	#region Private Memebers
+
+/// <summary>
+/// Whether or not the alarms have already been sounded once.
+/// </summary>
+	private bool AlarmsSounded = false;
+	
+	#endregion
+
 	#region Constructors
 
 /// <summary>
@@ -78,7 +87,30 @@ public class LOneMaze : Maze<LOneCell> {
 		PlaceBlockades();
 		PlaceCollectables();
 	}
-	
+
+/// <summary>
+/// Activate all of the alarms which have have been placed within
+/// the maze. This can only be called once.
+/// </summary>
+	public void SoundAlarm() {
+	//Have the alarms already been sounded once?
+		if(AlarmsSounded)
+			return;
+
+	//Sound the alarms
+		AlarmsSounded = true;
+		bool soundEnabled = true;
+
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				if(Cells[i, j].Alarm != null) {
+					Cells[i, j].Alarm.GetComponent<Alarm>().Activate(soundEnabled);
+					soundEnabled = false; //Sound only one of the alarm
+				}
+			}
+		}
+	}
+
 /// <summary>
 /// Slide the graffiti into place whenever the walls are sliding
 /// into place.s
@@ -170,10 +202,12 @@ public class LOneMaze : Maze<LOneCell> {
 /// </summary>
 	private void PlaceAlarms() {
 		LOneCell cell;
-		int[] XLoc = new int[] { 0, X - 1 };
+		int XRand = 0;
+		int[] YLoc = new int[] { 0, Y - 1 };
 
 		for(int i = 0; i < AlarmTotal; ++i) {
-			cell = Cells[XLoc[Random.Next(2)], Random.Next(Y - 1)];
+			XRand = Random.Next(X);
+			cell = Cells[XRand, (XRand == 0 || XRand == X - 1) ? Random.Next(Y) : YLoc[Random.Next(2)]];
 
 		//Does an alarm already exist here?
 			if(cell.Alarm != null) {
@@ -184,17 +218,21 @@ public class LOneMaze : Maze<LOneCell> {
 		//Place the alarm in the cell
 			cell.Alarm = Instantiate(Alarm) as GameObject;
 
-			if(cell.Position.X == 0) {
+			if(cell.Position.X == 0 && cell.Walls.West.Enabled) {
 				cell.Alarm.transform.position = cell.GetPOI(Compass.West).N1;
 				cell.Alarm.transform.Rotate(0.0f, 90.0f, 0.0f);
-			} else if(cell.Position.Y == 0) {
+			} else if(cell.Position.Y == 0 && cell.Walls.South.Enabled) {
 				cell.Alarm.transform.position = cell.GetPOI(Compass.South).N1;
-				cell.Alarm.transform.Rotate(0.0f, 180.0f, 0.0f);
-			} else if(cell.Position.X == X - 1) {
+			} else if(cell.Position.X == X - 1 && cell.Walls.East.Enabled) {
 				cell.Alarm.transform.position = cell.GetPOI(Compass.East).N1;
 				cell.Alarm.transform.Rotate(0.0f, 270.0f, 0.0f);
-			} else if(cell.Position.Y == Y - 1) {
+			} else if(cell.Position.Y == Y - 1 && cell.Walls.North.Enabled) {
 				cell.Alarm.transform.position = cell.GetPOI(Compass.North).N1;
+				cell.Alarm.transform.Rotate(0.0f, 180.0f, 0.0f);
+			} else {
+				Destroy(cell.Alarm);
+				cell.Alarm = null;
+				--i;
 			}
 		}
 	}

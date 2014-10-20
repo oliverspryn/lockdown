@@ -1,27 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
-
-public class Alarm : MonoBehaviour {
-	#region Fields
 
 /// <summary>
-/// Whether or not the alarm is enabled, and should be alarming.
+/// This script manages an alarm by creating a deactivated by
+/// default, and providing a function to enabled the alarm lights
+/// and sound when provoked.
 /// </summary>
-	public bool Activated {
-		get { return activated; }
-		set {
-			activated = value;
-			AlarmLight.light.intensity = MinBright;
-
-			if(activated) {
-				AlarmStation.audio.Play();
-			} else {
-				AlarmStation.audio.Stop();
-			}
-		}
-	}
-
-	private bool activated = false;
+public class Alarm : MonoBehaviour {
+	#region Fields
 
 /// <summary>
 /// The light emitted from the alarm station.
@@ -53,32 +38,63 @@ public class Alarm : MonoBehaviour {
 
 	#endregion
 
-	#region Private Fields
+	#region Private Members
 
 /// <summary>
-/// An internal value used for blinking the alarm.
+/// Whether or not the alarm is activated.
 /// </summary>
-	private int BrightnessToggle = 1;
+	private bool Activated;
+
+/// <summary>
+/// An internal value used for blinking the alarm light.
+/// </summary>
+	private float BrightnessToggle = 0.0f;
 
 	#endregion
 
-	// Use this for initialization
+	#region Constructors
+
+/// <summary>
+/// Create an alarm in a de-activated state.
+/// </summary>
 	public void Awake () {
 		Activated = false;
 		AlarmStation.renderer.material.color = new Color(255.0f, 0.0f, 0.0f);
 	}
-	
-	// Update is called once per frame
-	public void Update () {
+
+	#endregion
+
+	#region Public Methods
+
+/// <summary>
+/// Activate the alarm.
+/// </summary>
+	public void Activate(bool soundEnabled = true) {
+		Activated = true;
+		AlarmLight.light.intensity = MinBright;
+
+		if(Activated && soundEnabled) {
+			AlarmStation.audio.Play();
+		} else {
+			AlarmStation.audio.Stop();
+		}
+	}
+
+/// <summary>
+/// Flash the light whenever the alarm is activated.
+/// </summary>
+	public void Update() {
 		if(!Activated) return;
 
 	//Animate the flashing of the light
 		if(AlarmLight.light.intensity >= MaxBright) {
-			BrightnessToggle = -1;
+			BrightnessToggle = -0.5f;
 		} else if(AlarmLight.light.intensity <= MinBright) {
-			BrightnessToggle = 1;
+			BrightnessToggle = 0.5f;
 		}
 
 		AlarmLight.light.intensity += (BrightnessStep * BrightnessToggle);
 	}
+
+	#endregion
 }

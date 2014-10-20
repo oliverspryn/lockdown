@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 147.702072, y: 7.11657524, z: -99.8798447}
+  m_LocalPosition: {x: 151.89798, y: 6.48031759, z: -159.980911}
   m_LocalScale: {x: .5, y: 1, z: .25}
   m_Children:
   - {fileID: 400000}
@@ -188,12 +188,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01802bb6272948547921ba381a5a6cf2, type: 3}
+  m_Script: {fileID: 11500000, guid: c93607d32ec49684aae668c063d5d9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AlarmLight: {fileID: 100000}
   AlarmStation: {fileID: 100002}
-  BrightnessStep: .300000012
+  BrightnessStep: 1
   MaxBright: 8
   MinBright: 2
 --- !u!1001 &100100000
