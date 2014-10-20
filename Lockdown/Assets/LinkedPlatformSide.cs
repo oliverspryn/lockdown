@@ -46,6 +46,11 @@ public class LinkedPlatformSide : MonoBehaviour {
 			switchflipped = !switchflipped;
 			counter = 0;
 		}
+	public void Platform1switch ()
+	{
+		switchflipped = !switchflipped;
+		counter = 0;
+	}
 	void OnTriggerExit(Collider other)
 	{
 		platform1.Platformswitch ();
