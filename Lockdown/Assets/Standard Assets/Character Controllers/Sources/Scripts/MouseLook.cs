@@ -29,15 +29,50 @@ public class MouseLook : MonoBehaviour {
 	public float maximumY = 60F;
 
 	float rotationY = 0F;
+	string playerInputSuffix;
+
+	void Start ()
+	{
+		// Make the rigid body not change rotation
+		if (GetComponent<Rigidbody>())
+			GetComponent<Rigidbody>().freezeRotation = true;
+
+		// Determine which controller we should be receiving input from
+		GameObject netOnOffFoobarThing = GameObject.Find ("Network OnOff Foobar Thing");
+		// Yes, I'm using a dummy GameObject's active state as a boolean. It's the only way I
+		// could think of to get a "truly global" boolean value that's accessible across
+		// scripts in different assemblies, e.g., scripts on "Standard Assets" in the "firstpass"
+		// assemblies, and NetworkManager in the main assembly. The purpose of this object is
+		// to signal whether we're in "networked/online" or "offline" mode.
+		bool networkingOn = false;
+		if(netOnOffFoobarThing.activeInHierarchy)
+			networkingOn = true;
+
+		playerInputSuffix = " P1"; // default to player 1
+		if(gameObject.tag == "Player 1")
+			playerInputSuffix = " P1";
+		else if(gameObject.tag == "Player 2")
+			playerInputSuffix = " P2";
+		else if(gameObject.tag == "Player 3")
+		{
+			// If we're a network client, then P1 and P2 are over on the server, so we want
+			// P3 and P4 to be mapped to the first and second controllers.
+			if(networkingOn && Network.isClient)
+				playerInputSuffix = " P1";
+			else
+				playerInputSuffix = " P3";
+		}
+		else if(gameObject.tag == "Player 4")
+		{
+			if(networkingOn && Network.isClient)
+				playerInputSuffix = " P2";
+			else
+				playerInputSuffix = " P4";
+		}
+	}
 
 	void Update ()
 	{
-		string playerInputSuffix = ""; // default to player 1
-		if(gameObject.tag == "Player 1")
-			playerInputSuffix = "";
-		else if(gameObject.tag == "Player 2")
-			playerInputSuffix = " P2";
-
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X" + playerInputSuffix) * sensitivityX;
@@ -58,12 +93,5 @@ public class MouseLook : MonoBehaviour {
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
-	}
-	
-	void Start ()
-	{
-		// Make the rigid body not change rotation
-		if (GetComponent<Rigidbody>())
-			GetComponent<Rigidbody>().freezeRotation = true;
 	}
 }

@@ -16,11 +16,19 @@ public class ThiefBlockade : Blockade {
 		base.Open();
 
 	//Open the door
-		Door.transform.position = new Vector3(
-			Door.transform.position.x - 0.6f,
-			Door.transform.position.y,
-			Door.transform.position.z - 1.2f
-		);
+		if(gameObject.transform.rotation.y == 0.0f) {
+			Door.transform.position = new Vector3(
+				Door.transform.position.x - 1.45f,
+				Door.transform.position.y + 0.25f,
+				Door.transform.position.z - 0.37f
+			);
+		} else { // Algorithm will rotate by 90 degrees
+			Door.transform.position = new Vector3(
+				Door.transform.position.x - 0.35f,
+				Door.transform.position.y + 0.25f,
+				Door.transform.position.z + 1.61f
+			);
+		}
 
 		Door.transform.Rotate(0.0f, 90.0f, 0.0f);
 	}

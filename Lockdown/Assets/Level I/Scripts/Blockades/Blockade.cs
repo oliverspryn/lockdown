@@ -18,6 +18,27 @@ public abstract class Blockade : MonoBehaviour {
 	public GameObject Door;
 
 /// <summary>
+/// The height of the blockade prefab.
+/// </summary>
+	public float Height {
+		get {
+			float height = 0.0f;
+
+			for(int i = 0; i < HeightObjects.Length; ++i) {
+				height += HeightObjects[i].transform.localScale.y;
+			}
+
+			return height;
+		}
+	}
+
+/// <summary>
+/// The object(s) which, when their heights are added together, make
+/// up the overall height of the blockade prefab.
+/// </summary>
+	public GameObject[] HeightObjects;
+
+/// <summary>
 /// Whether or not the blockade should open immediately when the
 /// game initializes.
 /// </summary>

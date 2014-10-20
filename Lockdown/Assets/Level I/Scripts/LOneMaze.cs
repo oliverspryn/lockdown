@@ -14,6 +14,22 @@ public class LOneMaze : Maze<LOneCell> {
 	public GameObject Alarm;
 
 /// <summary>
+/// The number of alarms to create in the maze.
+/// </summary>
+	public int AlarmTotal = 7;
+
+/// <summary>
+/// An array of blockades to put in the players' path.
+/// </summary>
+	public GameObject[] Blockades;
+
+/// <summary>
+/// An array of objects to disperse throughout the maze which a player can
+/// pick up.
+/// </summary>
+	public GameObject[] Collectables;
+
+/// <summary>
 /// An array of prefabs which will be used as graffiti through out the maze.
 /// </summary>
 	public GameObject[] Graffiti;
@@ -35,6 +51,15 @@ public class LOneMaze : Maze<LOneCell> {
 
 	#endregion
 
+	#region Private Memebers
+
+/// <summary>
+/// Whether or not the alarms have already been sounded once.
+/// </summary>
+	private bool AlarmsSounded = false;
+	
+	#endregion
+
 	#region Constructors
 
 /// <summary>
@@ -51,15 +76,41 @@ public class LOneMaze : Maze<LOneCell> {
 	#region Public Methods
 
 /// <summary>
-/// Generate the maze and place graffiti on the walls.
+/// Generate the maze and place objects throughout the maze.
 /// </summary>
 ///
 /// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
 	public new void Init(int seed = -1) {
 		base.Init();
 		DrawGraffiti();
+		PlaceAlarms();
+		PlaceBlockades();
+		PlaceCollectables();
 	}
-	
+
+/// <summary>
+/// Activate all of the alarms which have have been placed within
+/// the maze. This can only be called once.
+/// </summary>
+	public void SoundAlarm() {
+	//Have the alarms already been sounded once?
+		if(AlarmsSounded)
+			return;
+
+	//Sound the alarms
+		AlarmsSounded = true;
+		bool soundEnabled = true;
+
+		for(int i = 0; i < X; ++i) {
+			for(int j = 0; j < Y; ++j) {
+				if(Cells[i, j].Alarm != null) {
+					Cells[i, j].Alarm.GetComponent<Alarm>().Activate(soundEnabled);
+					soundEnabled = false; //Sound only one of the alarm
+				}
+			}
+		}
+	}
+
 /// <summary>
 /// Slide the graffiti into place whenever the walls are sliding
 /// into place.s
@@ -150,9 +201,119 @@ public class LOneMaze : Maze<LOneCell> {
 /// Place break out alarms in pre-defined locations throughout the maze.
 /// </summary>
 	private void PlaceAlarms() {
-		GameObject alarm = Instantiate(Alarm) as GameObject;
-		alarm.GetComponent<Alarm>().Activated = true;
-		alarm.transform.position = Cells[0, 2].GetPOI(Compass.North).N1;
+		LOneCell cell;
+		int XRand = 0;
+		int[] YLoc = new int[] { 0, Y - 1 };
+
+		for(int i = 0; i < AlarmTotal; ++i) {
+			XRand = Random.Next(X);
+			cell = Cells[XRand, (XRand == 0 || XRand == X - 1) ? Random.Next(Y) : YLoc[Random.Next(2)]];
+
+		//Does an alarm already exist here?
+			if(cell.Alarm != null) {
+				--i;
+				continue;
+			}
+
+		//Place the alarm in the cell
+			cell.Alarm = Instantiate(Alarm) as GameObject;
+
+			if(cell.Position.X == 0 && cell.Walls.West.Enabled) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.West).N1;
+				cell.Alarm.transform.Rotate(0.0f, 90.0f, 0.0f);
+			} else if(cell.Position.Y == 0 && cell.Walls.South.Enabled) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.South).N1;
+			} else if(cell.Position.X == X - 1 && cell.Walls.East.Enabled) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.East).N1;
+				cell.Alarm.transform.Rotate(0.0f, 270.0f, 0.0f);
+			} else if(cell.Position.Y == Y - 1 && cell.Walls.North.Enabled) {
+				cell.Alarm.transform.position = cell.GetPOI(Compass.North).N1;
+				cell.Alarm.transform.Rotate(0.0f, 180.0f, 0.0f);
+			} else {
+				Destroy(cell.Alarm);
+				cell.Alarm = null;
+				--i;
+			}
+		}
+	}
+
+/// <summary>
+/// Randomly place blockades throughout the maze to block the player from
+/// having free access throughout the maze.
+/// </summary>
+	private void PlaceBlockades() {
+		LOneCell cell;
+		Vector3 pos;
+
+		for(int i = 0; i < Blockades.Length; ++i) {
+			cell = Cells[Random.Next(X - 1), Random.Next(Y - 1)];
+
+			if(Random.Next(1) == 0 && !cell.Walls.North.Enabled && cell.Blockade == null) {
+			//Create a position the blockade
+				cell.Blockade = Instantiate(Blockades[i]) as GameObject;
+
+				pos = cell.GetPOI(Compass.North).C;
+				pos.x += 2.7f;
+				pos.y -= cell.Blockade.GetComponent<Blockade>().Height + 7.03f;
+				pos.z += 5.27f;
+
+				cell.Blockade.transform.position = pos;
+				cell.Blockade.transform.Rotate(0.0f, 90.0f, 0.0f);
+
+			//Replace the wall that was there
+				Destroy(cell.Walls.North.Wall);
+
+				cell.Walls.North.Enabled = true;
+				cell.Walls.North.Wall = cell.Blockade;
+				cell.Tangent.North.Walls.South.Enabled = true;
+				cell.Tangent.North.Walls.South.Wall = cell.Blockade;
+			} else if(!cell.Walls.East.Enabled && cell.Blockade == null) {
+			//Create a position the blockade
+				cell.Blockade = Instantiate(Blockades[i]) as GameObject;
+
+				pos = cell.GetPOI(Compass.East).C;
+				pos.x -= 5.03f;
+				pos.y -= cell.Blockade.GetComponent<Blockade>().Height + 7.03f;
+				pos.z += 2.69f;
+
+				cell.Blockade.transform.position = pos;
+
+			//Replace the wall that was there
+				Destroy(cell.Walls.East.Wall);
+
+				cell.Walls.East.Enabled = true;
+				cell.Walls.East.Wall = cell.Blockade;
+				cell.Tangent.East.Walls.West.Enabled = true;
+				cell.Tangent.East.Walls.West.Wall = cell.Blockade;
+			} else {
+				--i;
+				continue;
+			}
+
+			Blockades[i].GetComponent<Blockade>().OpenOnStart = true;
+		}
+	}
+
+/// <summary>
+/// Place objects a player can pick up randomly throughout the maze.
+/// </summary>
+	private void PlaceCollectables() {
+		LOneCell cell;
+		Vector3 pos;
+
+		for(int i = 0; i < Collectables.Length; ++i) {
+			cell = Cells[Random.Next(X), Random.Next(Y)];
+
+			if(cell.Collectable == null) {
+				cell.Collectable = Instantiate(Collectables[i]) as GameObject;
+				pos = cell.GetPOI(Compass.Floor).C;
+				pos.y = cell.GetPOI(Compass.North).C.y;
+
+				cell.Collectable.transform.position = pos;
+			} else {
+				--i;
+			}
+		}
 	}
 
 /// <summary>
@@ -166,7 +327,7 @@ public class LOneMaze : Maze<LOneCell> {
 			x = Random.Next(X);
 			y = Random.Next(Y);
 
-			//Prevent two lights from being placed within the same cell
+		//Prevent two lights from being placed within the same cell
 			if(Cells[x, y].Light == null) {
 				GameObject light = Instantiate(Light) as GameObject;
 
@@ -176,7 +337,7 @@ public class LOneMaze : Maze<LOneCell> {
 				pos.z += light.transform.localScale.z / 2.0f;
 
 				Cells[x, y].Light = light;
-				light.transform.position = pos; //+ MazeLocation;
+				light.transform.position = pos;
 			} else {
 				--i;
 			}

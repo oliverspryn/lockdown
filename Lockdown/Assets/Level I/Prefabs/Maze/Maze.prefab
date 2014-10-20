@@ -50,6 +50,14 @@ MonoBehaviour:
   X: 4
   Y: 12
   Alarm: {fileID: 100002, guid: 9cb5a9e29e4fd0d44815569565a99271, type: 2}
+  Blockades:
+  - {fileID: 100026, guid: 89aead4fbbcf19d42b8175b3b185f224, type: 2}
+  - {fileID: 100022, guid: f035ba0b86f840e42ae220ed41c74f19, type: 2}
+  - {fileID: 100016, guid: d3d54ffc8b3abaf42a0631fb394027be, type: 2}
+  Collectables:
+  - {fileID: 100006, guid: 2720eaa0b44dcc340b0241c927743c67, type: 2}
+  - {fileID: 100002, guid: c9c5b1a0aa751d747a8e0a37c91a9d3d, type: 2}
+  - {fileID: 100030, guid: bd11f72451abb4e4ab4633460b06cf32, type: 2}
   Graffiti:
   - {fileID: 100000, guid: dc074e8f91ff81d41bd2590ab53a0b1b, type: 2}
   - {fileID: 100000, guid: 0e56ed06506aaef4a9599b37e705c529, type: 2}
