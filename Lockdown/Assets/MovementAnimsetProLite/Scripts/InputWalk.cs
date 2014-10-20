@@ -17,20 +17,6 @@ public class InputWalk : MonoBehaviour {
 	{
 		if(animator)
 		{
-			//get the current state
-			AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-			
-			//if we're in "Run" mode, respond to input for jump, and set the Jump parameter accordingly. 
-			if(stateInfo.nameHash == Animator.StringToHash("Base Layer.RunBT"))
-			{
-				if(Input.GetButton("Fire1")) 
-					animator.SetBool("Jump", true );
-			}
-			else
-			{
-				animator.SetBool("Jump", false);				
-			}
-			
 			float h = Input.GetAxis("Horizontal");
 			float v = Input.GetAxis("Vertical");
 			

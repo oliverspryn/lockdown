@@ -38,9 +38,9 @@ public class MouseLook : MonoBehaviour {
 			GetComponent<Rigidbody>().freezeRotation = true;
 
 		// Determine which controller we should be receiving input from
-		playerInputSuffix = ""; // default to player 1
+		playerInputSuffix = " P1"; // default to player 1
 		if(gameObject.tag == "Player 1")
-			playerInputSuffix = "";
+			playerInputSuffix = " P1";
 		else if(gameObject.tag == "Player 2")
 			playerInputSuffix = " P2";
 		else if(gameObject.tag == "Player 3")
