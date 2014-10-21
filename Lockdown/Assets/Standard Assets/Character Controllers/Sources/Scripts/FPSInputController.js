@@ -1,5 +1,6 @@
 private var motor : CharacterMotor;
 private var playerInputSuffix : String;
+private var networkingOn = false;
 
 // Use this for initialization
 function Awake () {
@@ -15,7 +16,6 @@ function Start()
 	// scripts in different assemblies, e.g., scripts on "Standard Assets" in the "firstpass"
 	// assemblies, and NetworkManager in the main assembly. The purpose of this object is
 	// to signal whether we're in "networked/online" or "offline" mode.
-	var networkingOn = false;
 	if(netOnOffFoobarThing != null && netOnOffFoobarThing.activeInHierarchy)
 		networkingOn = true;
 	

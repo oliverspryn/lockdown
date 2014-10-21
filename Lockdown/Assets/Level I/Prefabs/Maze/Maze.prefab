@@ -27,7 +27,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -50,6 +49,7 @@ MonoBehaviour:
   X: 4
   Y: 12
   Alarm: {fileID: 100002, guid: 9cb5a9e29e4fd0d44815569565a99271, type: 2}
+  AlarmTotal: 4
   Blockades:
   - {fileID: 100026, guid: 89aead4fbbcf19d42b8175b3b185f224, type: 2}
   - {fileID: 100022, guid: f035ba0b86f840e42ae220ed41c74f19, type: 2}
@@ -62,9 +62,9 @@ MonoBehaviour:
   - {fileID: 100000, guid: dc074e8f91ff81d41bd2590ab53a0b1b, type: 2}
   - {fileID: 100000, guid: 0e56ed06506aaef4a9599b37e705c529, type: 2}
   - {fileID: 100000, guid: b342458257dbaa942866938940ca49ed, type: 2}
-  GraffitiTotal: 40
+  GraffitiTotal: 10
   Light: {fileID: 100026, guid: 2e717eec255e0894790b9784f3cfa617, type: 2}
-  LightCount: 20
+  LightCount: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

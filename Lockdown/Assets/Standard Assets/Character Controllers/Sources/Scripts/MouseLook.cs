@@ -30,6 +30,7 @@ public class MouseLook : MonoBehaviour {
 
 	float rotationY = 0F;
 	string playerInputSuffix;
+	bool networkingOn = false;
 
 	void Start ()
 	{
@@ -44,7 +45,6 @@ public class MouseLook : MonoBehaviour {
 		// scripts in different assemblies, e.g., scripts on "Standard Assets" in the "firstpass"
 		// assemblies, and NetworkManager in the main assembly. The purpose of this object is
 		// to signal whether we're in "networked/online" or "offline" mode.
-		bool networkingOn = false;
 		if(netOnOffFoobarThing != null && netOnOffFoobarThing.activeInHierarchy)
 			networkingOn = true;
 
