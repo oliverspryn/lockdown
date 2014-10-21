@@ -160,7 +160,8 @@ public class NetworkManager : MonoBehaviour {
 		// Get the maze seed we (the server) generated locally
 		LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
 		
-		networkView.RPC ("InitMaze", player, mazeScript.Seed);
+		if(Application.loadedLevel == 0) // Level 1
+			networkView.RPC ("InitMaze", player, mazeScript.Seed);
 	}
 	
 	// ** Clean up networked game objects (maybe these are only for "directly observed" objects? not sure) **
