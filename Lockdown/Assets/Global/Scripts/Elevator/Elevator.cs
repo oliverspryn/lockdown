@@ -109,6 +109,8 @@ public class Elevator : MonoBehaviour {
 		}
 
 	//Simulate movement with the movement light
+		MovementLight.SetActive(true);
+
 		if(MovementLight.transform.position.y > MovementLightStart.y + (2.0f * DoorLeft.transform.localScale.y)) {
 			MovementLight.transform.position = MovementLightStart;
 		}
