@@ -3,10 +3,6 @@ using System.Collections;
 
 public class PlayerInteraction : MonoBehaviour {
 
-	int keys;
-	int floppies;
-	int hammers;
-
 	// Use this for initialization
 	void Start () {
 		//spawn ();
@@ -20,12 +16,12 @@ public class PlayerInteraction : MonoBehaviour {
 			col.gameObject.GetComponent<PlayerInfo> ().items++;
 			Destroy (gameObject);
 		}
-		else if (col.gameObject.tag == "Player 2" && gameObject.tag == "Floppy Disk")
+		else if (col.gameObject.tag == "Player 4" && gameObject.tag == "Floppy")
 		{
 			col.gameObject.GetComponent<PlayerInfo> ().items++;
 			Destroy (gameObject);
 		}
-		else if (col.gameObject.tag == "Player 3" && gameObject.tag == "Hammer")
+		else if (col.gameObject.tag == "Player 2" && gameObject.tag == "Hammer")
 		{
 			col.gameObject.GetComponent<PlayerInfo> ().items++;
 			Destroy (gameObject);
@@ -39,7 +35,7 @@ public class PlayerInteraction : MonoBehaviour {
 			col.gameObject.GetComponent<PlayerInfo> ().items--;
 			Destroy(GetComponent<BoxCollider>());
 		}
-		else if (col.gameObject.tag == "Player 2" && gameObject.tag == "Hacker")
+		else if (col.gameObject.tag == "Player 4" && gameObject.tag == "Hacker")
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
@@ -47,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour {
 			col.gameObject.GetComponent<PlayerInfo> ().items--;
 			Destroy(GetComponent<BoxCollider>());
 		}
-		else if (col.gameObject.tag == "Player 3" && gameObject.tag == "Brute")
+		else if (col.gameObject.tag == "Player 2" && gameObject.tag == "Brute")
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
