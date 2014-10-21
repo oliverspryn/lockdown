@@ -50,11 +50,6 @@ public class Elevator : MonoBehaviour {
 	#region Private Members
 
 /// <summary>
-/// Whether or not the elevator should be moving.
-/// </summary>
-	private bool Active = false;
-
-/// <summary>
 /// The initial position of the movement light.
 /// </summary>
 	private Vector3 MovementLightStart;
@@ -74,7 +69,7 @@ public class Elevator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	//Is the elevator moving?
-		if(!Active)
+		if(PlayerCount != 0)
 			return;
 
 	//Dim the lights
