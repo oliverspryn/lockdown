@@ -45,7 +45,11 @@ public class LinkedPlatformCorner : MonoBehaviour {
 	}
 	void OnTriggerExit(Collider other)
 	{
-		platform1.Platformswitch ();
-		platform2.Platformswitch ();
+		if(switchflipped)
+		{
+			switchflipped = !switchflipped;
+			platform1.Platformswitch ();
+			platform2.Platformswitch ();
+		}
 	}
 }
