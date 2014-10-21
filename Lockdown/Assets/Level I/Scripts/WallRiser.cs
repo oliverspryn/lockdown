@@ -9,6 +9,12 @@ public class WallRiser : MonoBehaviour {
 	#region Fields
 
 /// <summary>
+/// A reference to the destroyer which will destroy level one, if the game
+/// does not end within a particular amount of time.
+/// </summary>
+	public GameObject Destroyer = null;
+
+/// <summary>
 /// The visual indication of the trigger.
 /// </summary>
 	public GameObject Lasers;
@@ -32,9 +38,15 @@ public class WallRiser : MonoBehaviour {
 	public void OnTriggerEnter(Collider c) {
 		Destroy(Lasers);
 
+	//Sound the alarm and activate the maze
 		LOneMaze m = Maze.GetComponent<LOneMaze>();
 		m.EnableSliding = true;
 		m.SoundAlarm();
+
+	//Activate the destroyer
+		if(Destroyer != null) {
+			Destroyer.GetComponent<Destroyer>().Activate = true;
+		}
 	}
 
 	#endregion

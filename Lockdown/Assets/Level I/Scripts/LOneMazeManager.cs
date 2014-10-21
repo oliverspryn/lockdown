@@ -5,6 +5,12 @@ public class LOneMazeManager : MonoBehaviour {
 	#region Fields
 
 /// <summary>
+/// A reference to the destroyer which will destroy level one, if the game
+/// does not end within a particular amount of time.
+/// </summary>
+	public GameObject Destroyer = null;
+
+/// <summary>
 /// Get the length of the maze (Z-direction), including the length of all
 /// the cells and the length of all the walls which construct the outer
 /// boundary of the maze.
@@ -99,6 +105,8 @@ public class LOneMazeManager : MonoBehaviour {
 		Right.Trigger = Instantiate(RiserTrigger) as GameObject;
 		Right.Trigger.transform.position = Right.Script.Cells[Right.Script.X - 1, 0].GetPOI(Compass.East).C;
 		Right.Trigger.GetComponent<WallRiser>().Maze = Right.Maze;
+
+		Right.Trigger.GetComponent<WallRiser>().Destroyer = Destroyer;
 
 	//Reset the position of the flipping prefab, somehow, we just modified it
 		Maze.GetComponent<LOneMaze>().MazeLocation.x -= Center.Script.Width;

@@ -89,9 +89,12 @@ public class NetworkManager : MonoBehaviour {
 		
 		if(Network.isServer)
 		{
-			// Initialize maze
-			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
-			mazeScript.Init();
+			if(Application.loadedLevel == 0) // Level 1
+			{
+				// Initialize maze
+				LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
+				mazeScript.Init();
+			}
 			
 			// Since this is the server, we will have control of players 1 and 2.
 			player1 = (GameObject)Network.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation, 0);
@@ -115,11 +118,14 @@ public class NetworkManager : MonoBehaviour {
 	// Offline version of the above - spawns objects that would be networked if we were in online mode
 	void offlineSpawnNetworkedObjects()
 	{
-		// In networked mode, this happens in:
-		//		Server: spawnNetworkedObjects()
-		// 		Client: InitMaze(), which is RPC called by OnPlayerConnected()
-		LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
-		mazeScript.Init();
+		if(Application.loadedLevel == 0) // Level 1
+		{
+			// In networked mode, this happens in:
+			//		Server: spawnNetworkedObjects()
+			// 		Client: InitMaze(), which is RPC called by OnPlayerConnected()
+			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
+			mazeScript.Init();
+		}
 		
 		// Spawn only players 1 and 2 in offline mode (later, we'll be using 4-way split screen)
 		player1 = (GameObject)Object.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation);
@@ -150,11 +156,14 @@ public class NetworkManager : MonoBehaviour {
 	
 	// for RPCs that the server needs to make on the client when it connects
 	void OnPlayerConnected(NetworkPlayer player)
-	{
-		// Get the maze seed we (the server) generated locally
-		LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
-		
-		networkView.RPC ("InitMaze", player, mazeScript.Seed);
+	{		
+		if(Application.loadedLevel == 0) // Level 1
+		{
+			// Get the maze seed we (the server) generated locally
+			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
+
+			networkView.RPC ("InitMaze", player, mazeScript.Seed);
+		}
 	}
 	
 	// ** Clean up networked game objects (maybe these are only for "directly observed" objects? not sure) **
