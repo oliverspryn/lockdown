@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /// <summary>
 /// This class will control all of the features of the elevator, such
@@ -26,6 +25,12 @@ public class Elevator : MonoBehaviour {
 /// door is on the right.
 /// </summary>
 	public GameObject DoorRight;
+
+/// <summary>
+/// The index of the level to transition to after the elevator has 
+/// "completed" its movement.
+/// </summary>
+	public int LevelIndex;
 
 /// <summary>
 /// The lights which should be dimmed out when the level is
@@ -56,28 +61,56 @@ public class Elevator : MonoBehaviour {
 
 	#endregion
 
+	#region Constructors
 
-	// Use this for initialization
+/// <summary>
+/// Keep track of the movement light's original position so that it
+/// can transition back to this original spot as it keeps moving 
+/// vertically through the cabin of the elevator.
+/// </summary>
 	void Start () {
 		MovementLightStart = MovementLight.transform.position;
-
-		//Vector3 bottom = MovementLightStart;
-		//bottom.y = gameObject.transform.position.y - DoorLeft.transform.localScale.y;
-		//MovementLight.transform.position = bottom;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	#endregion
+
+	#region Public Methods
+
+/// <summary>
+/// Close the doors, dim the lights, and simulate movement.
+/// </summary>
+	public void Update () {
 	//Is the elevator moving?
 		if(PlayerCount != 0)
 			return;
 
-	//Dim the lights
+	//Close the doors
+		Vector3 scale = DoorLeft.transform.localScale;
+
+		if(scale.z < 13.58f) {
+			scale.z += 0.2f;
+			DoorLeft.transform.localScale = DoorRight.transform.localScale = scale;
+			
+			if (scale.z >= 13.58f) {
+				Vector3 pos = DoorLeft.transform.position;
+				pos.z += 0.09f;
+				DoorLeft.transform.position = pos;
+			}
+		}
+
+	//Dim the lights, and transition the level after they have gone out
 		for(int i = 0; i < Lights.Length; ++i) {
 			Lights[i].light.intensity -= 0.01f;
+
+			if(Lights[i].light.intensity < 0.01f) {
+				Application.LoadLevel(LevelIndex);
+				return;
+			}
 		}
 
 	//Simulate movement with the movement light
+		MovementLight.SetActive(true);
+
 		if(MovementLight.transform.position.y > MovementLightStart.y + (2.0f * DoorLeft.transform.localScale.y)) {
 			MovementLight.transform.position = MovementLightStart;
 		}
@@ -87,4 +120,6 @@ public class Elevator : MonoBehaviour {
 
 		MovementLight.transform.position = Vector3.Lerp(MovementLight.transform.position, top, Time.deltaTime / 3.0f);
 	}
+
+	#endregion
 }
