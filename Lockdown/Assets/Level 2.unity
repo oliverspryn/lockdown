@@ -9191,7 +9191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &481133128
 Transform:
   m_ObjectHideFlags: 0
@@ -9718,6 +9718,14 @@ Prefab:
     - target: {fileID: 400028, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14800000, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
+      propertyPath: m_ViewID.m_ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 14800000, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
+      propertyPath: m_ViewID.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
@@ -14207,6 +14215,7 @@ GameObject:
   - 114: {fileID: 717168785}
   - 114: {fileID: 717168784}
   - 114: {fileID: 717168789}
+  - 148: {fileID: 717168790}
   m_Layer: 0
   m_Name: Player 1 First Person Controller
   m_TagString: Player 1
@@ -14357,6 +14366,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: 0
+--- !u!148 &717168790
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14800000, guid: 6c40d88836b07a74e980a50b9bb8848c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1878836047}
+  m_GameObject: {fileID: 717168782}
+  m_Enabled: 1
+  m_StateSynchronization: 2
+  m_Observed: {fileID: 717168783}
+  m_ViewID:
+    m_ID: 1
+    m_Type: 1
 --- !u!1 &725670334
 GameObject:
   m_ObjectHideFlags: 0
@@ -15688,6 +15710,7 @@ GameObject:
   - 114: {fileID: 811103255}
   - 114: {fileID: 811103254}
   - 114: {fileID: 811103259}
+  - 148: {fileID: 811103260}
   m_Layer: 0
   m_Name: Player 2 First Person Controller
   m_TagString: Player 2
@@ -15838,6 +15861,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: 0
+--- !u!148 &811103260
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14800000, guid: e6b139b9b94d7ad48ae36b82460bbaac,
+    type: 2}
+  m_PrefabInternal: {fileID: 513110450}
+  m_GameObject: {fileID: 811103252}
+  m_Enabled: 1
+  m_StateSynchronization: 2
+  m_Observed: {fileID: 811103253}
+  m_ViewID:
+    m_ID: 2
+    m_Type: 1
 --- !u!1 &811668060
 GameObject:
   m_ObjectHideFlags: 0
@@ -30495,7 +30531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1546760179
 Transform:
   m_ObjectHideFlags: 0
@@ -36762,6 +36798,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400136, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14800000, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
+      propertyPath: m_ViewID.m_ID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14800000, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
+      propertyPath: m_ViewID.m_Type
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
