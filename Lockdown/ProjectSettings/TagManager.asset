@@ -13,6 +13,13 @@ TagManager:
   - Platformside
   - Platformcenter
   - Platformcorner
+  - Key
+  - Floppy
+  - Hammer
+  - Thief
+  - Hacker
+  - Brute
+  - 
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
