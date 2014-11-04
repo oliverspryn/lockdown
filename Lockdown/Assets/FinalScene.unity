@@ -9924,7 +9924,7 @@ Prefab:
     - target: {fileID: 9500000, guid: 86bb10e9b2f91644d9f697f5d6603919, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 72a590af9ee01aa40aba554156a2d100, type: 2}
+      objectReference: {fileID: 9100000, guid: f6dc848b73ef4674aac30b400c1d986d, type: 2}
     - target: {fileID: 400168, guid: 86bb10e9b2f91644d9f697f5d6603919, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -10041,7 +10041,7 @@ Animator:
   m_GameObject: {fileID: 1483065233}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 86bb10e9b2f91644d9f697f5d6603919, type: 3}
-  m_Controller: {fileID: 9100000, guid: 72a590af9ee01aa40aba554156a2d100, type: 2}
+  m_Controller: {fileID: 9100000, guid: f6dc848b73ef4674aac30b400c1d986d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -12252,7 +12252,7 @@ Animator:
   m_GameObject: {fileID: 1808562677}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b943155b96d8b2a4fbf1faf20adc46b0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 72a590af9ee01aa40aba554156a2d100, type: 2}
+  m_Controller: {fileID: 9100000, guid: 47b89bdf3ef6d2e41bcfed2c85f733cb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -12812,7 +12812,7 @@ Prefab:
     - target: {fileID: 9500000, guid: b943155b96d8b2a4fbf1faf20adc46b0, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 72a590af9ee01aa40aba554156a2d100, type: 2}
+      objectReference: {fileID: 9100000, guid: 47b89bdf3ef6d2e41bcfed2c85f733cb, type: 2}
     - target: {fileID: 400134, guid: b943155b96d8b2a4fbf1faf20adc46b0, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
