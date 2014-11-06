@@ -19,6 +19,10 @@ TagManager:
   - Thief
   - Hacker
   - Brute
+  - S
+  - T
+  - X
+  - O
   - 
   - 
   Builtin Layer 0: Default
@@ -29,9 +33,9 @@ TagManager:
   Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
-  User Layer 9: 
-  User Layer 10: 
+  User Layer 8: Player 1 GUI
+  User Layer 9: Player 2 GUI
+  User Layer 10: Player 3 GUI
   User Layer 11: 
   User Layer 12: 
   User Layer 13: 
