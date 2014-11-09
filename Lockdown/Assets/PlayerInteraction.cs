@@ -16,7 +16,7 @@ public class PlayerInteraction : MonoBehaviour {
 			col.gameObject.GetComponent<PlayerInfo> ().items++;
 			Destroy (gameObject);
 		}
-		else if (col.gameObject.tag == "Player 4" && gameObject.tag == "Floppy")
+		else if (col.gameObject.tag == "Player 3" && gameObject.tag == "Floppy")
 		{
 			col.gameObject.GetComponent<PlayerInfo> ().items++;
 			Destroy (gameObject);
@@ -31,25 +31,28 @@ public class PlayerInteraction : MonoBehaviour {
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			gameObject.GetComponent<ThiefBlockade>().Open();
-			col.gameObject.GetComponent<PlayerInfo> ().items--;
-			Destroy(GetComponent<BoxCollider>());
+			col.gameObject.GetComponent<GUIScript>().beginSequence(10,.2f, gameObject);
+			//gameObject.GetComponent<ThiefBlockade>().Open();
+			//col.gameObject.GetComponent<PlayerInfo> ().items--;
+			//Destroy(GetComponent<BoxCollider>());
 		}
-		else if (col.gameObject.tag == "Player 4" && gameObject.tag == "Hacker")
+		else if (col.gameObject.tag == "Player 3" && gameObject.tag == "Hacker")
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			gameObject.GetComponent<HackerBlockade>().Open();
-			col.gameObject.GetComponent<PlayerInfo> ().items--;
-			Destroy(GetComponent<BoxCollider>());
+			col.gameObject.GetComponent<GUIScript>().beginSequence(10,.2f, gameObject);
+			//gameObject.GetComponent<HackerBlockade>().Open();
+			//col.gameObject.GetComponent<PlayerInfo> ().items--;
+			//Destroy(GetComponent<BoxCollider>());
 		}
 		else if (col.gameObject.tag == "Player 2" && gameObject.tag == "Brute")
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			gameObject.GetComponent<BruteBlockade>().Open();
-			col.gameObject.GetComponent<PlayerInfo> ().items--;
-			Destroy(GetComponent<BoxCollider>());
+			col.gameObject.GetComponent<GUIScript>().beginSequence(10,.2f, gameObject);
+			//gameObject.GetComponent<BruteBlockade>().Open();
+			//col.gameObject.GetComponent<PlayerInfo> ().items--;
+			//Destroy(GetComponent<BoxCollider>());
 		}
 
 	}

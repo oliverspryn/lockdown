@@ -236,6 +236,14 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 		CreateMaze();
 	}
 
+	public void SolveDirect(IVector2 start, IVector2 end) {
+
+	}
+
+	public void SolveWandering(IVector2 start, IVector2 end) {
+
+	}
+
 /// <summary>
 /// Animate the walls sliding out of the floor, if the Walls are
 /// configured to do so.
@@ -429,6 +437,7 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 	protected void CreateMaze() {
 	//Select a random cell
 		T current = Cells[Random.Next(X), Random.Next(Y)];
+		current.IsRoot = true;
 
 	//Initialize the stack and total number of cells
 		Stack<T> stack = new Stack<T>();
