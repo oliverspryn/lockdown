@@ -108,10 +108,10 @@ public class NetworkManager : MonoBehaviour {
 		{
 			// Since this is the client, we will have control of players 3 and 4.
 			player3 = (GameObject)Network.Instantiate(P3Controller, P3Placeholder.gameObject.transform.position, P3Placeholder.gameObject.transform.rotation, 0);
-			player4 = (GameObject)Network.Instantiate(P4Controller, P4Placeholder.gameObject.transform.position, P4Placeholder.gameObject.transform.rotation, 0);
+			//player4 = (GameObject)Network.Instantiate(P4Controller, P4Placeholder.gameObject.transform.position, P4Placeholder.gameObject.transform.rotation, 0);
 			// Activate P3 and P4's cameras
 			player3.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-			player4.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+			//player4.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
 		}
 	}
 	

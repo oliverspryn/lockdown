@@ -142,7 +142,7 @@ GameObject:
   - 114: {fileID: 11400010}
   m_Layer: 0
   m_Name: Player 3 First Person Controller
-  m_TagString: Player 4
+  m_TagString: Player 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

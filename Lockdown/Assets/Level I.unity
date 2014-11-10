@@ -13882,7 +13882,7 @@ Transform:
   m_Children:
   - {fileID: 1924192222}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &1403979946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17278,7 +17278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkingOn: 1
-  isServer: 1
+  isServer: 0
   gameName: Lockdown-NetworkTest1
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
@@ -17287,7 +17287,7 @@ MonoBehaviour:
   maze: {fileID: 1068691329}
   P1Controller: {fileID: 100136, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
   P2Controller: {fileID: 100028, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
-  P3Controller: {fileID: 100144, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
+  P3Controller: {fileID: 100016, guid: c25d60ba7a7f1c249b8f908b1bd3b6a1, type: 2}
   P4Controller: {fileID: 100016, guid: c25d60ba7a7f1c249b8f908b1bd3b6a1, type: 2}
   P1Placeholder: {fileID: 125557713}
   P2Placeholder: {fileID: 474966050}
@@ -18311,7 +18311,7 @@ Transform:
   - {fileID: 79171302}
   - {fileID: 59287101}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1854298275
 MonoBehaviour:
   m_ObjectHideFlags: 0
