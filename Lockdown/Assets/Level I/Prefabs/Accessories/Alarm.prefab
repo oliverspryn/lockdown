@@ -95,7 +95,7 @@ AudioSource:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 4866c02fd49427f4ab5ea988300cab0f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fbcddf231189d194fa3edb58baf0ce19, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -109,7 +109,7 @@ AudioSource:
   rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
