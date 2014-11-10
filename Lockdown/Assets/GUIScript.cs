@@ -10,6 +10,7 @@ public class GUIScript : MonoBehaviour {
 	private GameObject[] buttons;
 	private GameObject[] challenge;
 	private int pos;
+
 	// Use this for initialization
 	void Start () {
 		challenge = new GameObject[0];
@@ -106,24 +107,27 @@ public class GUIScript : MonoBehaviour {
 	void processSuccess()
 	{
 		pos = -1;
-		if(obstacle.tag == "Thief")
+		doDoorOpen(obstacle);
+		networkView.RPC ("doDoorOpen", RPCMode.OthersBuffered, obstacle);
+	}
+
+	[RPC]
+	void doDoorOpen(GameObject obstacle)
+	{
+		switch(obstacle.tag)
 		{
-			obstacle.GetComponent<ThiefBlockade>().Open();
-			GetComponent<PlayerInfo> ().items--;
-			Destroy(obstacle.GetComponent<BoxCollider>());
-		}
-		else if (obstacle.tag == "Hacker")
-		{
+		case "Thief":
+			obstacle.GetComponent<ThiefBlockade>().Open ();
+			break;
+		case "Hacker":
 			obstacle.GetComponent<HackerBlockade>().Open();
-			GetComponent<PlayerInfo> ().items--;
-			Destroy(obstacle.GetComponent<BoxCollider>());
-		}
-		else if (obstacle.tag == "Brute")
-		{
-			obstacle.GetComponent<BruteBlockade>().Open();
-			GetComponent<PlayerInfo> ().items--;
-			Destroy(obstacle.GetComponent<BoxCollider>());
+			break;
+		case "Brute":
+			obstacle.GetComponent<BruteBlockade>().Open ();
+			break;
 		}
 
+		GetComponent<PlayerInfo>().items--;
+		Destroy(obstacle.GetComponent<BoxCollider>());
 	}
 }
