@@ -17281,7 +17281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f3aee957946c747a3fd9b06328cd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkingOn: 1
+  networkingOn: 0
   isServer: 1
   gameName: Lockdown-NetworkTest1
   gameComment: Change gameName if you don't want to join the same game as other team
