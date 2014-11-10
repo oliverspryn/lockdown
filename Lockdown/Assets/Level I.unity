@@ -6343,7 +6343,7 @@ Transform:
   - {fileID: 1087702671}
   - {fileID: 448349026}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!114 &614145626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17278,7 +17278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkingOn: 1
-  isServer: 0
+  isServer: 1
   gameName: Lockdown-NetworkTest1
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
@@ -18311,7 +18311,7 @@ Transform:
   - {fileID: 79171302}
   - {fileID: 59287101}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &1854298275
 MonoBehaviour:
   m_ObjectHideFlags: 0
