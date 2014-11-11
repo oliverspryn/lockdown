@@ -31,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour {
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			col.gameObject.GetComponent<GUIScript>().beginSequence(10,.2f, gameObject);
+			col.gameObject.GetComponent<GUIScript>().beginSequence(3,.2f, gameObject);
 			//gameObject.GetComponent<ThiefBlockade>().Open();
 			//col.gameObject.GetComponent<PlayerInfo> ().items--;
 			//Destroy(GetComponent<BoxCollider>());
@@ -40,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour {
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			col.gameObject.GetComponent<GUIScript>().beginSequence(10,.2f, gameObject);
+			col.gameObject.GetComponent<GUIScript>().beginSequence(3,.2f, gameObject);
 			//gameObject.GetComponent<HackerBlockade>().Open();
 			//col.gameObject.GetComponent<PlayerInfo> ().items--;
 			//Destroy(GetComponent<BoxCollider>());
@@ -49,7 +49,7 @@ public class PlayerInteraction : MonoBehaviour {
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			col.gameObject.GetComponent<GUIScript>().beginSequence(10,.2f, gameObject);
+			col.gameObject.GetComponent<GUIScript>().beginSequence(3,.2f, gameObject);
 			//gameObject.GetComponent<BruteBlockade>().Open();
 			//col.gameObject.GetComponent<PlayerInfo> ().items--;
 			//Destroy(GetComponent<BoxCollider>());

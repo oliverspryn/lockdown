@@ -6399,6 +6399,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &619775668
 GameObject:
   m_ObjectHideFlags: 0
@@ -7353,6 +7354,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &728144909
 Renderer:
   m_ObjectHideFlags: 0
@@ -13938,6 +13940,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1403979950
 Renderer:
   m_ObjectHideFlags: 0
@@ -16608,6 +16611,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1678972216
 GameObject:
   m_ObjectHideFlags: 0
@@ -17277,7 +17281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f3aee957946c747a3fd9b06328cd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkingOn: 1
+  networkingOn: 0
   isServer: 1
   gameName: Lockdown-NetworkTest1
   gameComment: Change gameName if you don't want to join the same game as other team
@@ -17287,8 +17291,8 @@ MonoBehaviour:
   maze: {fileID: 1068691329}
   P1Controller: {fileID: 100136, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
   P2Controller: {fileID: 100028, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
-  P3Controller: {fileID: 100016, guid: c25d60ba7a7f1c249b8f908b1bd3b6a1, type: 2}
-  P4Controller: {fileID: 100016, guid: c25d60ba7a7f1c249b8f908b1bd3b6a1, type: 2}
+  P3Controller: {fileID: 100016, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
+  P4Controller: {fileID: 100016, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
   P1Placeholder: {fileID: 125557713}
   P2Placeholder: {fileID: 474966050}
   P3Placeholder: {fileID: 1313995623}
@@ -18947,6 +18951,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1969091785
 Renderer:
   m_ObjectHideFlags: 0
