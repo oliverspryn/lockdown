@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.497757, y: -5.57024431, z: -136.335815}
+  m_LocalPosition: {x: -35.2271996, y: 12.0357037, z: 19.483593}
   m_LocalScale: {x: 4, y: .100000001, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +72,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &6500000
 BoxCollider:
@@ -104,6 +104,7 @@ MonoBehaviour:
   switchflipped: 0
   pause: 1
   counter: 0
+  maxY: 54.4000015
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

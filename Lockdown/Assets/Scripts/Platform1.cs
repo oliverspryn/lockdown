@@ -12,6 +12,7 @@ public class Platform1 : MonoBehaviour {
 	public bool switchflipped = true;
 	public float pause = 5.0f;
 	public float counter = 0.0f;
+	public float maxY = 54.4f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +27,7 @@ public class Platform1 : MonoBehaviour {
 		Vector3 tempvel = gameObject.rigidbody.velocity;
 		tempvel.x = 0;
 		tempvel.z = 0;
-		if (switchflipped && gameObject.transform.position.y < 54.4f) {
+		if (switchflipped && gameObject.transform.position.y < maxY) {
 						
 						tempvel.y = Velocity;
 				} else if (counter < pause && switchflipped) {
