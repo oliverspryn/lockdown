@@ -103,7 +103,6 @@ Transform:
   m_Children:
   - {fileID: 395143639}
   m_Father: {fileID: 1322043478}
-  m_RootOrder: 0
 --- !u!23 &101944309
 Renderer:
   m_ObjectHideFlags: 0
@@ -123,8 +122,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &101944310
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -161,7 +161,6 @@ Transform:
   m_LocalScale: {x: .14612323, y: .14612323, z: .14612323}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!23 &130058074
 Renderer:
   m_ObjectHideFlags: 0
@@ -181,8 +180,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &130058075
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -218,7 +218,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!114 &390399851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +262,6 @@ Transform:
   - {fileID: 1899575682}
   - {fileID: 637394200}
   m_Father: {fileID: 101944308}
-  m_RootOrder: 0
 --- !u!198 &395143640
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -1316,8 +1314,9 @@ ParticleSystemRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
@@ -1419,7 +1418,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: .455249816}
   m_Children: []
   m_Father: {fileID: 395143639}
-  m_RootOrder: 2
 --- !u!198 &637394201
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -2462,8 +2460,9 @@ ParticleSystemRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
@@ -2506,7 +2505,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
 --- !u!20 &948390655
 Camera:
   m_ObjectHideFlags: 0
@@ -2534,11 +2532,8 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
 --- !u!81 &948390656
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2588,7 +2583,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: .455249816}
   m_Children: []
   m_Father: {fileID: 395143639}
-  m_RootOrder: 0
 --- !u!198 &1059816724
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -3661,8 +3655,9 @@ ParticleSystemRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
@@ -3702,7 +3697,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!108 &1227980474
 Light:
   m_ObjectHideFlags: 0
@@ -3765,7 +3759,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1322043478}
-  m_RootOrder: 1
 --- !u!108 &1303735550
 Light:
   m_ObjectHideFlags: 0
@@ -3903,7 +3896,6 @@ Transform:
   - {fileID: 101944308}
   - {fileID: 1303735549}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
 --- !u!114 &1322043479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3951,7 +3943,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 395143639}
-  m_RootOrder: 1
 --- !u!198 &1899575683
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4994,8 +4985,9 @@ ParticleSystemRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
