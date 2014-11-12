@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class PlayerInteraction : MonoBehaviour {
-
+	public int buttons = 3;
+	public float speed = .2f;
 	// Use this for initialization
 	void Start () {
 		//spawn ();
@@ -31,7 +32,7 @@ public class PlayerInteraction : MonoBehaviour {
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			col.gameObject.GetComponent<GUIScript>().beginSequence(3,.2f, gameObject);
+			col.gameObject.GetComponent<GUIScript>().beginSequence(buttons, speed, gameObject);
 			//gameObject.GetComponent<ThiefBlockade>().Open();
 			//col.gameObject.GetComponent<PlayerInfo> ().items--;
 			//Destroy(GetComponent<BoxCollider>());
@@ -40,7 +41,7 @@ public class PlayerInteraction : MonoBehaviour {
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			col.gameObject.GetComponent<GUIScript>().beginSequence(3,.2f, gameObject);
+			col.gameObject.GetComponent<GUIScript>().beginSequence(buttons, speed, gameObject);
 			//gameObject.GetComponent<HackerBlockade>().Open();
 			//col.gameObject.GetComponent<PlayerInfo> ().items--;
 			//Destroy(GetComponent<BoxCollider>());
@@ -49,7 +50,7 @@ public class PlayerInteraction : MonoBehaviour {
 		{
 			if(col.gameObject.GetComponent<PlayerInfo> ().items <= 0)
 				return;
-			col.gameObject.GetComponent<GUIScript>().beginSequence(3,.2f, gameObject);
+			col.gameObject.GetComponent<GUIScript>().beginSequence(buttons, speed, gameObject);
 			//gameObject.GetComponent<BruteBlockade>().Open();
 			//col.gameObject.GetComponent<PlayerInfo> ().items--;
 			//Destroy(GetComponent<BoxCollider>());
