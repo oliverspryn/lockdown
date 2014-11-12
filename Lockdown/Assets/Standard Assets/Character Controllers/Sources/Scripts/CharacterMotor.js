@@ -8,6 +8,8 @@ var canControl : boolean = true;
 var useFixedUpdate : boolean = true;
 
 public var animator : Animator;
+var playerInputSuffix : String = " P1";
+
 
 // For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
 // Very handy for organization!
@@ -334,12 +336,21 @@ function FixedUpdate () {
 }
 
 function Update () {
+	if(Input.GetButton("LB" + playerInputSuffix))
+		movement.maxForwardSpeed = 20;
+	else
+		movement.maxForwardSpeed = 15;
 	if (!useFixedUpdate)
 		UpdateFunction();
 	if(animator)
 	{
-		var dir = Vector3(GetDirection().x,0,GetDirection().z);
-		animator.SetFloat("Speed", Vector3.Dot(movement.velocity, dir)/movement.velocity.magnitude);
+		var temp = Vector3.Dot(movement.velocity, transform.forward);
+		if(temp >= -0.01f && temp < 1f)
+			temp += Mathf.Abs(Vector3.Dot(movement.velocity, transform.right));
+		else if(temp > -1f)
+			temp -= Mathf.Abs(Vector3.Dot(movement.velocity, transform.right));
+		//animator.SetFloat("Speed", Vector3.Dot(movement.velocity, dir)/movement.velocity.magnitude);
+		animator.SetFloat("Speed", temp);
 		//animator.SetLookAtPosition(dir);
 	}
 }

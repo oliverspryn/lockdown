@@ -834,7 +834,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100028}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 19.5165367, y: 2.12838197, z: 2.42369175}
+  m_LocalPosition: {x: 13.4488182, y: 6.40046692, z: 2.75728226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400024}
@@ -1199,7 +1199,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .19166474, g: .301966369, b: .474509805, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1293,9 +1293,10 @@ MonoBehaviour:
   canControl: 1
   useFixedUpdate: 1
   animator: {fileID: 9500000}
+  playerInputSuffix: ' P1'
   movement:
-    maxForwardSpeed: 20
-    maxSidewaysSpeed: 15
+    maxForwardSpeed: 15
+    maxSidewaysSpeed: 10
     maxBackwardsSpeed: 10
     slopeSpeedMultiplier:
       serializedVersion: 2

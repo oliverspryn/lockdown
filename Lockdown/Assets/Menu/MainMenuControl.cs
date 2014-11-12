@@ -37,7 +37,7 @@ public class MainMenuControl : MonoBehaviour {
 		cur = (cur + num) % num;
 		options [cur].color = Color.red;
 
-		if (Input.GetButtonDown ("Jump P2"))
+		if (Input.GetButtonDown ("X P1"))
 		{
 			//TODO: fill out below.
 			//perform actions associated with selected option
