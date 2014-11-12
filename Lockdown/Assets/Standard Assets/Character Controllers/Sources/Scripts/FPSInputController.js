@@ -21,9 +21,21 @@ function Start()
 	
 	playerInputSuffix = " P1"; // default to player 1
 	if(gameObject.tag == "Player 1")
-		playerInputSuffix = " P1";
+	{
+		// If we're a network client, P1 and P2 are over on the server, so we should ignore input
+		// on their respective axes - those are being used for P3 and P4.
+		if(networkingOn && Network.isClient)
+			playerInputSuffix = "NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
+		else
+			playerInputSuffix = " P1";
+	}
 	else if(gameObject.tag == "Player 2")
-		playerInputSuffix = " P2";
+	{
+		if(networkingOn && Network.isClient)
+			playerInputSuffix = "NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
+		else
+			playerInputSuffix = " P2";
+	}
 	else if(gameObject.tag == "Player 3")
 	{
 		// If we're a network client, then P1 and P2 are over on the server, so we want
