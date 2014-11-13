@@ -629,6 +629,22 @@ InputManager:
     axis: 4
     joyNum: 4
   - serializedVersion: 3
+    m_Name: T P3
+    descriptiveName: Triangle Button
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 3 button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 4
+    joyNum: 4
+  - serializedVersion: 3
     m_Name: T3 P1
     descriptiveName: Triangle Button
     descriptiveNegativeName: 
