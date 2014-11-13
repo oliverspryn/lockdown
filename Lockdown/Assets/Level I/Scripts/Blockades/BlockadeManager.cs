@@ -51,9 +51,9 @@ public class BlockadeManager : MonoBehaviour {
 			LOneMazeManager maze = MazeManager.GetComponent<LOneMazeManager>();
 
 			GameObject[][] mazeBlockades = {
-				maze.Left.Maze.GetComponent<LOneMaze>().Blockades,
-				maze.Center.Maze.GetComponent<LOneMaze>().Blockades,
-				maze.Right.Maze.GetComponent<LOneMaze>().Blockades
+				maze.Left.Script.Blockades,
+				maze.Center.Script.Blockades,
+				maze.Right.Script.Blockades
 			};
 
 			foreach(GameObject[] mb in mazeBlockades) {

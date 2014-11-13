@@ -85,6 +85,8 @@ public abstract class Blockade : MonoBehaviour {
 /// </summary>
 	public void Start() {
 		IsOpen = false;
+		Opened = null;
+		NetID = -1;
 		if(OpenOnStart) Open();
 	}
 
