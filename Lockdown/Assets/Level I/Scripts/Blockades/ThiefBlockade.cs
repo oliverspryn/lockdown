@@ -13,7 +13,9 @@ public class ThiefBlockade : Blockade {
 /// use to show that this blockade must be unlocked.
 /// </summary>
 	public override void Open() {
-		base.Open();
+		if(IsOpen) {
+			return;
+		}
 
 	//Open the door
 		if(gameObject.transform.rotation.y == 0.0f) {
@@ -31,6 +33,7 @@ public class ThiefBlockade : Blockade {
 		}
 
 		Door.transform.Rotate(0.0f, 90.0f, 0.0f);
+		base.Open();
 	}
 
 	#endregion

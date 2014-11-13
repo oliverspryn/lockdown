@@ -24,7 +24,9 @@ public class BruteBlockade : Blockade {
 /// ont its hinges.
 /// </summary>
 	public override void Open() {
-		base.Open();
+		if(IsOpen) {
+			return;
+		}
 
 	//Save information about the glass door
 		Vector3 pos = Door.transform.position;
@@ -54,6 +56,7 @@ public class BruteBlockade : Blockade {
 
 	//Orient the door in the correct direction
 		BrokenDoor.transform.Rotate(-15.0f, 90.0f, 0.0f);
+		base.Open();
 	}
 
 	#endregion

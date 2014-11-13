@@ -1,10 +1,30 @@
-﻿using UnityEngine;
+using UnityEngine;
+
+#region Delegates
+
+/// <summary>
+/// A delegate which is used during a <c>Blockade</c> opened event,
+/// </summary>
+/// 
+/// <param name="netID">Information about the blockade network ID</param>
+public delegate void BlockadeOpened(int netID);
+
+#endregion
 
 /// <summary>
 /// An abstract class which all blockade prefabs must inherit in order
 /// to open, or grant passage through, the blockade.
 /// </summary>
 public abstract class Blockade : MonoBehaviour {
+	#region Events
+
+/// <summary>
+/// An event to dispatch whenever a <c>Blockade</c> has been opened.
+/// </summary>
+	public event BlockadeOpened Opened;
+
+	#endregion
+
 	#region Fields
 
 /// <summary>
@@ -64,6 +84,7 @@ public abstract class Blockade : MonoBehaviour {
 /// automatically.
 /// </summary>
 	public void Start() {
+		IsOpen = false;
 		if(OpenOnStart) Open();
 	}
 
@@ -89,6 +110,7 @@ public abstract class Blockade : MonoBehaviour {
 		}
 
 		IsOpen = true;
+		if(Opened != null) Opened(NetID);
 	}
 
 	#endregion

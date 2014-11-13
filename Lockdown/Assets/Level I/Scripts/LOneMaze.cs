@@ -222,6 +222,7 @@ public class LOneMaze : Maze<LOneCell> {
 			if(Random.Next(1) == 0 && !cell.Walls.North.Enabled && cell.Blockade == null) {
 			//Create a position the blockade
 				cell.Blockade = Instantiate(Blockades[i]) as GameObject;
+				Blockades[i] = cell.Blockade;
 
 				pos = cell.GetPOI(Compass.North).C;
 				pos.x += 2.7f;
@@ -241,6 +242,7 @@ public class LOneMaze : Maze<LOneCell> {
 			} else if(!cell.Walls.East.Enabled && cell.Blockade == null) {
 			//Create a position the blockade
 				cell.Blockade = Instantiate(Blockades[i]) as GameObject;
+				Blockades[i] = cell.Blockade;
 
 				pos = cell.GetPOI(Compass.East).C;
 				pos.x -= 5.03f;

@@ -18,7 +18,7 @@ public class BlockadeManager : MonoBehaviour {
 /// A Maze Manager object which will contain a series of <c>Maze</c> objects
 /// which will contain a list of 
 /// </summary>
-	public GameObject Maze = null;
+	public GameObject MazeManager = null;
 
 	#endregion
 
@@ -38,7 +38,7 @@ public class BlockadeManager : MonoBehaviour {
 /// Collect all of the <c>Blockade</c> objects into a centralized, master
 /// array.
 /// </summary>
-	public void Start () {
+	public void Init () {
 		Manager = new List<Blockade>();
 
 	//Put all of the manually defined blockades into the master array
@@ -47,25 +47,26 @@ public class BlockadeManager : MonoBehaviour {
 		}
 
 	//Now, go search the maze
-		if(Maze != null) {
-			LOneMazeManager maze = Maze.GetComponent<LOneMazeManager>();
+		if(MazeManager != null) {
+			LOneMazeManager maze = MazeManager.GetComponent<LOneMazeManager>();
 
 			GameObject[][] mazeBlockades = {
-				maze.Left.Maze.GetComponent<LOneMaze>().Blockades,
-				maze.Center.Maze.GetComponent<LOneMaze>().Blockades,
-				maze.Right.Maze.GetComponent<LOneMaze>().Blockades
+				maze.Left.Script.Blockades,
+				maze.Center.Script.Blockades,
+				maze.Right.Script.Blockades
 			};
 
 			foreach(GameObject[] mb in mazeBlockades) {
 				foreach(GameObject b in mb) {
 					Manager.Add(b.GetComponent<Blockade>());
 				}
-			}		
+			}
 		}
 
 	//Now assign a network ID to each blockade
 		for(int i = 0; i < Manager.Count; ++i) {
 			Manager[i].NetID = i;
+			Manager[i].Opened += BlockadeManager_Opened;
 		}
 	}
 
@@ -81,6 +82,10 @@ public class BlockadeManager : MonoBehaviour {
 	[RPC]
 	public void Open(int netID) {
 		Manager[netID].Open();
+	}
+
+	public void BlockadeManager_Opened(int netID) {
+		if(networkView != null) networkView.RPC("Open", RPCMode.OthersBuffered, netID);
 	}
 
 	#endregion

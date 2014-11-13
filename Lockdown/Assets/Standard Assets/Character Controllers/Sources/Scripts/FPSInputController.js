@@ -56,6 +56,10 @@ function Start()
 
 // Update is called once per frame
 function Update () {
+	// Don't apply input if this is a remote player
+	if(!networkView.isMine)
+		return;
+
 	// Get the input vector from keyboard or analog stick
 	var directionVector = new Vector3(Input.GetAxis("Horizontal" + playerInputSuffix), 0, Input.GetAxis("Vertical" + playerInputSuffix));
 	

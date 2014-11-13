@@ -2768,11 +2768,11 @@ Transform:
   m_Children:
   - {fileID: 285171108}
   - {fileID: 631514044}
-  - {fileID: 529315307}
   - {fileID: 1522980760}
-  - {fileID: 92878275}
   - {fileID: 1087872788}
   - {fileID: 1674212908}
+  - {fileID: 92878275}
+  - {fileID: 529315307}
   m_Father: {fileID: 1311379518}
 --- !u!1001 &109092195
 Prefab:
@@ -6317,11 +6317,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 28.7556305, z: -91.8236084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 279938420}
   - {fileID: 1424124931}
+  - {fileID: 279938420}
+  - {fileID: 229398884}
   - {fileID: 444915752}
   - {fileID: 1908795373}
-  - {fileID: 229398884}
   - {fileID: 284478532}
   - {fileID: 949332969}
   m_Father: {fileID: 1311379518}
@@ -9536,13 +9536,13 @@ Transform:
   m_LocalPosition: {x: 0, y: -22.2078094, z: -10.2014771}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 701559983}
-  - {fileID: 1319437652}
   - {fileID: 323948549}
+  - {fileID: 701559983}
   - {fileID: 521749974}
   - {fileID: 582160759}
-  - {fileID: 730593997}
+  - {fileID: 1319437652}
   - {fileID: 1787660748}
+  - {fileID: 730593997}
   m_Father: {fileID: 1311379518}
 --- !u!1 &403075497
 GameObject:
@@ -14498,13 +14498,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 28.7556305, z: -97.4934082}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 662424432}
-  - {fileID: 65371099}
-  - {fileID: 2050813769}
-  - {fileID: 1385895877}
   - {fileID: 123673233}
-  - {fileID: 954799954}
+  - {fileID: 65371099}
+  - {fileID: 662424432}
+  - {fileID: 1385895877}
+  - {fileID: 2050813769}
   - {fileID: 1864414984}
+  - {fileID: 954799954}
   m_Father: {fileID: 1311379518}
 --- !u!1001 &613722094
 Prefab:
@@ -17807,13 +17807,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 28.7556305, z: -213.130432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2098168858}
   - {fileID: 1239724097}
-  - {fileID: 378999529}
+  - {fileID: 2098168858}
   - {fileID: 1239260130}
-  - {fileID: 291974818}
-  - {fileID: 1577330159}
+  - {fileID: 378999529}
   - {fileID: 1136961147}
+  - {fileID: 1577330159}
+  - {fileID: 291974818}
   m_Father: {fileID: 1311379518}
 --- !u!1 &811668060
 GameObject:
@@ -23300,14 +23300,14 @@ Transform:
   m_Children:
   - {fileID: 1919381098}
   - {fileID: 459052757}
-  - {fileID: 1208084591}
-  - {fileID: 630648336}
   - {fileID: 1001222142}
-  - {fileID: 1870610736}
-  - {fileID: 1159104476}
-  - {fileID: 1618474704}
-  - {fileID: 821403017}
   - {fileID: 995064209}
+  - {fileID: 630648336}
+  - {fileID: 821403017}
+  - {fileID: 1208084591}
+  - {fileID: 1870610736}
+  - {fileID: 1618474704}
+  - {fileID: 1159104476}
   - {fileID: 12276742}
   - {fileID: 991836259}
   m_Father: {fileID: 0}
@@ -44238,13 +44238,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 28.7556305, z: -52.5926514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2091294654}
   - {fileID: 1690001153}
   - {fileID: 1151374809}
   - {fileID: 2063567196}
+  - {fileID: 2091294654}
   - {fileID: 643147002}
-  - {fileID: 1046144145}
   - {fileID: 2007013707}
+  - {fileID: 1046144145}
   m_Father: {fileID: 1311379518}
 --- !u!1 &2010644973
 GameObject:
@@ -46643,6 +46643,7 @@ MonoBehaviour:
   P2Controller: {fileID: 100028, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
   P3Controller: {fileID: 100144, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
   P4Controller: {fileID: 100016, guid: c25d60ba7a7f1c249b8f908b1bd3b6a1, type: 2}
+  BlockadeManager: {fileID: 0}
   P1Placeholder: {fileID: 1677611068}
   P2Placeholder: {fileID: 1388399688}
   P3Placeholder: {fileID: 998634247}
