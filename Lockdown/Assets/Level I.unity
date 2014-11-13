@@ -17745,7 +17745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkingOn: 1
   isServer: 1
-  gameName: Lockdown-NetworkTest1
+  gameName: Lockdown-N8isdabest
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
   useAWSserver: 1
