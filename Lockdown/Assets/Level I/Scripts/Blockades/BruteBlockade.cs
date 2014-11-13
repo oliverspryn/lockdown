@@ -26,6 +26,10 @@ public class BruteBlockade : Blockade {
 	public override void Open() {
 		base.Open();
 
+		if(IsOpen) {
+			return;
+		}
+
 	//Save information about the glass door
 		Vector3 pos = Door.transform.position;
 		Quaternion rot = Door.transform.rotation;

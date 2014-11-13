@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   m_Layer: 0
   m_Name: Dungeon
-  m_TagString: Untagged
+  m_TagString: Dungeon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11936,7 +11936,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 100268}
   - {fileID: 100264}
-  OpenOnStart: 1
+  OpenOnStart: 0
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11969,7 +11969,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 100300}
   - {fileID: 100296}
-  OpenOnStart: 1
+  OpenOnStart: 0
 --- !u!114 &11400028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12140,7 +12140,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 100354}
   - {fileID: 100362}
-  OpenOnStart: 1
+  OpenOnStart: 0
   BrokenDoor: {fileID: 100000, guid: b37e915ee26a7da45aea5db55a0dd17f, type: 2}
 --- !u!136 &13600000
 CapsuleCollider:

@@ -15,6 +15,10 @@ public class ThiefBlockade : Blockade {
 	public override void Open() {
 		base.Open();
 
+		if(IsOpen) {
+			return;
+		}
+
 	//Open the door
 		if(gameObject.transform.rotation.y == 0.0f) {
 			Door.transform.position = new Vector3(
