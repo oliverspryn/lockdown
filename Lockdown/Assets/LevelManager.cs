@@ -41,10 +41,12 @@ public class LevelManager : MonoBehaviour {
 			break;
 		case "Level 2":
 		{
-			NetMgrState netMgrState = SaveNetMgrState(GameObject.Find ("NetworkManager"));
+			//NetMgrState netMgrState = SaveNetMgrState(GameObject.Find ("NetworkManager"));
 			Application.LoadLevel ("Level 2");
 			GameObject l2NetMgr = GameObject.Find("NetworkManager");
-			RestoreNetMgrState(l2NetMgr, netMgrState);
+			//RestoreNetMgrState(l2NetMgr, netMgrState);
+			//if(Network.isClient) // sleep to give the server time to make the transition
+			//	System.Threading.Thread.Sleep (3000);
 			l2NetMgr.SetActive (true);
 			break;
 		}
