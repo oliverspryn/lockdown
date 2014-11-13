@@ -8,7 +8,11 @@ var canControl : boolean = true;
 var useFixedUpdate : boolean = true;
 
 public var animator : Animator;
-var playerInputSuffix : String = " P1";
+var playerInputSuffix : String;
+if(gameObject.tag == "Player 1" || gameObject.tag == "Player 3")
+	playerInputSuffix = " P1";
+else // we're player 2
+	playerInputSuffix = " P2";
 
 
 // For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
