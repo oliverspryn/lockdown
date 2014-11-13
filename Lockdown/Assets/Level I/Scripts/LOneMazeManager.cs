@@ -5,10 +5,20 @@ public class LOneMazeManager : MonoBehaviour {
 	#region Fields
 
 /// <summary>
+/// The maze which is at the center of the super maze.
+/// </summary>
+	public MazeAccessories Center;
+
+/// <summary>
 /// A reference to the destroyer which will destroy level one, if the game
 /// does not end within a particular amount of time.
 /// </summary>
 	public GameObject Destroyer = null;
+
+/// <summary>
+/// The maze which is at the left of the super maze.
+/// </summary>
+	public MazeAccessories Left;
 
 /// <summary>
 /// Get the length of the maze (Z-direction), including the length of all
@@ -25,6 +35,11 @@ public class LOneMazeManager : MonoBehaviour {
 /// A pre-configured maze prefab to copy into a super maze.
 /// </summary>
 	public GameObject Maze;
+
+/// <summary>
+/// The maze which is at the right of the super maze.
+/// </summary>
+	public MazeAccessories Right;
 
 /// <summary>
 /// A prefab which the player will run into to trigger the rising walls in
@@ -48,25 +63,6 @@ public class LOneMazeManager : MonoBehaviour {
 			return Maze.GetComponent<LOneMaze>().Width * 3.0f;
 		}
 	}
-
-	#endregion
-
-	#region Private Members
-
-/// <summary>
-/// The maze which is at the center of the super maze.
-/// </summary>
-	private MazeAccessories Center;
-
-/// <summary>
-/// The maze which is at the left of the super maze.
-/// </summary>
-	private MazeAccessories Left;
-
-/// <summary>
-/// The maze which is at the right of the super maze.
-/// </summary>
-	private MazeAccessories Right;
 
 	#endregion
 
