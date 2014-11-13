@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// An abstract class which all blockade prefabs must inherit in order
@@ -57,6 +57,8 @@ public abstract class Blockade : MonoBehaviour {
 
 	#endregion
 
+	private BlockadeManager blockadeMgr;
+
 	#region Constructors
 
 /// <summary>
@@ -64,6 +66,10 @@ public abstract class Blockade : MonoBehaviour {
 /// automatically.
 /// </summary>
 	public void Start() {
+		blockadeMgr = GameObject.FindGameObjectWithTag("BlockadeManager");
+
+		IsOpen = false;
+
 		if(OpenOnStart) Open();
 	}
 
@@ -89,6 +95,9 @@ public abstract class Blockade : MonoBehaviour {
 		}
 
 		IsOpen = true;
+
+	//Send an RPC to open this door on all other hosts
+		blockadeMgr.SendOpenRPC (NetID);
 	}
 
 	#endregion
