@@ -14,11 +14,6 @@ public class LOneMaze : Maze<LOneCell> {
 	public GameObject Alarm;
 
 /// <summary>
-/// The number of alarms to create in the maze.
-/// </summary>
-	public int AlarmTotal = 7;
-
-/// <summary>
 /// An array of blockades to put in the players' path.
 /// </summary>
 	public GameObject[] Blockades;
@@ -44,11 +39,6 @@ public class LOneMaze : Maze<LOneCell> {
 /// </summary>
 	public GameObject Light;
 
-/// <summary>
-/// The number of lights to place randomly throughout the maze.
-/// </summary>
-	public int LightCount = 20;
-
 	#endregion
 
 	#region Private Memebers
@@ -68,6 +58,7 @@ public class LOneMaze : Maze<LOneCell> {
 /// specific to level one.
 /// </summary>
 	public void Start() {
+		PlaceAlarms();
 		PlaceLights();
 	}
 
@@ -202,37 +193,17 @@ public class LOneMaze : Maze<LOneCell> {
 /// </summary>
 	private void PlaceAlarms() {
 		LOneCell cell;
-		int XRand = 0;
-		int[] YLoc = new int[] { 0, Y - 1 };
+		LOneCell[] targets = { Cells[0, 0], Cells[0, Y - 1], Cells[X - 1, 0], Cells[X - 1, Y - 1] };
 
-		for(int i = 0; i < AlarmTotal; ++i) {
-			XRand = Random.Next(X);
-			cell = Cells[XRand, (XRand == 0 || XRand == X - 1) ? Random.Next(Y) : YLoc[Random.Next(2)]];
-
-		//Does an alarm already exist here?
-			if(cell.Alarm != null) {
-				--i;
-				continue;
-			}
-
-		//Place the alarm in the cell
+		for(int i = 0; i < targets.Length; ++i) {
+			cell = targets[i];
 			cell.Alarm = Instantiate(Alarm) as GameObject;
 
-			if(cell.Position.X == 0 && cell.Walls.West.Enabled) {
-				cell.Alarm.transform.position = cell.GetPOI(Compass.West).N1;
-				cell.Alarm.transform.Rotate(0.0f, 90.0f, 0.0f);
-			} else if(cell.Position.Y == 0 && cell.Walls.South.Enabled) {
+			if(cell.Position.Y == 0) {
 				cell.Alarm.transform.position = cell.GetPOI(Compass.South).N1;
-			} else if(cell.Position.X == X - 1 && cell.Walls.East.Enabled) {
-				cell.Alarm.transform.position = cell.GetPOI(Compass.East).N1;
-				cell.Alarm.transform.Rotate(0.0f, 270.0f, 0.0f);
-			} else if(cell.Position.Y == Y - 1 && cell.Walls.North.Enabled) {
+			} else if(cell.Position.Y == Y - 1) {
 				cell.Alarm.transform.position = cell.GetPOI(Compass.North).N1;
 				cell.Alarm.transform.Rotate(0.0f, 180.0f, 0.0f);
-			} else {
-				Destroy(cell.Alarm);
-				cell.Alarm = null;
-				--i;
 			}
 		}
 	}
@@ -321,26 +292,21 @@ public class LOneMaze : Maze<LOneCell> {
 /// </summary>
 	private void PlaceLights() {
 		Vector3 pos;
+		Cell[] targets = { Cells[0, 0], Cells[0, Y - 1], Cells[X - 1, 0], Cells[X - 1, Y - 1] };
 		int x, y;
 
-		for(int i = 0; i < LightCount; ++i) {
-			x = Random.Next(X);
-			y = Random.Next(Y);
+		for(int i = 0; i < targets.Length; ++i) {
+			GameObject light = Instantiate(Light) as GameObject;
+			x = targets[i].Position.X;
+			y = targets[i].Position.Y;
 
-		//Prevent two lights from being placed within the same cell
-			if(Cells[x, y].Light == null) {
-				GameObject light = Instantiate(Light) as GameObject;
+			pos = Cells[x, y].Parameters.Center3D;
+			pos.x -= light.transform.localScale.x;
+			pos.y = -0.5f + MazeLocation.y;
+			pos.z += light.transform.localScale.z / 2.0f;
 
-				pos = Cells[x, y].Parameters.Center3D;
-				pos.x -= light.transform.localScale.x;
-				pos.y = -0.5f + MazeLocation.y;
-				pos.z += light.transform.localScale.z / 2.0f;
-
-				Cells[x, y].Light = light;
-				light.transform.position = pos;
-			} else {
-				--i;
-			}
+			Cells[x, y].Light = light;
+			light.transform.position = pos;
 		}
 	}
 

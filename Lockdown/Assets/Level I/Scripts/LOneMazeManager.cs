@@ -95,11 +95,11 @@ public class LOneMazeManager : MonoBehaviour {
 
 	//Position the triggers
 		Left.Trigger = Instantiate(RiserTrigger) as GameObject;
-		Left.Trigger.transform.position = Left.Script.Cells[Left.Script.X - 1, (int)Math.Floor(Left.Script.Y / 2.0f)].GetPOI(Compass.East).C;
+		Left.Trigger.transform.position = Left.Script.Cells[Left.Script.X - 1, 0].GetPOI(Compass.East).C;
 		Left.Trigger.GetComponent<WallRiser>().Maze = Left.Maze;
 
 		Center.Trigger = Instantiate(RiserTrigger) as GameObject;
-		Center.Trigger.transform.position = Center.Script.Cells[Center.Script.X - 1, (int)Math.Floor(Center.Script.Y / 2.0f)].GetPOI(Compass.East).C;
+		Center.Trigger.transform.position = Center.Script.Cells[Center.Script.X - 1, Center.Script.Y - 1].GetPOI(Compass.East).C;
 		Center.Trigger.GetComponent<WallRiser>().Maze = Center.Maze;
 
 		Right.Trigger = Instantiate(RiserTrigger) as GameObject;
@@ -116,15 +116,14 @@ public class LOneMazeManager : MonoBehaviour {
 /// Create passageways between the child mazes.
 /// </summary>
 	public void Start() {
-		Left.Script.DestroyWall(Left.Script.X - 1, (int)Math.Floor(Left.Script.Y / 2.0f), Compass.East);
-		Left.Script.DestroyWall(0, (int)Math.Floor(Left.Script.Y / 2.0f), Compass.West);
+		Left.Script.DestroyWall(Left.Script.X - 1, 0, Compass.East, true);
+		Left.Script.DestroyWall(0, Left.Script.Y - 1, Compass.West, true);
 
-		Center.Script.DestroyWall(Center.Script.X - 1, (int)Math.Floor(Center.Script.Y / 2.0f), Compass.East);
-		Center.Script.DestroyWall(0, (int)Math.Floor(Center.Script.Y / 2.0f), Compass.West);
+		Center.Script.DestroyWall(Center.Script.X - 1, Center.Script.Y - 1, Compass.East, true);
+		Center.Script.DestroyWall(0, 0, Compass.West, true);
 
-		Right.Script.DestroyWall(Right.Script.X - 1, 0, Compass.East);
-		Right.Script.DestroyWall(Right.Script.X - 1, Right.Script.Y - 1, Compass.East);
-		Right.Script.DestroyWall(0, (int)Math.Floor(Right.Script.Y / 2.0f), Compass.West);		
+		Right.Script.DestroyWall(Right.Script.X - 1, 0, Compass.East, true);
+		Right.Script.DestroyWall(0, Right.Script.Y - 1, Compass.West, true);
 	}
 
 	#endregion
