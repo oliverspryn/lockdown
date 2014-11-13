@@ -66,7 +66,7 @@ public abstract class Blockade : MonoBehaviour {
 /// automatically.
 /// </summary>
 	public void Start() {
-		blockadeMgr = GameObject.FindGameObjectWithTag("BlockadeManager");
+		blockadeMgr = GameObject.FindGameObjectWithTag("BlockadeManager").GetComponent<BlockadeManager>();
 
 		IsOpen = false;
 
