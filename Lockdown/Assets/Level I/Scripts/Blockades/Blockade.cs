@@ -1,10 +1,31 @@
 using UnityEngine;
 
+#region Delegates
+
+/// <summary>
+/// A delegate which is used during a <c>Blockade</c> opened event,
+/// </summary>
+/// 
+/// <param name="sender">The sending blockade object</param>
+/// <param name="e">Information about the blockade network ID</param>
+public delegate void EventHandler(object sender, NetworkID e);
+
+#endregion
+
 /// <summary>
 /// An abstract class which all blockade prefabs must inherit in order
 /// to open, or grant passage through, the blockade.
 /// </summary>
 public abstract class Blockade : MonoBehaviour {
+	#region Events
+
+/// <summary>
+/// An event to dispatch whenever a <c>Blockade</c> has been opened.
+/// </summary>
+	public static event EventHandler Opened;
+
+	#endregion
+
 	#region Fields
 
 /// <summary>
@@ -57,8 +78,6 @@ public abstract class Blockade : MonoBehaviour {
 
 	#endregion
 
-	private BlockadeManager blockadeMgr;
-
 	#region Constructors
 
 /// <summary>
@@ -66,10 +85,7 @@ public abstract class Blockade : MonoBehaviour {
 /// automatically.
 /// </summary>
 	public void Start() {
-		blockadeMgr = GameObject.FindGameObjectWithTag("BlockadeManager").GetComponent<BlockadeManager>();
-
 		IsOpen = false;
-
 		if(OpenOnStart) Open();
 	}
 
@@ -95,9 +111,7 @@ public abstract class Blockade : MonoBehaviour {
 		}
 
 		IsOpen = true;
-
-	//Send an RPC to open this door on all other hosts
-		blockadeMgr.SendOpenRPC (NetID);
+		Opened(this, new NetworkID(NetID));
 	}
 
 	#endregion
