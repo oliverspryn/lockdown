@@ -66,6 +66,7 @@ public class BlockadeManager : MonoBehaviour {
 	//Now assign a network ID to each blockade
 		for(int i = 0; i < Manager.Count; ++i) {
 			Manager[i].NetID = i;
+			Manager[i].Opened += BlockadeManager_Opened;
 		}
 	}
 
@@ -83,8 +84,8 @@ public class BlockadeManager : MonoBehaviour {
 		Manager[netID].Open();
 	}
 
-	public void SendOpenRPC(int netID) {
-		networkView.RPC ("Open", RPCMode.OthersBuffered, netID);
+	public void BlockadeManager_Opened(object sender, int e) {
+		networkView.RPC("Open", RPCMode.OthersBuffered, e);
 	}
 
 	#endregion

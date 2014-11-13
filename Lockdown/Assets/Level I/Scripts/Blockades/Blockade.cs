@@ -8,7 +8,7 @@ using UnityEngine;
 /// 
 /// <param name="sender">The sending blockade object</param>
 /// <param name="e">Information about the blockade network ID</param>
-public delegate void EventHandler(object sender, NetworkID e);
+public delegate void EventHandler(object sender, int e);
 
 #endregion
 
@@ -22,7 +22,7 @@ public abstract class Blockade : MonoBehaviour {
 /// <summary>
 /// An event to dispatch whenever a <c>Blockade</c> has been opened.
 /// </summary>
-	public static event EventHandler Opened;
+	public event EventHandler Opened;
 
 	#endregion
 
@@ -111,7 +111,7 @@ public abstract class Blockade : MonoBehaviour {
 		}
 
 		IsOpen = true;
-		Opened(this, new NetworkID(NetID));
+		Opened(this, NetID);
 	}
 
 	#endregion
