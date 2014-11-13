@@ -85,7 +85,7 @@ public class BlockadeManager : MonoBehaviour {
 	}
 
 	public void BlockadeManager_Opened(object sender, int e) {
-		networkView.RPC("Open", RPCMode.OthersBuffered, e);
+		if(networkView != null) networkView.RPC("Open", RPCMode.OthersBuffered, e);
 	}
 
 	#endregion

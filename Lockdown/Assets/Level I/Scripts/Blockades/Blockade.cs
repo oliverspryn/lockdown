@@ -111,7 +111,7 @@ public abstract class Blockade : MonoBehaviour {
 		}
 
 		IsOpen = true;
-		Opened(this, NetID);
+		if(Opened != null) Opened(this, NetID);
 	}
 
 	#endregion
