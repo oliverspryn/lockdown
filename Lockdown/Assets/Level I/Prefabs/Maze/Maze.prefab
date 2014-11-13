@@ -23,10 +23,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 107.067642, y: 2.64649343, z: -103.636162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,6 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ceiling: {fileID: 100000, guid: b85187005b27b874abfc03be72a88f8f, type: 2}
+  DestroyUnused: 1
   EnableSliding: 0
   HiddenWallDelta: .100000001
   Floor: {fileID: 100000, guid: e92d25c0bc1c82f4398a019aaec4cde2, type: 2}

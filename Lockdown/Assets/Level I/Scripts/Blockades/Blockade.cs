@@ -39,6 +39,17 @@ public abstract class Blockade : MonoBehaviour {
 	public GameObject[] HeightObjects;
 
 /// <summary>
+/// Whether or not the <c>Blockade</c> is open.
+/// </summary>
+	public bool IsOpen { get; private set; }
+
+/// <summary>
+/// The network ID assigned to the <c>Blockade</c> by a network manager
+/// object.
+/// </summary>
+	public int NetID { get; set; }
+
+/// <summary>
 /// Whether or not the blockade should open immediately when the
 /// game initializes.
 /// </summary>
@@ -65,6 +76,10 @@ public abstract class Blockade : MonoBehaviour {
 /// "override" to implement custom opening functionality.
 /// </summary>
 	public virtual void Open() {
+		if(IsOpen) {
+			return;
+		}
+
 	//Play the door opening noise
 		gameObject.audio.Play();
 
@@ -72,6 +87,8 @@ public abstract class Blockade : MonoBehaviour {
 		for(int i = 0; i < Dest.Length; ++i) {
 			Destroy(Dest[i]);
 		}
+
+		IsOpen = true;
 	}
 
 	#endregion
