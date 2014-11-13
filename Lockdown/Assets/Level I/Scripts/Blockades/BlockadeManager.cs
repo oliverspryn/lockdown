@@ -60,7 +60,11 @@ public class BlockadeManager : MonoBehaviour {
 				foreach(GameObject b in mb) {
 					Manager.Add(b.GetComponent<Blockade>());
 				}
-			}		
+			}
+
+			Manager[6].Open();
+			Manager[7].Open();
+			Manager[8].Open();
 		}
 
 	//Now assign a network ID to each blockade
