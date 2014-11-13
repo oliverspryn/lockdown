@@ -43,7 +43,9 @@ public class LevelManager : MonoBehaviour {
 		{
 			NetMgrState netMgrState = SaveNetMgrState(GameObject.Find ("NetworkManager"));
 			Application.LoadLevel ("Level 2");
-			RestoreNetMgrState(GameObject.Find("NetworkManager"), netMgrState);
+			GameObject l2NetMgr = GameObject.Find("NetworkManager");
+			RestoreNetMgrState(l2NetMgr, netMgrState);
+			l2NetMgr.SetActive (true);
 			break;
 		}
 		case "Level 3":
