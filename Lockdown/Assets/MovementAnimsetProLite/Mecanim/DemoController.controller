@@ -486,7 +486,7 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: Speed
-    m_EventTreshold: 21
+    m_EventTreshold: 16
     m_ExitTime: .75
   m_Atomic: 1
   m_Solo: 0
@@ -526,7 +526,7 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: Speed
-    m_EventTreshold: 19
+    m_EventTreshold: 16
     m_ExitTime: .578651667
   m_Atomic: 1
   m_Solo: 0
