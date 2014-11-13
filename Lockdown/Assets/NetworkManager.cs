@@ -22,12 +22,14 @@ public class NetworkManager : MonoBehaviour {
 	
 	// Prefabs for network-synchronized objects initialized by the NetworkManager
 	public GameObject P1Controller, P2Controller, P3Controller, P4Controller;
+	public GameObject BlockadeManager;
 	
 	// Handles to placeholders in the hierarchy for objects instantiated by the NetworkManager
 	public GameObject P1Placeholder, P2Placeholder, P3Placeholder, P4Placeholder;
 	
 	// Objects that the manager has instantiated at runtime - handles for later runtime use
 	private GameObject player1, player2, player3, player4;
+	private BlockadeManager blockadeMgr;
 
 	void Awake()
 	{
@@ -94,6 +96,17 @@ public class NetworkManager : MonoBehaviour {
 				// Initialize maze
 				LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
 				mazeScript.Init();
+
+				// Initialize blockade manager with blockades from maze + hallway
+				GameObject blockadeMgrObj = (GameObject)Network.Instantiate (BlockadeManager, Vector3.zero, Quaternion.identity, 0);
+				blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+				blockadeMgr.MazeManager = maze; // manager will pull the maze's blockades from this
+				blockadeMgr.Blockades = new GameObject[3]; // will hold the 3 hallway blockades
+				GameObject dungeon = GameObject.FindGameObjectWithTag ("Dungeon");
+				blockadeMgr.Blockades[0] = dungeon.transform.Find ("Blockades/Brute").gameObject;
+				blockadeMgr.Blockades[1] = dungeon.transform.Find ("Blockades/Hacker").gameObject;
+				blockadeMgr.Blockades[2] = dungeon.transform.Find ("Blockades/Thief").gameObject;
+				blockadeMgr.Init();
 			}
 			
 			// Since this is the server, we will have control of players 1 and 2.
@@ -125,6 +138,17 @@ public class NetworkManager : MonoBehaviour {
 			// 		Client: InitMaze(), which is RPC called by OnPlayerConnected()
 			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
 			mazeScript.Init();
+
+			// Initialize blockade manager with blockades from maze + hallway
+			GameObject blockadeMgrObj = (GameObject)Object.Instantiate (BlockadeManager, Vector3.zero, Quaternion.identity);
+			blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+			blockadeMgr.MazeManager = maze; // manager will pull the maze's blockades from this
+			blockadeMgr.Blockades = new GameObject[3]; // will hold the 3 hallway blockades
+			GameObject dungeon = GameObject.FindGameObjectWithTag ("Dungeon");
+			blockadeMgr.Blockades[0] = dungeon.transform.Find ("Blockades/Brute").gameObject;
+			blockadeMgr.Blockades[1] = dungeon.transform.Find ("Blockades/Hacker").gameObject;
+			blockadeMgr.Blockades[2] = dungeon.transform.Find ("Blockades/Thief").gameObject;
+			blockadeMgr.Init();
 		}
 		
 		// Spawn only players 1 and 2 in offline mode (later, we'll be using 4-way split screen)
@@ -201,7 +225,19 @@ public class NetworkManager : MonoBehaviour {
 	[RPC]
 	void InitMaze(int seed)
 	{
+		// Initialize the maze using the seed sent by the server
 		LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
 		mazeScript.Init (seed);
+
+		// Initialize blockade manager with blockades from maze + hallway
+		GameObject blockadeMgrObj = GameObject.FindGameObjectWithTag ("BlockadeManager");
+		blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+		blockadeMgr.MazeManager = maze; // manager will pull the maze's blockades from this
+		blockadeMgr.Blockades = new GameObject[3]; // will hold the 3 hallway blockades
+		GameObject dungeon = GameObject.FindGameObjectWithTag ("Dungeon");
+		blockadeMgr.Blockades[0] = dungeon.transform.Find ("Blockades/Brute").gameObject;
+		blockadeMgr.Blockades[1] = dungeon.transform.Find ("Blockades/Hacker").gameObject;
+		blockadeMgr.Blockades[2] = dungeon.transform.Find ("Blockades/Thief").gameObject;
+		blockadeMgr.Init();
 	}
 }
