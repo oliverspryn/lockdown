@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: stone_blocks
+  m_Name: dungeon_floor 1
   m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,8 +17,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: f5bee808eb911924b97bc3058786fb23, type: 3}
-          m_Scale: {x: 10, y: 10}
+          m_Texture: {fileID: 2800000, guid: 2d0ff1d9f7c7b8e47b85316c84e9ce09, type: 3}
+          m_Scale: {x: 1, y: 20}
           m_Offset: {x: 0, y: 0}
     m_Floats: {}
     m_Colors:
