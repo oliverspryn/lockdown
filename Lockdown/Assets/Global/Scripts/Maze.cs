@@ -17,6 +17,12 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 	public T[,] Cells;
 
 /// <summary>
+/// Whether or not unused walls should sit just under the floor or should
+/// be destroyed if they are not part of the maze.
+/// </summary>
+	public bool DestroyUnused = false;
+
+/// <summary>
 /// Whether or not the walls should slide into place whenever they are out
 /// of place, of if they should wait until this value is true.
 /// </summary>
@@ -252,10 +258,6 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 		if(!EnableSliding)
 			return;
 
-		if(DestLocation == float.NegativeInfinity) {
-			DestLocation = Cells[0, 0].Walls.North.Wall.transform.position.y + Size.y;
-		}
-
 		for(int i = 0; i < X; ++i) {
 			for(int j = 0; j < Y; ++j) {
 				if(Cells[i, j].Walls.East.Enabled) {
@@ -341,6 +343,11 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 
 				wall.transform.position = position + MazeLocation;
 				Cells[i, j].Walls.North.Wall = wall;
+
+			//Get the final location of the walls, once they have been slid into place
+				if(DestLocation == float.NegativeInfinity) {
+					DestLocation = Cells[i, j].Walls.North.Wall.transform.position.y + Size.y;
+				}
 
 			//Southern walls, run only for the bottom row
 				if(j == 0) {
@@ -485,20 +492,28 @@ public abstract class Maze<T> : MonoBehaviour where T : Cell, new() {
 		W.X--;
 
 	//CellTwo is North of CellOne
-		if(cellTwo.Position == N)
+		if(cellTwo.Position == N) {
 			cellOne.Walls.North.Enabled = cellTwo.Walls.South.Enabled = false;
+			if(DestroyUnused) Destroy(cellOne.Walls.North.Wall);
+		}
 
 	//CellTwo is South of CellOne
-		if(cellTwo.Position == S)
+		if(cellTwo.Position == S) {
 			cellOne.Walls.South.Enabled = cellTwo.Walls.North.Enabled = false;
+			if(DestroyUnused) Destroy(cellOne.Walls.South.Wall);
+		}
 
 	//CellTwo is East of CellOne
-		if(cellTwo.Position == E)
+		if(cellTwo.Position == E) {
 			cellOne.Walls.East.Enabled = cellTwo.Walls.West.Enabled = false;
+			if(DestroyUnused) Destroy(cellOne.Walls.East.Wall);
+		}
 
 	//CellTwo is West of CellOne
-		if(cellTwo.Position == W)
+		if(cellTwo.Position == W) {
 			cellOne.Walls.West.Enabled = cellTwo.Walls.East.Enabled = false;
+			if(DestroyUnused) Destroy(cellOne.Walls.West.Wall);
+		}
 
 		cellOne.Visited = cellTwo.Visited = true;
 	}

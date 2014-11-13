@@ -80,7 +80,7 @@ CGINCLUDE
 	sampler2D _ReflectionTex;
 	sampler2D _RefractionTex;
 	sampler2D _ShoreTex;
-	sampler2D_float _CameraDepthTexture;
+	sampler2D _CameraDepthTexture;
 
 	// colors in use
 	uniform float4 _RefrColorDepth;
@@ -206,12 +206,12 @@ CGINCLUDE
 		// base, depth & reflection colors
 		half4 baseColor = ExtinctColor (_BaseColor, i.viewInterpolator.w * _InvFadeParemeter.w);
 		#ifdef WATER_REFLECTIVE
-			half4 reflectionColor = lerp (rtReflections,_ReflectionColor,_ReflectionColor.a);
+			half4 reflectionColor = lerp (rtReflections,_ReflectionColor, (half)_ReflectionColor.a);
 		#else
 			half4 reflectionColor = _ReflectionColor;
 		#endif
 		
-		baseColor = lerp (lerp (rtRefractions, baseColor, baseColor.a), reflectionColor, refl2Refr);
+		baseColor = lerp (lerp (rtRefractions, baseColor, (half)baseColor.a), reflectionColor, (half)refl2Refr);
 		baseColor = baseColor + spec * _SpecularColor;
 		
 		// handle foam
@@ -295,9 +295,9 @@ CGINCLUDE
 		
 		half4 baseColor = _BaseColor;
 		#ifdef WATER_REFLECTIVE	
-			baseColor = lerp (baseColor, lerp (rtReflections,_ReflectionColor,_ReflectionColor.a), saturate(refl2Refr * 2.0));
+			baseColor = lerp (baseColor, lerp (rtReflections,_ReflectionColor, (half)_ReflectionColor.a), (half)saturate(refl2Refr * 2.0));
 		#else
-			baseColor = lerp (baseColor, _ReflectionColor, saturate(refl2Refr * 2.0));		
+			baseColor = lerp (baseColor, _ReflectionColor, (half)saturate(refl2Refr * 2.0));		
 		#endif
 		
 		baseColor = baseColor + spec * _SpecularColor;
@@ -343,7 +343,7 @@ CGINCLUDE
 		half refl2Refr = Fresnel(viewVector, worldNormal, FRESNEL_BIAS, FRESNEL_POWER);	
 
 		half4 baseColor = _BaseColor;
-		baseColor = lerp(baseColor, _ReflectionColor, saturate(refl2Refr * 2.0));
+		baseColor = lerp(baseColor, _ReflectionColor, (half)saturate(refl2Refr * 2.0));
 		baseColor.a = saturate(2.0 * refl2Refr + 0.5);
 
 		baseColor.rgb += spec * _SpecularColor.rgb;
