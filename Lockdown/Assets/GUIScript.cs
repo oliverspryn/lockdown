@@ -108,7 +108,11 @@ public class GUIScript : MonoBehaviour {
 	{
 		pos = -1;
 		doDoorOpen(obstacle);
-		networkView.RPC ("doDoorOpen", RPCMode.OthersBuffered, obstacle);
+		// Note: door opening is now being RPCed internally by Blockade.Open(). This takes care of
+		// actually opening the door, but not decrementing the # of keys or removing the box collider.
+		// This shouldn't be too big a deal, though, since the extra keys/colliders are only on the
+		// remote side - all that logic is controlled locally by the player's owner.
+		//networkView.RPC ("doDoorOpen", RPCMode.OthersBuffered, obstacle);
 	}
 
 	[RPC]
