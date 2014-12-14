@@ -21,336 +21,308 @@ User locale: en-US
 System locale: en-US
 
 Running processes:
-TeamViewer.exe (9420)
-    path: C:\Program Files (x86)\TeamViewer\Version9\TeamViewer.exe
-    company:  TeamViewer GmbH
-    product:  TeamViewer
-    filedesc: TeamViewer 9
-    filever:  9.0.32494.0
-    prodver:  9.0.0.0
-NvBackend.exe (5992)
+NvBackend.exe (3552)
     path: C:\Program Files (x86)\NVIDIA Corporation\Update Core\NvBackend.exe
     company:  NVIDIA Corporation
     product:  NVIDIA GeForce Experience
     filedesc: NVIDIA GeForce Experience Backend
     filever:  15.3.33.0
     prodver:  15.3.33.0
-chrome.exe (8812)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (12668)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (14044)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (13280)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (11008)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (5244)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (3108)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (3572)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (9096)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (13888)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (8788)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-netsession_win.exe (12020)
-    path: C:\Users\Oliver\AppData\Local\Akamai\netsession_win.exe
-    company:  Akamai Technologies, Inc.
-    product:  Akamai NetSession Client
-    filedesc: Akamai NetSession Client
-    filever:  1.9.1.1
-    prodver:  1.9.1.1
-netsession_win.exe (13304)
-    path: C:\Users\Oliver\AppData\Local\Akamai\netsession_win.exe
-    company:  Akamai Technologies, Inc.
-    product:  Akamai NetSession Client
-    filedesc: Akamai NetSession Client
-    filever:  1.9.1.1
-    prodver:  1.9.1.1
-SpotifyWebHelper.exe (5404)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyWebHelper.exe
-    company:  Spotify Ltd
-    product:  Spotify
-    filedesc: SpotifyWebHelper
-    filever:  0.9.14.13
-    prodver:  0.9.14.13
-spotify.exe (3952)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\spotify.exe
-    company:  Spotify Ltd
-    product:  Spotify
-    filedesc: Spotify
-    filever:  0.9.14.13
-    prodver:  0.9.14.13
-SpotifyHelper.exe (13320)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyHelper.exe
-    company:  
-    product:  
-    filedesc: 
-    filever:  0.0.0.0
-    prodver:  0.0.0.0
-SpotifyHelper.exe (13308)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyHelper.exe
-    company:  
-    product:  
-    filedesc: 
-    filever:  0.0.0.0
-    prodver:  0.0.0.0
-SpotifyHelper.exe (8244)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyHelper.exe
-    company:  
-    product:  
-    filedesc: 
-    filever:  0.0.0.0
-    prodver:  0.0.0.0
-SpotifyHelper.exe (11052)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyHelper.exe
-    company:  
-    product:  
-    filedesc: 
-    filever:  0.0.0.0
-    prodver:  0.0.0.0
-acrotray.exe (7908)
-    path: C:\Program Files (x86)\Adobe\Acrobat 10.0\Acrobat\acrotray.exe
-    company:  Adobe Systems Inc.
-    product:  AcroTray - Adobe Acrobat Distiller helper application.
-    filedesc: AcroTray
-    filever:  10.1.12.15
-    prodver:  10.1.12.15
-jusched.exe (7196)
-    path: C:\Program Files (x86)\Common Files\Java\Java Update\jusched.exe
-    company:  Oracle Corporation
-    product:  Java Platform SE Auto Updater
-    filedesc: Java Update Scheduler
-    filever:  2.8.20.26
-    prodver:  2.8.20.26
-Creative Cloud.exe (13764)
-    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\ACC\Creative Cloud.exe
-    company:  Adobe Systems Incorporated
-    product:  Adobe Creative Cloud
-    filedesc: Adobe Creative Cloud
-    filever:  2.7.1.418
-    prodver:  2.7.1.418
-AdobeIPCBroker.exe (3032)
-    path: C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\IPC\AdobeIPCBroker.exe
-    company:  Adobe Systems Incorporated
-    product:  Adobe IPC Broker
-    filedesc: Adobe IPC Broker
-    filever:  5.0.0.76
-    prodver:  5.0.0.76
-iTunesHelper.exe (7128)
-    path: C:\Program Files (x86)\iTunes\iTunesHelper.exe
-    company:  Apple Inc.
-    product:  iTunes
-    filedesc: iTunesHelper
-    filever:  11.4.0.18
-    prodver:  11.4.0.18
-CoreSync.exe (4756)
-    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\CoreSync\CoreSync.exe
-    company:  
-    product:  CoreSync
-    filedesc: Core Sync
-    filever:  1.3.0.342
-    prodver:  1.3.0.342
-Adobe CEF Helper.exe (5648)
-    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\HEX\Adobe CEF Helper.exe
-    company:  Adobe Systems Incorporated
-    product:  Adobe CEF Helper
-    filedesc: Adobe CEF Helper
-    filever:  2.7.0.413
-    prodver:  2.7.0.413
-SpotifyHelper.exe (15292)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyHelper.exe
-    company:  
-    product:  
-    filedesc: 
-    filever:  0.0.0.0
-    prodver:  0.0.0.0
-pageant.exe (7740)
-    path: C:\Program Files\TortoiseGit\bin\pageant.exe
-    company:  Simon Tatham
-    product:  PuTTY suite
-    filedesc: PuTTY SSH authentication agent
-    filever:  0.63.0.0
-    prodver:  0.63.0.0
-devenv.exe (10320)
-    path: C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
-    company:  Microsoft Corporation
-    product:  Microsoft® Visual Studio® 2013
-    filedesc: Microsoft Visual Studio 2013
-    filever:  12.0.30723.0
-    prodver:  12.0.30723.0
-node.exe (11232)
-    path: C:\Users\Oliver\AppData\Local\Microsoft\VisualStudio\12.0\Extensions\2zefgkwo.hyn\Resources\nodejs\node.exe
-    company:  Joyent, Inc
-    product:  Node.js
-    filedesc: Evented I/O for V8 JavaScript
-    filever:  0.10.30.0
-    prodver:  0.10.30.0
-Microsoft.Alm.Shared.Remoting.RemoteContainer.dll (11104)
-    path: C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Alm.Shared.Remoting.RemoteContainer\v4.0_12.0.0.0__b03f5f7f11d50a3a\Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
-    company:  Microsoft Corporation
-    product:  Microsoft® Visual Studio® 2013
-    filedesc: Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
-    filever:  12.0.30501.0
-    prodver:  12.0.30501.0
-Microsoft.Alm.Shared.Remoting.RemoteContainer.dll (7664)
-    path: C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Alm.Shared.Remoting.RemoteContainer\v4.0_12.0.0.0__b03f5f7f11d50a3a\Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
-    company:  Microsoft Corporation
-    product:  Microsoft® Visual Studio® 2013
-    filedesc: Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
-    filever:  12.0.30501.0
-    prodver:  12.0.30501.0
-chrome.exe (496)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (14368)
-    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-    company:  Google Inc.
-    product:  Google Chrome
-    filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-Flash.exe (3928)
-    path: C:\Program Files (x86)\Adobe\Adobe Flash CS6\Flash.exe
-    company:  Adobe Systems Incorporated.
-    product:  Adobe Flash CS6
-    filedesc: Adobe Flash CS6
-    filever:  12.0.2.529
-    prodver:  12.0.2.529
-CS6ServiceManager.exe (4008)
+TeamViewer.exe (2336)
+    path: C:\Program Files (x86)\TeamViewer\Version9\TeamViewer.exe
+    company:  TeamViewer GmbH
+    product:  TeamViewer
+    filedesc: TeamViewer 9
+    filever:  9.0.32494.0
+    prodver:  9.0.0.0
+Dreamweaver.exe (5072)
+    path: C:\Program Files (x86)\Adobe\Adobe Dreamweaver CS6\Dreamweaver.exe
+    company:  Adobe Systems, Inc.
+    product:  Adobe Dreamweaver CS6
+    filedesc: Adobe Dreamweaver CS6
+    filever:  12.0.3.5861
+    prodver:  12.0.3.5861
+CS6ServiceManager.exe (3564)
     path: C:\Program Files (x86)\Common Files\Adobe\CS6ServiceManager\CS6ServiceManager.exe
     company:  Adobe Systems Incorporated
     product:  Adobe CS6 Service Manager
     filedesc: Adobe CS6 Service Manager
     filever:  3.0.3.58
     prodver:  3.0.3.58
-EdgeCode.exe (6656)
-    path: C:\Program Files (x86)\Adobe\Adobe Edge Code CC\EdgeCode.exe
-    company:  Adobe Systems, Inc.
-    product:  Edge Code CC
-    filedesc: 
-    filever:  0.98.0.0
-    prodver:  0.0.0.0
-node.exe (1836)
-    path: C:\Program Files (x86)\Adobe\Adobe Edge Code CC\node.exe
-    company:  Joyent, Inc
-    product:  Node.js
-    filedesc: Evented I/O for V8 JavaScript
-    filever:  0.10.24.0
-    prodver:  0.10.24.0
-EdgeCode.exe (2312)
-    path: C:\Program Files (x86)\Adobe\Adobe Edge Code CC\EdgeCode.exe
-    company:  Adobe Systems, Inc.
-    product:  Edge Code CC
-    filedesc: 
-    filever:  0.98.0.0
-    prodver:  0.0.0.0
-SpotifyHelper.exe (10340)
-    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyHelper.exe
+SpotifyWebHelper.exe (4356)
+    path: C:\Users\Oliver\AppData\Roaming\Spotify\Data\SpotifyWebHelper.exe
+    company:  Spotify Ltd
+    product:  Spotify
+    filedesc: SpotifyWebHelper
+    filever:  0.9.14.13
+    prodver:  0.9.14.13
+flux.exe (5192)
+    path: C:\Users\Oliver\AppData\Local\FluxSoftware\Flux\flux.exe
+    company:  Flux Software LLC
+    product:  f.lux
+    filedesc: f.lux
+    filever:  3.10.0.1
+    prodver:  3.10.0.1
+Dropbox.exe (5456)
+    path: C:\Users\Oliver\AppData\Roaming\Dropbox\bin\Dropbox.exe
+    company:  Dropbox, Inc.
+    product:  Dropbox
+    filedesc: Dropbox
+    filever:  2.10.52.0
+    prodver:  1.0.0.1
+acrotray.exe (5500)
+    path: C:\Program Files (x86)\Adobe\Acrobat 10.0\Acrobat\acrotray.exe
+    company:  Adobe Systems Inc.
+    product:  AcroTray - Adobe Acrobat Distiller helper application.
+    filedesc: AcroTray
+    filever:  10.1.12.15
+    prodver:  10.1.12.15
+Creative Cloud.exe (5528)
+    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\ACC\Creative Cloud.exe
+    company:  Adobe Systems Incorporated
+    product:  Adobe Creative Cloud
+    filedesc: Adobe Creative Cloud
+    filever:  2.8.0.447
+    prodver:  2.8.0.447
+iTunesHelper.exe (5576)
+    path: C:\Program Files (x86)\iTunes\iTunesHelper.exe
+    company:  Apple Inc.
+    product:  iTunes
+    filedesc: iTunesHelper
+    filever:  12.0.1.26
+    prodver:  12.0.1.26
+AdobeIPCBroker.exe (5848)
+    path: C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\IPC\AdobeIPCBroker.exe
+    company:  Adobe Systems Incorporated
+    product:  Adobe IPC Broker
+    filedesc: Adobe IPC Broker
+    filever:  5.0.0.87
+    prodver:  5.0.0.87
+CoreSync.exe (5124)
+    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\CoreSync\CoreSync.exe
+    company:  
+    product:  CoreSync
+    filedesc: Core Sync
+    filever:  1.3.1.405
+    prodver:  1.3.1.405
+xampp-control.exe (5388)
+    path: C:\Web Development\xampp\xampp-control.exe
     company:  
     product:  
     filedesc: 
-    filever:  0.0.0.0
-    prodver:  0.0.0.0
-chrome.exe (12712)
+    filever:  3.2.1.0
+    prodver:  1.0.0.0
+Adobe CEF Helper.exe (1992)
+    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\HEX\Adobe CEF Helper.exe
+    company:  Adobe Systems Incorporated
+    product:  Adobe CEF Helper
+    filedesc: Adobe CEF Helper
+    filever:  2.8.0.446
+    prodver:  2.8.0.446
+Adobe CEF Helper.exe (6108)
+    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\HEX\Adobe CEF Helper.exe
+    company:  Adobe Systems Incorporated
+    product:  Adobe CEF Helper
+    filedesc: Adobe CEF Helper
+    filever:  2.8.0.446
+    prodver:  2.8.0.446
+Adobe CEF Helper.exe (6124)
+    path: C:\Program Files (x86)\Adobe\Adobe Creative Cloud\HEX\Adobe CEF Helper.exe
+    company:  Adobe Systems Incorporated
+    product:  Adobe CEF Helper
+    filedesc: Adobe CEF Helper
+    filever:  2.8.0.446
+    prodver:  2.8.0.446
+httpd.exe (5656)
+    path: c:\web development\xampp\apache\bin\httpd.exe
+    company:  Apache Software Foundation
+    product:  Apache HTTP Server
+    filedesc: Apache HTTP Server
+    filever:  2.4.9.0
+    prodver:  2.4.9.0
+httpd.exe (5136)
+    path: C:\web development\xampp\apache\bin\httpd.exe
+    company:  Apache Software Foundation
+    product:  Apache HTTP Server
+    filedesc: Apache HTTP Server
+    filever:  2.4.9.0
+    prodver:  2.4.9.0
+chrome.exe (6756)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (1104)
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (6840)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (4280)
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (6976)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (10208)
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (7044)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-chrome.exe (3676)
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (7052)
     path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
     company:  Google Inc.
     product:  Google Chrome
     filedesc: Google Chrome
-    filever:  37.0.2062.124
-    prodver:  37.0.2062.124
-UnityBugReporter.exe (13580)
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (7080)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (7088)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (7100)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (7116)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+mysqld.exe (2636)
+    path: c:\web development\xampp\mysql\bin\mysqld.exe
+    company:  
+    product:  
+    filedesc: 
+    filever:  5.6.16.0
+    prodver:  5.6.16.0
+chrome.exe (1264)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (3872)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (13244)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (11672)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (11484)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (12096)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (11700)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (14932)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+chrome.exe (17192)
+    path: C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+    company:  Google Inc.
+    product:  Google Chrome
+    filedesc: Google Chrome
+    filever:  39.0.2171.71
+    prodver:  39.0.2171.71
+AAM Updates Notifier.exe (16872)
+    path: C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\UWA\AAM Updates Notifier.exe
+    company:  Adobe Systems Incorporated
+    product:  AAM Updates Notifier Application
+    filedesc: AAM Updates Notifier Application
+    filever:  8.0.0.158
+    prodver:  8.0.0.158
+devenv.exe (23544)
+    path: C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+    company:  Microsoft Corporation
+    product:  Microsoft® Visual Studio® 2013
+    filedesc: Microsoft Visual Studio 2013
+    filever:  12.0.30723.0
+    prodver:  12.0.30723.0
+node.exe (22608)
+    path: C:\Users\Oliver\AppData\Local\Microsoft\VisualStudio\12.0\Extensions\2zefgkwo.hyn\Resources\nodejs\node.exe
+    company:  Joyent, Inc
+    product:  Node.js
+    filedesc: Evented I/O for V8 JavaScript
+    filever:  0.10.30.0
+    prodver:  0.10.30.0
+Microsoft.Alm.Shared.Remoting.RemoteContainer.dll (19868)
+    path: C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Alm.Shared.Remoting.RemoteContainer\v4.0_12.0.0.0__b03f5f7f11d50a3a\Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
+    company:  Microsoft Corporation
+    product:  Microsoft® Visual Studio® 2013
+    filedesc: Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
+    filever:  12.0.30501.0
+    prodver:  12.0.30501.0
+Microsoft.Alm.Shared.Remoting.RemoteContainer.dll (16328)
+    path: C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Alm.Shared.Remoting.RemoteContainer\v4.0_12.0.0.0__b03f5f7f11d50a3a\Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
+    company:  Microsoft Corporation
+    product:  Microsoft® Visual Studio® 2013
+    filedesc: Microsoft.Alm.Shared.Remoting.RemoteContainer.dll
+    filever:  12.0.30501.0
+    prodver:  12.0.30501.0
+googletalkplugin.exe (25216)
+    path: C:\Users\Oliver\AppData\Local\Google\Google Talk Plugin\googletalkplugin.exe
+    company:  Google
+    product:  Google Talk Plugin
+    filedesc: Hangouts Plugin
+    filever:  5.0.0.0
+    prodver:  5.0.0.0
+UnityBugReporter.exe (29568)
     path: C:\Program Files (x86)\Unity\Editor\UnityBugReporter.exe
     company:  Unity Technologies ApS
     product:  Unity Bug Reporter

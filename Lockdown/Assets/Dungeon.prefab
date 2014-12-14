@@ -3580,7 +3580,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: .707106829, z: .707106829, w: 0}
-  m_LocalPosition: {x: -109.190491, y: 185, z: .463848114}
+  m_LocalPosition: {x: -109.190491, y: 185, z: .445781708}
   m_LocalScale: {x: 20, y: .0500000007, z: 20}
   m_Children: []
   m_Father: {fileID: 400094}
@@ -3628,7 +3628,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: .707106829, z: .707106829, w: 0}
-  m_LocalPosition: {x: -89.1904907, y: 185, z: .463848114}
+  m_LocalPosition: {x: -89.1904907, y: 185, z: .445781708}
   m_LocalScale: {x: 20, y: .0500000007, z: 20}
   m_Children: []
   m_Father: {fileID: 400094}
@@ -3676,7 +3676,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100024}
   m_LocalRotation: {x: 0, y: .707106829, z: .707106829, w: 0}
-  m_LocalPosition: {x: -69.1904907, y: 185, z: .463855743}
+  m_LocalPosition: {x: -69.1904907, y: 185, z: .445781708}
   m_LocalScale: {x: 20, y: .0500000007, z: 20}
   m_Children: []
   m_Father: {fileID: 400094}
@@ -3916,7 +3916,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100064}
   m_LocalRotation: {x: 3.09086232e-08, y: .707106829, z: .707106829, w: -3.09086232e-08}
-  m_LocalPosition: {x: -49.1904945, y: 185, z: .463855743}
+  m_LocalPosition: {x: -49.1904945, y: 185, z: .445781708}
   m_LocalScale: {x: 20, y: .0500000007, z: 20}
   m_Children: []
   m_Father: {fileID: 400094}
@@ -4064,7 +4064,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100088}
   m_LocalRotation: {x: 0, y: .707106829, z: .707106829, w: 0}
-  m_LocalPosition: {x: -129.190491, y: 185, z: .463848114}
+  m_LocalPosition: {x: -129.190491, y: 185, z: .445781708}
   m_LocalScale: {x: 20, y: .0500000007, z: 20}
   m_Children: []
   m_Father: {fileID: 400094}
@@ -11936,7 +11936,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 100268}
   - {fileID: 100264}
-  OpenOnStart: 0
+  OpenOnStart: 1
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11969,7 +11969,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 100300}
   - {fileID: 100296}
-  OpenOnStart: 0
+  OpenOnStart: 1
 --- !u!114 &11400028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12140,7 +12140,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 100354}
   - {fileID: 100362}
-  OpenOnStart: 0
+  OpenOnStart: 1
   BrokenDoor: {fileID: 100000, guid: b37e915ee26a7da45aea5db55a0dd17f, type: 2}
 --- !u!136 &13600000
 CapsuleCollider:
