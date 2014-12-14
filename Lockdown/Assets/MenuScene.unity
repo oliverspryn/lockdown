@@ -2563,6 +2563,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294962431
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
   m_RootGameObject: {fileID: 679564478}
@@ -2775,7 +2779,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294963967
+      value: 4294961919
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
       propertyPath: m_NormalizedViewPortRect.x
@@ -6214,7 +6218,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294964479
+    m_Bits: 4294962431
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9155,7 +9159,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294963711
+    m_Bits: 4294961663
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -17762,7 +17766,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294963967
+    m_Bits: 4294961919
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -18641,7 +18645,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294965247
+    m_Bits: 4294963199
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -20320,7 +20324,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294963711
+      value: 4294961663
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
       propertyPath: Controller
