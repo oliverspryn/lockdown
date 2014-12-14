@@ -779,6 +779,10 @@ Prefab:
       propertyPath: ButtonHUD
       value: 
       objectReference: {fileID: 2089321762}
+    - target: {fileID: 400520, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -27.8296661
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
   m_RootGameObject: {fileID: 737910427}
@@ -27922,7 +27926,7 @@ Transform:
   m_PrefabInternal: {fileID: 83149279}
   m_GameObject: {fileID: 2100567286}
   m_LocalRotation: {x: .5, y: -.5, z: -.5, w: -.5}
-  m_LocalPosition: {x: -19.5870972, y: 6.60072994, z: -27.7117004}
+  m_LocalPosition: {x: -19.5870972, y: 6.60072994, z: -27.8296661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 618760240}
