@@ -755,7 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c8c37523efe964ab03abc14ac0527b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElapsedTime: 5
+  ElapsedTime: 300
   Explosion: {fileID: 100000, guid: e25761dc6f0a53749900b873736cc0c6, type: 2}
   ExplosionCount: 30
   ExplosionDuration: 30

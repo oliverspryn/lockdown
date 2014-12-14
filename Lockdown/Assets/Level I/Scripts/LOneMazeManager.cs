@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System;
 
+/// <summary>
+/// This class creates three mazes and puts them together to maze
+/// a super-maze for level one.
+/// </summary>
 public class LOneMazeManager : MonoBehaviour {
 	#region Fields
 
@@ -79,7 +83,7 @@ public class LOneMazeManager : MonoBehaviour {
 		Center.Maze = Instantiate(Maze) as GameObject;
 		Center.Script = Center.Maze.GetComponent<LOneMaze>();
 
-		Maze.GetComponent<LOneMaze>().MazeLocation.x -= Center.Script.Width;
+		Maze.GetComponent<LOneMaze>().MazeLocation.x -= Center.Script.Width + Center.Script.OuterWall.transform.localScale.z;
 		Left = new MazeAccessories();
 		Left.Maze = Instantiate(Maze) as GameObject;
 		Left.Script = Left.Maze.GetComponent<LOneMaze>();
@@ -109,28 +113,35 @@ public class LOneMazeManager : MonoBehaviour {
 	}
 
 /// <summary>
-/// Create passageways between the child mazes.
+/// Create passageways between the child mazes, and remove the two 
+/// walls between each sub-maze.
 /// </summary>
 	public void Start() {
-		Left.Script.DestroyWall(Left.Script.X - 1, 0, Compass.East, true);
+	//Create passage ways
 		Left.Script.DestroyWall(0, Left.Script.Y - 1, Compass.West, true);
-
-		Center.Script.DestroyWall(Center.Script.X - 1, Center.Script.Y - 1, Compass.East, true);
 		Center.Script.DestroyWall(0, 0, Compass.West, true);
-
 		Right.Script.DestroyWall(Right.Script.X - 1, 0, Compass.East, true);
 		Right.Script.DestroyWall(0, Right.Script.Y - 1, Compass.West, true);
+
+	//Knock out the double-wall between the sub-mazes
+		for(int i = 0; i < Left.Script.Y; ++i) {
+			Left.Script.DestroyWall(Left.Script.X - 1, i, Compass.East, true);
+		}
+
+		for(int i = 0; i < Center.Script.Y; ++i) {
+			Center.Script.DestroyWall(Center.Script.X - 1, i, Compass.East, true);
+		}
 	}
 
 	#endregion
 
 	#region Public Methods
 
-/// <summary>
-/// Generate each of the child mazes.
-/// </summary>
-/// 
-/// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
+	/// <summary>
+	/// Generate each of the child mazes.
+	/// </summary>
+	/// 
+	/// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
 	public void Init(int seed = -1) {
 		seed = (seed == -1) ? Seed : seed;
 
