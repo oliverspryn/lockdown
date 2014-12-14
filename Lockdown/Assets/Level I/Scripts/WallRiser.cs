@@ -45,7 +45,7 @@ public class WallRiser : MonoBehaviour {
 
 	//Activate the destroyer
 		if(Destroyer != null) {
-			Destroyer.GetComponent<Destroyer>().Activate = true;
+			Destroyer.GetComponent<Destroyer>().Active = true;
 		}
 	}
 
