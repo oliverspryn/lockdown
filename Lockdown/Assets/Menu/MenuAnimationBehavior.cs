@@ -7,10 +7,9 @@ public class MenuAnimationBehavior : MonoBehaviour {
 	public Animator Model3;
 
 	public int Controller;
-
+	public int model;
 
 	Animator[] Models;
-	int model;
 	string playerInputSuffix;
 
 	// Use this for initialization
