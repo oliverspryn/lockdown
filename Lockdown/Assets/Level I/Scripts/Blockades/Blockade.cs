@@ -3,7 +3,7 @@ using UnityEngine;
 #region Delegates
 
 /// <summary>
-/// A delegate which is used during a <c>Blockade</c> opened event,
+/// A delegate which is used during a <c>Blockade</c> opened event.
 /// </summary>
 /// 
 /// <param name="netID">Information about the blockade network ID</param>
