@@ -48,20 +48,30 @@ public class MainMenuControl : MonoBehaviour {
 		{
 			//perform actions associated with selected option
 
-			gameObject.SetActive(false);
 			C1.gameObject.SetActive(true);
 			C2.gameObject.SetActive(true);
 			C3.gameObject.SetActive(true);
 
 			if(options[cur].name == "New Local Game"){
 				LocalScreen.gameObject.SetActive(true);
+				C1.GetComponent<MenuAnimationBehavior>().isClient = 0;
+				C2.GetComponent<MenuAnimationBehavior>().isClient = 0;
+				C3.GetComponent<MenuAnimationBehavior>().isClient = 0;
 			} else if(options[cur].name == "Host Game 1"){
 				HostScreen.gameObject.SetActive(true);
 				HostScreen.GetComponent<LobbyCodeManager>().showStaticSequence(8);
+				C1.GetComponent<MenuAnimationBehavior>().isClient = 1;
+				C2.GetComponent<MenuAnimationBehavior>().isClient = 1;
+				C3.GetComponent<MenuAnimationBehavior>().isClient = 1;
 			} else if(options[cur].name == "Join Game 1"){
 				ClientScreen.gameObject.SetActive(true);
 				ClientScreen.GetComponent<LobbyCodeManager>().enterStaticSequence(8);
+				C1.GetComponent<MenuAnimationBehavior>().isClient = 2;
+				C2.GetComponent<MenuAnimationBehavior>().isClient = 2;
+				C3.GetComponent<MenuAnimationBehavior>().isClient = 2;
 			}
+
+
 			gameObject.SetActive(false);
 
 		}

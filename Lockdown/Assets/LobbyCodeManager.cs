@@ -9,10 +9,12 @@ public class LobbyCodeManager : MonoBehaviour {
 	public Camera charSelect2;
 	public Camera charSelect3;
 
+	public bool entering;
+
 	private GameObject[] buttons;
 	private GameObject[] challenge;
 	private int pos;
-	private bool entering;
+
 	private string code;
 	private string layerString;
 

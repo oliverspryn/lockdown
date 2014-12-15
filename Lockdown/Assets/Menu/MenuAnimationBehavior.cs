@@ -5,9 +5,11 @@ public class MenuAnimationBehavior : MonoBehaviour {
 	public Animator Model1;
 	public Animator Model2;
 	public Animator Model3;
-
+	
 	public int Controller;
 	public int model;
+
+	public int isClient;//0 for local, 1 for host, 2 for client
 
 	Animator[] Models;
 	string playerInputSuffix;
@@ -22,11 +24,17 @@ public class MenuAnimationBehavior : MonoBehaviour {
 		Models [2] = Model3;
 		Models [3] = null;
 		playerInputSuffix = " P" + Controller;
-
 	}
 
 	// Update is called once per frame
 	void Update () {
+
+		if((isClient == 1 && Controller == 3) || (isClient == 2 && Controller != 3))
+		{
+			return;
+		}
+		if(isClient == 2)
+			playerInputSuffix = " P" + (Controller - 2);
 
 		if (Input.GetButtonDown ("LB" + playerInputSuffix))
 		{
