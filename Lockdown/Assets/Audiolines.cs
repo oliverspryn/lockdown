@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class Audiolines : MonoBehaviour {
-
+	bool first;
 	// Use this for initialization
 	void Start () {
-	
+		first = true;
 	}
 	
 	// Update is called once per frame
@@ -14,6 +14,9 @@ public class Audiolines : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		gameObject.audio.Play();
+		if (first) {
+						gameObject.audio.Play ();
+			first = false;
+				}
 	}
 }
