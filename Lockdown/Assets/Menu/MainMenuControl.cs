@@ -51,7 +51,9 @@ public class MainMenuControl : MonoBehaviour {
 			C1.gameObject.SetActive(true);
 			C2.gameObject.SetActive(true);
 			C3.gameObject.SetActive(true);
-
+			C1.GetComponent<MenuAnimationBehavior>().model = 3;
+			C2.GetComponent<MenuAnimationBehavior>().model = 3;
+			C3.GetComponent<MenuAnimationBehavior>().model = 3;
 			if(options[cur].name == "New Local Game"){
 				LocalScreen.gameObject.SetActive(true);
 				C1.GetComponent<MenuAnimationBehavior>().isClient = 0;
