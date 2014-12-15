@@ -10,9 +10,9 @@ public class BlockadeManager : MonoBehaviour {
 	#region Fields
 
 /// <summary>
-/// An array of tags which are associated with the respective blockades.
+/// An array of blockades which are to be managed by this class.
 /// </summary>
-	public string[] BlockadeTags;
+	public GameObject[] Blockades;
 
 /// <summary>
 /// A Maze Manager object which will contain a series of <c>Maze</c> objects
@@ -42,10 +42,8 @@ public class BlockadeManager : MonoBehaviour {
 		Manager = new List<Blockade>();
 
 	//Put all of the tagged blockades into the master array
-		foreach(string t in BlockadeTags) {
-			foreach(GameObject go in GameObject.FindGameObjectsWithTag(t)) {
-				Manager.Add(go.GetComponent<Blockade>());
-			}
+		foreach(GameObject b in Blockades) {
+			Manager.Add(b.GetComponent<Blockade>());
 		}
 
 	//Now, go search the maze

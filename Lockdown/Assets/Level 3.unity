@@ -125,6 +125,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &907493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,6 +4742,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &121953315
 GameObject:
   m_ObjectHideFlags: 0
@@ -15859,7 +15861,7 @@ Transform:
   - {fileID: 1687603709}
   - {fileID: 1611298631}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &365797359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16248,6 +16250,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &375230153
 GameObject:
   m_ObjectHideFlags: 0
@@ -18741,6 +18744,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &424478864
 Renderer:
   m_ObjectHideFlags: 0
@@ -22813,6 +22817,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &515013516
 GameObject:
   m_ObjectHideFlags: 0
@@ -23111,6 +23116,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &520242784
 Renderer:
   m_ObjectHideFlags: 0
@@ -24633,6 +24639,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &541569268
 GameObject:
   m_ObjectHideFlags: 0
@@ -25472,6 +25479,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &557856329
 Renderer:
   m_ObjectHideFlags: 0
@@ -27598,6 +27606,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &600350001
 GameObject:
   m_ObjectHideFlags: 0
@@ -32073,6 +32082,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.size
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -32129,6 +32142,54 @@ Prefab:
       propertyPath: isServer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[0]
+      value: 
+      objectReference: {fileID: 284226672}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[1]
+      value: 
+      objectReference: {fileID: 391132507}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[2]
+      value: 
+      objectReference: {fileID: 1211495402}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[3]
+      value: 
+      objectReference: {fileID: 1831935176}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[4]
+      value: 
+      objectReference: {fileID: 662088398}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[5]
+      value: 
+      objectReference: {fileID: 1864784634}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[6]
+      value: 
+      objectReference: {fileID: 1348630185}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[7]
+      value: 
+      objectReference: {fileID: 1361140070}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[8]
+      value: 
+      objectReference: {fileID: 418754760}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[9]
+      value: 
+      objectReference: {fileID: 816389350}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[10]
+      value: 
+      objectReference: {fileID: 41120443}
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.data[11]
+      value: 
+      objectReference: {fileID: 1933736420}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
   m_RootGameObject: {fileID: 1883215051}
@@ -34892,6 +34953,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &747560090
 Prefab:
   m_ObjectHideFlags: 0
@@ -40488,6 +40550,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &882570079
 GameObject:
   m_ObjectHideFlags: 0
@@ -43879,7 +43942,7 @@ Transform:
   - {fileID: 1014437887}
   - {fileID: 641457914}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1 &949488100
 GameObject:
   m_ObjectHideFlags: 0
@@ -55247,6 +55310,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1198781808
 GameObject:
   m_ObjectHideFlags: 0
@@ -58855,6 +58919,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1269269352
 GameObject:
   m_ObjectHideFlags: 0
@@ -60173,6 +60238,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1292296411
 GameObject:
   m_ObjectHideFlags: 0
@@ -60666,6 +60732,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1308508217
 Prefab:
   m_ObjectHideFlags: 0
@@ -61511,6 +61578,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1327685782
 GameObject:
   m_ObjectHideFlags: 0
@@ -71718,6 +71786,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1546921018
 Renderer:
   m_ObjectHideFlags: 0
@@ -78733,6 +78802,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1725305940
 Prefab:
   m_ObjectHideFlags: 0
@@ -81596,6 +81666,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1787534305
 Renderer:
   m_ObjectHideFlags: 0
@@ -83485,6 +83556,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1821283519
 Renderer:
   m_ObjectHideFlags: 0
@@ -86753,6 +86825,19 @@ MonoBehaviour:
   useAWSserver: 1
   AWS_URL: 54.69.3.209
   maze: {fileID: 0}
+  Blockades:
+  - {fileID: 284226672}
+  - {fileID: 391132507}
+  - {fileID: 1211495402}
+  - {fileID: 1831935176}
+  - {fileID: 662088398}
+  - {fileID: 1864784634}
+  - {fileID: 1348630185}
+  - {fileID: 1361140070}
+  - {fileID: 418754760}
+  - {fileID: 816389350}
+  - {fileID: 41120443}
+  - {fileID: 1933736420}
   P1Controller: {fileID: 100136, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
   P2Controller: {fileID: 100028, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
   P3Controller: {fileID: 100016, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
@@ -86773,7 +86858,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1001 &1883386570
 Prefab:
   m_ObjectHideFlags: 0
@@ -92034,6 +92119,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1984880521
 Renderer:
   m_ObjectHideFlags: 0

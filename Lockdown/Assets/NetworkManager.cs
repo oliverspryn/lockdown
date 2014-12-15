@@ -19,6 +19,7 @@ public class NetworkManager : MonoBehaviour {
 	
 	// Handles to network-synchronized game objects within the hierarchy (not initialized by NetworkManager)
 	public GameObject maze;
+	public GameObject[] Blockades;
 	
 	// Prefabs for network-synchronized objects initialized by the NetworkManager
 	public GameObject P1Controller, P2Controller, P3Controller, P4Controller;
