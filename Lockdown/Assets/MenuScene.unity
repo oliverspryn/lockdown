@@ -3819,6 +3819,7 @@ MonoBehaviour:
   charSelect1: {fileID: 734052237}
   charSelect2: {fileID: 1360553764}
   charSelect3: {fileID: 496285684}
+  entering: 0
 --- !u!81 &337636010
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6255,6 +6256,7 @@ MonoBehaviour:
   Model3: {fileID: 1396572307}
   Controller: 3
   model: 0
+  isClient: 0
 --- !u!1 &498383152
 GameObject:
   m_ObjectHideFlags: 0
@@ -9110,6 +9112,7 @@ MonoBehaviour:
   Model3: {fileID: 784524663}
   Controller: 1
   model: 0
+  isClient: 0
 --- !u!81 &734052234
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10552,6 +10555,7 @@ MonoBehaviour:
   charSelect1: {fileID: 734052237}
   charSelect2: {fileID: 1360553764}
   charSelect3: {fileID: 496285684}
+  entering: 0
 --- !u!81 &787406429
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10987,6 +10991,7 @@ MonoBehaviour:
   charSelect1: {fileID: 734052237}
   charSelect2: {fileID: 1360553764}
   charSelect3: {fileID: 496285684}
+  entering: 0
 --- !u!81 &836576755
 AudioListener:
   m_ObjectHideFlags: 0
@@ -17717,6 +17722,7 @@ MonoBehaviour:
   Model3: {fileID: 49722396}
   Controller: 2
   model: 0
+  isClient: 0
 --- !u!81 &1360553761
 AudioListener:
   m_ObjectHideFlags: 0
