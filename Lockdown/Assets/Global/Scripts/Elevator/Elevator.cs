@@ -9,10 +9,20 @@ public class Elevator : MonoBehaviour {
 	#region Fields
 
 /// <summary>
+/// Whether or not this elevator is active, and has its lights on.
+/// </summary>
+	public bool Active = true;
+
+/// <summary>
 /// A reference to the object a player musty collide with in order to 
 /// be considered "in" the elevator.
 /// </summary>
 	public GameObject CollisionTracker;
+
+/// <summary>
+/// The quad which is used to contain the player within the elevator.
+/// </summary>
+	public GameObject Container;
 
 /// <summary>
 /// When looking at the doors, into the elevator from outside, which
@@ -66,10 +76,20 @@ public class Elevator : MonoBehaviour {
 /// <summary>
 /// Keep track of the movement light's original position so that it
 /// can transition back to this original spot as it keeps moving 
-/// vertically through the cabin of the elevator.
+/// vertically through the cabin of the elevator. Also, decide whether
+/// or not this elevator is active.
 /// </summary>
 	void Start () {
 		MovementLightStart = MovementLight.transform.position;
+
+	//Deactivate some components
+		if(!Active) {
+			foreach(GameObject l in Lights) {
+				Destroy(l);
+			}
+		}
+
+		Destroy(Container);
 	}
 
 	#endregion
@@ -81,7 +101,7 @@ public class Elevator : MonoBehaviour {
 /// </summary>
 	public void Update () {
 	//Is the elevator moving?
-		if(PlayerCount != 0)
+		if(PlayerCount != 0 || !Active)
 			return;
 
 	//Close the doors

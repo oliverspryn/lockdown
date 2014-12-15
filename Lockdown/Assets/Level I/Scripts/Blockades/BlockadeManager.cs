@@ -10,7 +10,7 @@ public class BlockadeManager : MonoBehaviour {
 	#region Fields
 
 /// <summary>
-/// An array of <c>Blockade</c> objects.
+/// An array of blockades which are to be managed by this class.
 /// </summary>
 	public GameObject[] Blockades;
 
@@ -41,7 +41,7 @@ public class BlockadeManager : MonoBehaviour {
 	public void Init () {
 		Manager = new List<Blockade>();
 
-	//Put all of the manually defined blockades into the master array
+	//Put all of the tagged blockades into the master array
 		foreach(GameObject b in Blockades) {
 			Manager.Add(b.GetComponent<Blockade>());
 		}

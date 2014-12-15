@@ -982,7 +982,7 @@ GameObject:
   - 65: {fileID: 6500052}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1622,7 +1622,7 @@ GameObject:
   - 65: {fileID: 6500080}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,7 +1692,7 @@ GameObject:
   - 114: {fileID: 11400024}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1936,7 +1936,7 @@ GameObject:
   - 65: {fileID: 6500104}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2433,7 +2433,7 @@ GameObject:
   - 65: {fileID: 6500128}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2655,7 +2655,7 @@ GameObject:
   - 65: {fileID: 6500144}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2749,7 +2749,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &100322
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -3456,7 +3456,7 @@ GameObject:
   - 65: {fileID: 6500180}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4203,7 +4203,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &100492
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -4369,7 +4369,7 @@ GameObject:
   - 65: {fileID: 6500234}
   m_Layer: 0
   m_Name: Jail Door
-  m_TagString: Untagged
+  m_TagString: Jail Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4643,11 +4643,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.34000003, y: 2.82999992, z: 19.4899998}
+  m_LocalPosition: {x: 1.33999634, y: 2.82999992, z: 19.4899979}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 400184}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!4 &400012
 Transform:
   m_ObjectHideFlags: 1
@@ -4712,8 +4712,6 @@ Transform:
   m_Children:
   - {fileID: 400478}
   - {fileID: 400438}
-  - {fileID: 400492}
-  - {fileID: 400322}
   - {fileID: 400100}
   m_Father: {fileID: 400184}
   m_RootOrder: 6
@@ -5248,7 +5246,7 @@ Transform:
   - {fileID: 400086}
   - {fileID: 400176}
   m_Father: {fileID: 400020}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!4 &400102
 Transform:
   m_ObjectHideFlags: 1
@@ -5787,7 +5785,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 241.100006, y: -2.70000005, z: -111.660004}
+  m_LocalPosition: {x: 236.169998, y: -2.70000005, z: -111.660004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400304}
@@ -5797,8 +5795,10 @@ Transform:
   - {fileID: 400138}
   - {fileID: 400462}
   - {fileID: 400020}
-  - {fileID: 400010}
   - {fileID: 400520}
+  - {fileID: 400492}
+  - {fileID: 400010}
+  - {fileID: 400322}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400186
@@ -6678,13 +6678,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.56289673, y: -36.0259171, z: -59.6687469}
+  m_LocalPosition: {x: -65.5402985, y: -31.5080528, z: -54.7330933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400014}
   - {fileID: 400174}
-  m_Father: {fileID: 400020}
-  m_RootOrder: 3
+  m_Father: {fileID: 400184}
+  m_RootOrder: 10
 --- !u!4 &400324
 Transform:
   m_ObjectHideFlags: 1
@@ -7771,14 +7771,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122.275833, y: -8.88969421, z: -49.0831909}
+  m_LocalPosition: {x: 60.2984467, y: -4.37183189, z: -44.1475372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400504}
   - {fileID: 400160}
   - {fileID: 400234}
-  m_Father: {fileID: 400020}
-  m_RootOrder: 2
+  m_Father: {fileID: 400184}
+  m_RootOrder: 8
 --- !u!4 &400494
 Transform:
   m_ObjectHideFlags: 1
@@ -7954,14 +7954,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100520}
   m_LocalRotation: {x: .5, y: -.5, z: -.5, w: -.5}
-  m_LocalPosition: {x: -19.5870972, y: 6.60072994, z: -27.7117004}
+  m_LocalPosition: {x: -19.5870972, y: 6.60072994, z: -27.8296661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400162}
   - {fileID: 400486}
   - {fileID: 400446}
   m_Father: {fileID: 400184}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!4 &400522
 Transform:
   m_ObjectHideFlags: 1
@@ -15781,6 +15781,7 @@ MonoBehaviour:
   ActivateButton: S P1
   ButtonDisplay: 1
   ButtonHUD: {fileID: 0}
+  Collider: {fileID: 0}
   Directions: Activate Kiosk
   JailDoors:
   - {fileID: 100114}
