@@ -109,6 +109,8 @@ public class NetworkManager : MonoBehaviour {
 				// Initialize blockade manager with blockades from maze + hallway
 				GameObject blockadeMgrObj = (GameObject)Network.Instantiate (BlockadeManager, Vector3.zero, Quaternion.identity, 0);
 				blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+				blockadeMgr.Blockades = Blockades;
+				blockadeMgr.MazeManager = maze;
 				blockadeMgr.Init();
 			//}
 			
@@ -147,6 +149,8 @@ public class NetworkManager : MonoBehaviour {
 			// Initialize blockade manager with blockades from maze + hallway
 			GameObject blockadeMgrObj = (GameObject)Object.Instantiate (BlockadeManager, Vector3.zero, Quaternion.identity);
 			blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+			blockadeMgr.Blockades = Blockades;
+			blockadeMgr.MazeManager = maze;
 			blockadeMgr.Init();
 		//}
 		
@@ -226,6 +230,8 @@ public class NetworkManager : MonoBehaviour {
 	void InitBlockadeDoorThings() {
 		GameObject blockadeMgrObj = GameObject.FindGameObjectWithTag("BlockadeManager");
 		blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+		blockadeMgr.Blockades = Blockades;
+		blockadeMgr.MazeManager = maze;
 		blockadeMgr.Init();
 	}
 
@@ -243,6 +249,8 @@ public class NetworkManager : MonoBehaviour {
 		// Initialize blockade manager with blockades from maze + hallway
 		GameObject blockadeMgrObj = GameObject.FindGameObjectWithTag ("BlockadeManager");
 		blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+		blockadeMgr.Blockades = Blockades;
+		blockadeMgr.MazeManager = maze;
 		blockadeMgr.Init();
 	}
 }
