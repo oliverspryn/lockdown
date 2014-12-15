@@ -39,7 +39,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f8d11b32a3dcd45871b5efebd831c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Blockades: []
+  BlockadeTags:
+  - Brute
+  - Hacker
+  - Jail Door
+  - Thief
   MazeManager: {fileID: 0}
 --- !u!148 &14800000
 NetworkView:

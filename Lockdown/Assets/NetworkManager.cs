@@ -107,11 +107,7 @@ public class NetworkManager : MonoBehaviour {
 				GameObject blockadeMgrObj = (GameObject)Network.Instantiate (BlockadeManager, Vector3.zero, Quaternion.identity, 0);
 				blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
 				blockadeMgr.MazeManager = maze; // manager will pull the maze's blockades from this
-				blockadeMgr.Blockades = new GameObject[3]; // will hold the 3 hallway blockades
 				GameObject dungeon = GameObject.FindGameObjectWithTag ("Dungeon");
-				blockadeMgr.Blockades[0] = dungeon.transform.Find ("Blockades/Brute").gameObject;
-				blockadeMgr.Blockades[1] = dungeon.transform.Find ("Blockades/Hacker").gameObject;
-				blockadeMgr.Blockades[2] = dungeon.transform.Find ("Blockades/Thief").gameObject;
 				blockadeMgr.Init();
 			}
 			
@@ -149,11 +145,7 @@ public class NetworkManager : MonoBehaviour {
 			GameObject blockadeMgrObj = (GameObject)Object.Instantiate (BlockadeManager, Vector3.zero, Quaternion.identity);
 			blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
 			blockadeMgr.MazeManager = maze; // manager will pull the maze's blockades from this
-			blockadeMgr.Blockades = new GameObject[3]; // will hold the 3 hallway blockades
 			GameObject dungeon = GameObject.FindGameObjectWithTag ("Dungeon");
-			blockadeMgr.Blockades[0] = dungeon.transform.Find ("Blockades/Brute").gameObject;
-			blockadeMgr.Blockades[1] = dungeon.transform.Find ("Blockades/Hacker").gameObject;
-			blockadeMgr.Blockades[2] = dungeon.transform.Find ("Blockades/Thief").gameObject;
 			blockadeMgr.Init();
 		}
 		
@@ -239,11 +231,7 @@ public class NetworkManager : MonoBehaviour {
 		GameObject blockadeMgrObj = GameObject.FindGameObjectWithTag ("BlockadeManager");
 		blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
 		blockadeMgr.MazeManager = maze; // manager will pull the maze's blockades from this
-		blockadeMgr.Blockades = new GameObject[3]; // will hold the 3 hallway blockades
 		GameObject dungeon = GameObject.FindGameObjectWithTag ("Dungeon");
-		blockadeMgr.Blockades[0] = dungeon.transform.Find ("Blockades/Brute").gameObject;
-		blockadeMgr.Blockades[1] = dungeon.transform.Find ("Blockades/Hacker").gameObject;
-		blockadeMgr.Blockades[2] = dungeon.transform.Find ("Blockades/Thief").gameObject;
 		blockadeMgr.Init();
 	}
 }
