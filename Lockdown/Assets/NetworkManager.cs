@@ -182,9 +182,12 @@ public class NetworkManager : MonoBehaviour {
 		//if(Application.loadedLevel == 0) // Level 1
 		//{
 			// Get the maze seed we (the server) generated locally
+		if(maze != null) {
 			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
-
-			networkView.RPC ("InitMaze", player, mazeScript.Seed);
+			networkView.RPC("InitMaze", player, mazeScript.Seed);
+		} else {
+			networkView.RPC("InitBlockadeDoorThings", player);
+		}
 		//}
 	}
 	
@@ -217,7 +220,14 @@ public class NetworkManager : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	[RPC]
+	void InitBlockadeDoorThings() {
+		GameObject blockadeMgrObj = GameObject.FindGameObjectWithTag("BlockadeManager");
+		blockadeMgr = blockadeMgrObj.GetComponent<BlockadeManager>();
+		blockadeMgr.Init();
+	}
+
 	// To be called by on the clients by the server when they connect -
 	// this will build the client's maze using the server's seed.
 	[RPC]
