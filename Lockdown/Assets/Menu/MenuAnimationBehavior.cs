@@ -35,7 +35,14 @@ public class MenuAnimationBehavior : MonoBehaviour {
 		}
 		if(isClient == 2)
 			playerInputSuffix = " P" + (Controller - 2);
-
+		else 
+			playerInputSuffix = " P" + Controller;
+		if(model == 3)
+		{
+			Models[0].SetBool ("Selected", false);
+			Models[1].SetBool ("Selected", false);
+			Models[2].SetBool ("Selected", false);
+		}
 		if (Input.GetButtonDown ("LB" + playerInputSuffix))
 		{
 			if(model != 3)

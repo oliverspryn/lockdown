@@ -28,7 +28,7 @@ public class Kiosk : MonoBehaviour {
 /// The object with which the user will collide in order to
 /// activate a close enough range within the kiosk.
 /// </summary>
-	public Handheld Collider;
+	public Collider Collider;
 
 /// <summary>
 /// The text to display when the user approaches the kiosk.
