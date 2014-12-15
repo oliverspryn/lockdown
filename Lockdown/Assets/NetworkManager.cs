@@ -138,8 +138,10 @@ public class NetworkManager : MonoBehaviour {
 			// In networked mode, this happens in:
 			//		Server: spawnNetworkedObjects()
 			// 		Client: InitMaze(), which is RPC called by OnPlayerConnected()
+		if(maze != null) {
 			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
 			mazeScript.Init();
+		}
 
 			// Initialize blockade manager with blockades from maze + hallway
 			GameObject blockadeMgrObj = (GameObject)Object.Instantiate (BlockadeManager, Vector3.zero, Quaternion.identity);
@@ -222,8 +224,10 @@ public class NetworkManager : MonoBehaviour {
 	void InitMaze(int seed)
 	{
 		// Initialize the maze using the seed sent by the server
-		LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
-		mazeScript.Init (seed);
+		if(maze != null) {
+			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
+			mazeScript.Init(seed);
+		}
 
 		// Initialize blockade manager with blockades from maze + hallway
 		GameObject blockadeMgrObj = GameObject.FindGameObjectWithTag ("BlockadeManager");
