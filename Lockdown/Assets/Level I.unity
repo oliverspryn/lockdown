@@ -12988,7 +12988,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 6db5f5024b3eff245903fc716a843dd8, type: 2}
       propertyPath: ElapsedTime
-      value: 300
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6db5f5024b3eff245903fc716a843dd8, type: 2}
@@ -23087,7 +23087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c8c37523efe964ab03abc14ac0527b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElapsedTime: 300
+  ElapsedTime: 60
   Explosion: {fileID: 100000, guid: e25761dc6f0a53749900b873736cc0c6, type: 2}
   ExplosionCount: 30
   ExplosionDuration: 30
