@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour {
 			Application.LoadLevel ("Video");
 			break;
 		case "Level I":
+		case "Level 1": // old typos never die...but we can patch over them! :-D
 			Application.LoadLevel ("Level I");
 			break;
 		case "Level 2":
@@ -62,7 +63,7 @@ public class LevelManager : MonoBehaviour {
 			break;
 		default:
 			throw new Lockdown_LevelNotFoundException(
-				string.Format ("Level '{0}' not recognized by the LevelManager.", newLevelName));
+				string.Format ("Level '{0}' not recognized by the LevelManager. If you added a new level, did you forget to add it to LevelManager.cs?", newLevelName));
 		}
 	}
 

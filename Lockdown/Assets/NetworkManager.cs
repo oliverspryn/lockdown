@@ -35,11 +35,17 @@ public class NetworkManager : MonoBehaviour {
 	{
 		// See comments in MouseLook.cs or FPSInputController.js to explain
 		// this utter bizarreness
-		GameObject netOnOffFoobarThing = (GameObject)Object.Instantiate(new GameObject("Network OnOff Foobar Thing"));
+		/*GameObject netOnOffFoobarThing = (GameObject)Object.Instantiate(new GameObject("Network OnOff Foobar Thing"));
 		if(networkingOn)
 			netOnOffFoobarThing.SetActive (true);
 		else
-			netOnOffFoobarThing.SetActive (false);
+			netOnOffFoobarThing.SetActive (false);*/
+
+		// A much better way to do this!
+		if(networkingOn)
+			LockdownGlobals.Instance.networkingOn = true;
+		else
+			LockdownGlobals.Instance.networkingOn = false;
 	}
 	
 	// Use this for initialization

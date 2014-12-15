@@ -10,13 +10,15 @@ function Awake () {
 function Start()
 {
 	// Determine which controller we should be receiving input from
-	var netOnOffFoobarThing : GameObject = GameObject.Find ("Network OnOff Foobar Thing");
+	/*var netOnOffFoobarThing : GameObject = GameObject.Find ("Network OnOff Foobar Thing");
 	// Yes, I'm using a dummy GameObject's active state as a boolean. It's the only way I
 	// could think of to get a "truly global" boolean value that's accessible across
 	// scripts in different assemblies, e.g., scripts on "Standard Assets" in the "firstpass"
 	// assemblies, and NetworkManager in the main assembly. The purpose of this object is
 	// to signal whether we're in "networked/online" or "offline" mode.
 	if(netOnOffFoobarThing != null && netOnOffFoobarThing.activeInHierarchy)
+		networkingOn = true;*/
+	if(LockdownGlobals.Instance.networkingOn)
 		networkingOn = true;
 	
 	playerInputSuffix = " P1"; // default to player 1
@@ -57,7 +59,7 @@ function Start()
 // Update is called once per frame
 function Update () {
 	// Don't apply input if this is a remote player
-	if(!networkView.isMine)
+	if(networkingOn && !networkView.isMine)
 		return;
 
 	// Get the input vector from keyboard or analog stick

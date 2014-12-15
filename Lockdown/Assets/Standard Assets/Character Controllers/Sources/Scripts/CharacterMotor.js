@@ -9,10 +9,45 @@ var useFixedUpdate : boolean = true;
 
 public var animator : Animator;
 var playerInputSuffix : String;
-if(gameObject.tag == "Player 1" || gameObject.tag == "Player 3")
-	playerInputSuffix = " P1";
-else // we're player 2
-	playerInputSuffix = " P2";
+var networkingOn = false;
+//if(LockdownGlobals.Instance.networkingOn)
+//	networkingOn = true;
+// TODO: Fix this! Right now, the compilation order is keeping us from accessing LockdownGlobals here.
+networkingOn = true; // temporary hack
+	
+playerInputSuffix = " P1"; // default to player 1
+if(gameObject.tag == "Player 1")
+{
+	// If we're a network client, P1 and P2 are over on the server, so we should ignore input
+	// on their respective axes - those are being used for P3 and P4.
+	if(networkingOn && Network.isClient)
+		playerInputSuffix = "NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
+	else
+		playerInputSuffix = " P1";
+}
+else if(gameObject.tag == "Player 2")
+{
+	if(networkingOn && Network.isClient)
+		playerInputSuffix = "NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
+	else
+		playerInputSuffix = " P2";
+}
+else if(gameObject.tag == "Player 3")
+{
+	// If we're a network client, then P1 and P2 are over on the server, so we want
+	// P3 and P4 to be mapped to the first and second controllers.
+	if(networkingOn && Network.isClient)
+		playerInputSuffix = " P1";
+	else
+		playerInputSuffix = " P3";
+}
+else if(gameObject.tag == "Player 4")
+{
+	if(networkingOn && Network.isClient)
+		playerInputSuffix = " P2";
+	else
+		playerInputSuffix = " P4";
+}
 
 
 // For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
