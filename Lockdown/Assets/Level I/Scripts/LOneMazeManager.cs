@@ -83,12 +83,12 @@ public class LOneMazeManager : MonoBehaviour {
 		Center.Maze = Instantiate(Maze) as GameObject;
 		Center.Script = Center.Maze.GetComponent<LOneMaze>();
 
-		Maze.GetComponent<LOneMaze>().MazeLocation.x -= Center.Script.Width + Center.Script.OuterWall.transform.localScale.z;
+		Maze.GetComponent<LOneMaze>().MazeLocation.x -= Center.Script.Width - Center.Script.OuterWall.transform.localScale.z;
 		Left = new MazeAccessories();
 		Left.Maze = Instantiate(Maze) as GameObject;
 		Left.Script = Left.Maze.GetComponent<LOneMaze>();
 
-		Maze.GetComponent<LOneMaze>().MazeLocation.x += 2.0f * Center.Script.Width;
+		Maze.GetComponent<LOneMaze>().MazeLocation.x += 2.0f * Center.Script.Width - 2.0f * Center.Script.OuterWall.transform.localScale.z;
 		Right = new MazeAccessories();
 		Right.Maze = Instantiate(Maze) as GameObject;
 		Right.Script = Right.Maze.GetComponent<LOneMaze>();
@@ -109,7 +109,7 @@ public class LOneMazeManager : MonoBehaviour {
 		Right.Trigger.GetComponent<WallRiser>().Destroyer = Destroyer;
 
 	//Reset the position of the flipping prefab, somehow, we just modified it
-		Maze.GetComponent<LOneMaze>().MazeLocation.x -= Center.Script.Width;
+		Maze.GetComponent<LOneMaze>().MazeLocation.x -= Center.Script.Width - Center.Script.OuterWall.transform.localScale.z;
 	}
 
 /// <summary>
