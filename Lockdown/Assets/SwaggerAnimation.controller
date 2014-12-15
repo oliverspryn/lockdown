@@ -55,7 +55,7 @@ Transition:
   - m_ConditionMode: 5
     m_ConditionEvent: 
     m_EventTreshold: 0
-    m_ExitTime: .300000012
+    m_ExitTime: 10.3000002
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -121,6 +121,9 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
+      first: {fileID: 0}
+      second: []
+    data:
       first: {fileID: 110200000}
       second:
       - {fileID: 110129630}
@@ -128,9 +131,6 @@ StateMachine:
       first: {fileID: 110274838}
       second:
       - {fileID: 110122514}
-    data:
-      first: {fileID: 0}
-      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
