@@ -50576,7 +50576,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1105374301}
   m_Layer: 0
-  m_Name: P3 Placeholder
+  m_Name: P4 Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86006,7 +86006,7 @@ MonoBehaviour:
   P1Placeholder: {fileID: 1051367564}
   P2Placeholder: {fileID: 527255990}
   P3Placeholder: {fileID: 755865279}
-  P4Placeholder: {fileID: 0}
+  P4Placeholder: {fileID: 1105374300}
 --- !u!1 &1881447580
 GameObject:
   m_ObjectHideFlags: 0
