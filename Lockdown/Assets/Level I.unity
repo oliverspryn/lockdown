@@ -738,7 +738,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400184, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 241.100006
+      value: 236.169998
       objectReference: {fileID: 0}
     - target: {fileID: 400184, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9645,7 +9645,7 @@ Transform:
   m_PrefabInternal: {fileID: 83149279}
   m_GameObject: {fileID: 737910427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 241.100006, y: -2.70000005, z: -111.660004}
+  m_LocalPosition: {x: 236.169998, y: -2.70000005, z: -111.660004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1237890341}
@@ -20642,7 +20642,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1695118155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -125.839897, y: 9.12190819, z: 112.632599}
+  m_LocalPosition: {x: -130.368103, y: 9.12190819, z: 112.632599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1062712085}
@@ -20670,9 +20670,6 @@ MonoBehaviour:
   DoorRight: {fileID: 1002371643}
   LevelIndex: 1
   Lights:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 630629578}
   - {fileID: 1434896090}
   - {fileID: 1293434005}
@@ -20956,7 +20953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkingOn: 1
   isServer: 1
-  gameName: Lockdown-NetworkTest1
+  gameName: Birms
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
   useAWSserver: 1
