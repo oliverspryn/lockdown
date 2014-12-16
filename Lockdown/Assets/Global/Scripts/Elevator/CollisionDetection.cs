@@ -24,7 +24,8 @@ public class CollisionDetection : MonoBehaviour {
 /// 
 /// <param name="c">The object the player collides with</param>
 	private void OnTriggerEnter(Collider c) {
-		--Elevator.GetComponent<Elevator>().PlayerCount;
+		int now = --Elevator.GetComponent<Elevator>().PlayerCount;
+		Debug.LogWarning(string.Format("Collided, {0} collision(s) to close", now));
 	}
 
 	#endregion

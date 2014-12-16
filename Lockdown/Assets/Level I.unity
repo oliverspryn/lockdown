@@ -385,7 +385,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -1087,7 +1087,7 @@ Transform:
   m_PrefabInternal: {fileID: 188512622}
   m_GameObject: {fileID: 125557713}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 112.469513, y: 28.9935951, z: 15.7015457}
+  m_LocalPosition: {x: -234.460236, y: 28.9935951, z: 213.369141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 761319340}
@@ -1375,7 +1375,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -2655,7 +2655,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -2780,6 +2780,22 @@ Prefab:
     - target: {fileID: 400234, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
       propertyPath: m_LocalPosition.x
       value: -139.684097
+      objectReference: {fileID: 0}
+    - target: {fileID: 400024, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 213.369141
+      objectReference: {fileID: 0}
+    - target: {fileID: 400024, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -234.460236
+      objectReference: {fileID: 0}
+    - target: {fileID: 400112, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -240.249237
+      objectReference: {fileID: 0}
+    - target: {fileID: 400112, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 206.319641
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
@@ -2972,7 +2988,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -3359,7 +3375,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -7401,7 +7417,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -7965,7 +7981,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -8088,7 +8104,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -8165,7 +8181,7 @@ Transform:
   m_PrefabInternal: {fileID: 188512622}
   m_GameObject: {fileID: 474966050}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 122.469513, y: 28.99366, z: 15.7015457}
+  m_LocalPosition: {x: -240.249237, y: 28.99366, z: 206.319641}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 761319340}
@@ -8346,7 +8362,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -8822,6 +8838,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &536522483
 GameObject:
   m_ObjectHideFlags: 0
@@ -9569,6 +9586,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &614747832
 GameObject:
   m_ObjectHideFlags: 0
@@ -9755,6 +9773,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &618760238
 GameObject:
   m_ObjectHideFlags: 0
@@ -10091,11 +10110,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 654348185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -168.555161, y: -82.2324905, z: 243.481842}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
 --- !u!114 &654348188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10107,11 +10126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad92dd656f8ea2a4293ab09b562f7f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AWSServer: 54.69.3.209
-  AWSServerEnabled: 1
-  Host: 0
-  GameName: Lockdown Alpha
-  NetworkingEnabled: 1
 --- !u!1 &654528912
 GameObject:
   m_ObjectHideFlags: 0
@@ -10323,7 +10337,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -10701,6 +10715,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &728144909
 Renderer:
   m_ObjectHideFlags: 0
@@ -10839,7 +10854,7 @@ Transform:
   - {fileID: 58077077}
   - {fileID: 1282066740}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 6
 --- !u!1 &739717082
 GameObject:
   m_ObjectHideFlags: 0
@@ -12327,7 +12342,7 @@ Transform:
   m_Children:
   - {fileID: 673631051}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!114 &856844337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12354,7 +12369,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -13066,6 +13081,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &934551297
 GameObject:
   m_ObjectHideFlags: 0
@@ -14170,7 +14186,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!1 &1070226635
 GameObject:
   m_ObjectHideFlags: 0
@@ -14229,7 +14245,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -14357,7 +14373,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400034, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -130.368103
+      value: -125.574501
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
       propertyPath: m_LocalPosition.y
@@ -14382,6 +14398,14 @@ Prefab:
     - target: {fileID: 400034, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
+      propertyPath: Active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400034, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
@@ -15722,7 +15746,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -16273,7 +16297,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -17093,7 +17117,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -17598,7 +17622,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -17824,7 +17848,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -18300,7 +18324,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -18446,6 +18470,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1403979950
 Renderer:
   m_ObjectHideFlags: 0
@@ -19326,7 +19351,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -20885,7 +20910,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -21845,6 +21870,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1668457705
 GameObject:
   m_ObjectHideFlags: 0
@@ -23168,7 +23194,7 @@ Transform:
   m_PrefabInternal: {fileID: 1072466509}
   m_GameObject: {fileID: 1695118155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -130.368103, y: 9.12190819, z: 112.632599}
+  m_LocalPosition: {x: -125.574501, y: 9.12190819, z: 112.632599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1062712085}
@@ -23180,7 +23206,7 @@ Transform:
   - {fileID: 1719354458}
   - {fileID: 1319453792}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!114 &1695118157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23193,12 +23219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4d0e2496f3d644183f8bff657e4d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Active: 0
+  Active: 1
   CollisionTracker: {fileID: 1573557760}
   Container: {fileID: 1062712084}
   DoorLeft: {fileID: 2092427928}
   DoorRight: {fileID: 1002371643}
-  LevelIndex: 1
+  Level: 
   Lights:
   - {fileID: 630629578}
   - {fileID: 1434896090}
@@ -23763,7 +23789,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -25430,7 +25456,7 @@ AudioSource:
   Loop: 0
   Mute: 0
   Priority: 128
-  DopplerLevel: 0
+  DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -25788,7 +25814,7 @@ Transform:
   - {fileID: 1009981327}
   - {fileID: 1341117936}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!114 &1854298275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28335,6 +28361,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1969091785
 Renderer:
   m_ObjectHideFlags: 0
@@ -28980,6 +29007,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &2026552241
 Renderer:
   m_ObjectHideFlags: 0
