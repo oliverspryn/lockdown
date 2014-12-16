@@ -61,14 +61,13 @@ public class MenuAnimationBehavior : MonoBehaviour {
 		//if(model != 3)
 			//Models[model].SetBool ("Selected", true);
 		CharNetworker ch = GameObject.FindGameObjectWithTag("Character Network").GetComponent<CharNetworker>();
-		ch.callSetModel (model+Controller*4);
-
 		if(Network.connections.Length > 0)
-			networkView.RPC ("setModel", RPCMode.AllBuffered, model+Controller*4);
+			ch.callSetModel (model+Controller*4);
 	}
 
-	public void setTheModel(int model)
+	public void setTheModel(int model1)
 	{
+		model = model1;
 		Models[0].SetBool ("Selected", false);
 		Models[1].SetBool ("Selected", false);
 		Models[2].SetBool ("Selected", false);
