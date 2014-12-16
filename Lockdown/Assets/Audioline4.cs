@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Audiolines2 : MonoBehaviour {
+public class Audioline4 : MonoBehaviour {
 	int stage;
 	Dictionary<string, Transform> dict = new Dictionary<string, Transform>();
 	// Use this for initialization
@@ -18,7 +18,7 @@ public class Audiolines2 : MonoBehaviour {
 	void Update () {
 		if (!gameObject.audio.isPlaying && stage == 0) {
 			stage = 1;
-			Transform child = dict["Vincent8"];
+			Transform child = dict["Mia16"];
 			child.audio.Play();
 		}
 	}

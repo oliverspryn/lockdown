@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Audiolines2 : MonoBehaviour {
+public class Audiolines6 : MonoBehaviour {
 	int stage;
 	Dictionary<string, Transform> dict = new Dictionary<string, Transform>();
 	// Use this for initialization
@@ -18,8 +18,18 @@ public class Audiolines2 : MonoBehaviour {
 	void Update () {
 		if (!gameObject.audio.isPlaying && stage == 0) {
 			stage = 1;
-			Transform child = dict["Vincent8"];
+			Transform child = dict["Scriptedexplosion"];
 			child.audio.Play();
+		}
+		if (stage == 1) {
+			Transform child = dict["Scriptedexplosion"];
+			if(!child.audio.isPlaying)
+			{
+				stage = 2;
+				child = dict["VonStoiker21"];
+				child.audio.Play();
+			}
+			
 		}
 	}
 	void OnTriggerEnter(Collider other)
