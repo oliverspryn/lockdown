@@ -98,11 +98,19 @@ public class LevelManager : MonoBehaviour {
 	public void JoinGame(string GameName) {
 		LockdownGlobals.Instance.GameName = GameName;
 		LockdownGlobals.Instance.Host = Host.Client;
+
+		GameObject netMgr = GameObject.FindGameObjectWithTag("Network Manager");
+		if(netMgr != null)
+			RestoreNetMgrState(netMgr);
 	}
 
 	public void HostGame(string GameName) {
 		LockdownGlobals.Instance.GameName = GameName;
 		LockdownGlobals.Instance.Host = Host.Server;
+
+		GameObject netMgr = GameObject.FindGameObjectWithTag("Network Manager");
+		if(netMgr != null)
+			RestoreNetMgrState(netMgr);
 	}
 
 	public void StartGame(string LevelName) {
