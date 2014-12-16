@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour {
 	[RPC]
 	public void Trans(string level) {
 		Transable = true;
-		newLevelName = level;
+		Next = level;
 	}
 
 	// Use this function for any level transitions in the game.
