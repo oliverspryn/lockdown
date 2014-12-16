@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NetworkManagerV2 : MonoBehaviour {
 
-	LockdownGlobals globals = LockdownGlobals.Instance;
+	LockdownGlobals globals = null;
 
 	public bool useAWSserver = false;
 	public string AWS_URL; // set in GUI
