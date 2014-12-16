@@ -63,18 +63,24 @@ public class MenuAnimationBehavior : MonoBehaviour {
 		setModel (model);
 
 		if(Network.connections.Length > 0)
-			networkView.RPC ("setModel", RPCMode.OthersBuffered, model);
+			networkView.RPC ("setModel", RPCMode.OthersBuffered, model+Controller*4);
 	}
 
 	[RPC]
-	void setModel(int mod)
+	void setModel_1(int mod)
 	{
-		model = mod;
+		if(Controller != mod / 4)
+			return;
+
+		model = mod % 4;
 		Models[0].SetBool ("Selected", false);
 		Models[1].SetBool ("Selected", false);
 		Models[2].SetBool ("Selected", false);
 		if (model != 3)
 			Models[model].SetBool ("Selected", true);
 
+	}
+
+		
 	}
 }
