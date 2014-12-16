@@ -67,7 +67,7 @@ public class MenuAnimationBehavior : MonoBehaviour {
 	}
 
 	[RPC]
-	void setModel_1(int mod)
+	void setModel(int mod)
 	{
 		if(Controller != mod / 4)
 			return;
@@ -81,6 +81,4 @@ public class MenuAnimationBehavior : MonoBehaviour {
 
 	}
 
-		
-	}
 }
