@@ -2805,6 +2805,18 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 28.9936008
       objectReference: {fileID: 0}
+    - target: {fileID: 11400052, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: OpenOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400048, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: OpenOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
+      propertyPath: OpenOnStart
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
   m_RootGameObject: {fileID: 737910427}
@@ -3525,6 +3537,14 @@ Prefab:
       propertyPath: m_TagString
       value: Level Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c5d7c6b0dcd2dfb4ab9a42a8c1c06bfe, type: 2}
+      propertyPath: m_Name
+      value: Level Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c5d7c6b0dcd2dfb4ab9a42a8c1c06bfe, type: 2}
+      propertyPath: AutoStart
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5d7c6b0dcd2dfb4ab9a42a8c1c06bfe, type: 2}
   m_RootGameObject: {fileID: 245090544}
@@ -3613,7 +3633,7 @@ GameObject:
   - 114: {fileID: 245090546}
   - 148: {fileID: 245090545}
   m_Layer: 0
-  m_Name: Network Manager
+  m_Name: Level Manager
   m_TagString: Level Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3644,7 +3664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fecbc3c87a6b444890d61c544a8236a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoStart: 0
+  AutoStart: 1
 --- !u!4 &245090547
 Transform:
   m_ObjectHideFlags: 0
@@ -7419,7 +7439,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 1367353696}
   - {fileID: 1457307517}
-  OpenOnStart: 1
+  OpenOnStart: 0
   BrokenDoor: {fileID: 100000, guid: b37e915ee26a7da45aea5db55a0dd17f, type: 2}
 --- !u!82 &404372159
 AudioSource:
@@ -24142,7 +24162,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 685335584}
   - {fileID: 549625326}
-  OpenOnStart: 1
+  OpenOnStart: 0
 --- !u!82 &1774495115
 AudioSource:
   m_ObjectHideFlags: 0
@@ -28227,7 +28247,7 @@ MonoBehaviour:
   HeightObjects:
   - {fileID: 1890593372}
   - {fileID: 1279189749}
-  OpenOnStart: 1
+  OpenOnStart: 0
 --- !u!1 &1951338787
 GameObject:
   m_ObjectHideFlags: 0
