@@ -6,6 +6,7 @@ public class NetworkManager : MonoBehaviour {
 	// If false, we're in offline mode (no networking) - local multiplayer only
 	public bool networkingOn = false;
 	public bool isServer = false;
+	public int mazeseed = -1;
 	
 	private string gameTypeName = "edu.gcc.Lockdown.Lockdown";
 	public string gameName = "Lockdown-NetworkTest1";
@@ -239,6 +240,7 @@ public class NetworkManager : MonoBehaviour {
 	[RPC]
 	void InitMaze(int seed)
 	{
+		mazeseed = seed;
 		// Initialize the maze using the seed sent by the server
 		if(maze != null) {
 			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();

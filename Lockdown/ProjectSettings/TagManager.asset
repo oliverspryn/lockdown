@@ -30,6 +30,7 @@ TagManager:
   - Level Manager
   - Network Manager
   - Character Network
+  - Maze Mgr
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

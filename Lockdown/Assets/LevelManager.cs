@@ -118,9 +118,24 @@ public class LevelManager : MonoBehaviour {
 		TransitionLevel(LevelName);
 	}
 
+	[RPC]
+	public void BMgr() {
+		if(Network.isClient) {
+			GameObject netMgr = GameObject.FindGameObjectWithTag("Network Manager");
+			GameObject mgr = GameObject.Find("Blockade Manager(Clone)");//GameObject.FindGameObjectWithTag("BlockadeManager");
+			BlockadeManager script = mgr.GetComponent<BlockadeManager>();
+			NetworkManager nwm = netMgr.GetComponent<NetworkManager>();
+			script.Blockades = nwm.Blockades;
+			script.MazeManager = nwm.maze;
+			script.Init();
+		}
+	}
+
 	public void OnLevelWasLoaded() {
 		GameObject netMgr = GameObject.FindGameObjectWithTag ("Network Manager");
 		RestoreNetMgrState(netMgr);
+
+		
 	}
 
 	#region Exception Types

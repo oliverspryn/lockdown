@@ -2747,7 +2747,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400184, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400024, guid: c2d9ce2f65ce13c45b366819c3961b56, type: 2}
       propertyPath: ButtonHUD
@@ -8846,6 +8846,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &536522483
 GameObject:
   m_ObjectHideFlags: 0
@@ -9593,6 +9594,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &614747832
 GameObject:
   m_ObjectHideFlags: 0
@@ -9779,6 +9781,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &618760238
 GameObject:
   m_ObjectHideFlags: 0
@@ -10669,6 +10672,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &728144909
 Renderer:
   m_ObjectHideFlags: 0
@@ -13034,6 +13038,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &934551297
 GameObject:
   m_ObjectHideFlags: 0
@@ -14357,7 +14362,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
       propertyPath: Level
@@ -14433,7 +14438,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 6db5f5024b3eff245903fc716a843dd8, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 6db5f5024b3eff245903fc716a843dd8, type: 2}
       propertyPath: ProgressionType
@@ -15083,6 +15088,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 400016, guid: 090375f2bf4e57d418120f7c8ad131fe, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 090375f2bf4e57d418120f7c8ad131fe, type: 2}
   m_RootGameObject: {fileID: 2089321762}
@@ -15276,6 +15285,10 @@ Prefab:
     - target: {fileID: 100000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
       propertyPath: m_Name
       value: Network Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
@@ -18426,6 +18439,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1403979950
 Renderer:
   m_ObjectHideFlags: 0
@@ -21825,6 +21839,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1668457705
 GameObject:
   m_ObjectHideFlags: 0
@@ -23466,6 +23481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkingOn: 0
   isServer: 0
+  mazeseed: -1
   gameName: 
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
@@ -28315,6 +28331,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &1969091785
 Renderer:
   m_ObjectHideFlags: 0
@@ -28960,6 +28977,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!23 &2026552241
 Renderer:
   m_ObjectHideFlags: 0

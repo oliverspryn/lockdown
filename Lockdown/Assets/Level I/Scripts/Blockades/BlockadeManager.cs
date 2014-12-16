@@ -83,7 +83,20 @@ public class BlockadeManager : MonoBehaviour {
 /// <param name="netID">The network ID of the blockade to open</param>
 	[RPC]
 	public void Open(int netID) {
-		Manager[netID].Open();
+		if(Manager != null) {
+			Manager[netID].Open();
+		} else {
+			GameObject nwm = GameObject.FindGameObjectWithTag("Network Manager");
+			NetworkManager script = nwm.GetComponent<NetworkManager>();
+			Blockades = script.Blockades;
+			MazeManager = script.maze;
+			Init();
+			Manager[netID].Open();
+
+			GameObject maze = GameObject.FindGameObjectWithTag("Maze Mgr");
+			LOneMazeManager mazeScript = maze.GetComponent<LOneMazeManager>();
+			mazeScript.Init(script.mazeseed);
+		}
 	}
 
 /// <summary>
