@@ -17,11 +17,16 @@ public class LevelManager : MonoBehaviour {
 		RestoreNetMgrState(GameObject.FindGameObjectWithTag("Network Manager"));
 	}
 
+	public void Update() {
+		if(Transable) {
+			TransitionLevel(Next);
+			Transable = false;
+		}
+	}
+
 	[RPC]
 	public void Trans() {
 		Transable = true;
-		TransitionLevel(Next);
-		Transable = false;
 	}
 
 	// Use this function for any level transitions in the game.
@@ -36,13 +41,13 @@ public class LevelManager : MonoBehaviour {
 		//		*Restore state (NetworkManager, etc.)
 		//		*Set up new level
 
-		if(Network.isClient && !Transable) {
-			Next = newLevelName;
-			return;
-		} else if(Network.isServer) {
-			networkView.RPC("Trans", RPCMode.OthersBuffered);
-		} else {
-			return;
+		if(!Transable) {
+			if(Network.isServer) {
+				networkView.RPC("Trans", RPCMode.OthersBuffered);
+			} else {
+				Next = newLevelName;
+				return;
+			}
 		}
 
 		switch(newLevelName)
@@ -72,6 +77,8 @@ public class LevelManager : MonoBehaviour {
 			throw new Lockdown_LevelNotFoundException(
 				string.Format ("Level '{0}' not recognized by the LevelManager. If you added a new level, did you forget to add it to LevelManager.cs?", newLevelName));
 		}
+
+		Transable = false;
 	}
 
 	void RestoreNetMgrState(GameObject newNetMgrGameObj) {
