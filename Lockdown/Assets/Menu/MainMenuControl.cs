@@ -55,17 +55,38 @@ public class MainMenuControl : MonoBehaviour {
 			C2.GetComponent<MenuAnimationBehavior>().model = 3;
 			C3.GetComponent<MenuAnimationBehavior>().model = 3;
 			if(options[cur].name == "New Local Game"){
+				LockdownGlobals.Instance.NetworkingEnabled = false;
+
+				// All three players are on the same machine
+				LockdownGlobals.Instance.playerMachines[0] = 0;
+				LockdownGlobals.Instance.playerMachines[1] = 0;
+				LockdownGlobals.Instance.playerMachines[2] = 0;
+
 				LocalScreen.gameObject.SetActive(true);
 				C1.GetComponent<MenuAnimationBehavior>().isClient = 0;
 				C2.GetComponent<MenuAnimationBehavior>().isClient = 0;
 				C3.GetComponent<MenuAnimationBehavior>().isClient = 0;
 			} else if(options[cur].name == "Host Game 1"){
+				LockdownGlobals.Instance.NetworkingEnabled = true;
+
+				// Players 1 and 2 are on the server, and player 3 is on the first client
+				LockdownGlobals.Instance.playerMachines[0] = 0;
+				LockdownGlobals.Instance.playerMachines[1] = 0;
+				LockdownGlobals.Instance.playerMachines[2] = 1;
+
 				HostScreen.gameObject.SetActive(true);
 				HostScreen.GetComponent<LobbyCodeManager>().showStaticSequence(8);
 				C1.GetComponent<MenuAnimationBehavior>().isClient = 1;
 				C2.GetComponent<MenuAnimationBehavior>().isClient = 1;
 				C3.GetComponent<MenuAnimationBehavior>().isClient = 1;
 			} else if(options[cur].name == "Join Game 1"){
+				LockdownGlobals.Instance.NetworkingEnabled = true;
+
+				// Players 1 and 2 are on the server, and player 3 is on the first client
+				LockdownGlobals.Instance.playerMachines[0] = 0;
+				LockdownGlobals.Instance.playerMachines[1] = 0;
+				LockdownGlobals.Instance.playerMachines[2] = 1;
+
 				ClientScreen.gameObject.SetActive(true);
 				ClientScreen.GetComponent<LobbyCodeManager>().enterStaticSequence(8);
 				C1.GetComponent<MenuAnimationBehavior>().isClient = 2;

@@ -118,9 +118,12 @@ public class LobbyCodeManager : MonoBehaviour {
 				//verify the characters are appropriately selected
 				if(num1*num2*num3 == 6)//a 1, 2, and 3
 				{
+					// Record which players have chosen which characters
+					// (since we just verified the selection, we know the choices are compatible)
 					LockdownGlobals.Instance.characters[0] = num1;
 					LockdownGlobals.Instance.characters[1] = num2;
 					LockdownGlobals.Instance.characters[2] = num3;
+
 					//TODO: perform actions associated with selected option
 					LevelManager levelManager = GameObject.FindGameObjectWithTag("Level Manager").GetComponent<LevelManager>();
 

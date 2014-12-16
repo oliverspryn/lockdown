@@ -109,21 +109,86 @@ public class NetworkManager : MonoBehaviour {
 			//}
 			
 			// Since this is the server, we will have control of players 1 and 2.
-			if(player1 != null) player1 = (GameObject)Network.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation, 0);
-			if(player2 != null) player2 = (GameObject)Network.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation, 0);
-			// Activate P1 and P2's cameras
-			if(player1 != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-			if(player2 != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-			
+			// Match each player to the prefabs for the characters they're playing:
+			GameObject p1Char, p2Char;
+			GameObject p1Place, p2Place;
+			if(LockdownGlobals.Instance.characters[0] == 0)
+			{
+				p1Char = P1Controller;
+				p1Place = P1Placeholder;
+			}
+			else if(LockdownGlobals.Instance.characters[0] == 1)
+			{
+				p1Char = P2Controller;
+				p1Place = P2Placeholder;
+			}
+			else
+			{
+				p1Char = P3Controller;
+				p1Place = P3Placeholder;
+			}
+		
+			if(LockdownGlobals.Instance.characters[1] == 0)
+			{
+				p2Char = P1Controller;
+				p2Place = P1Placeholder;
+			}
+			else if(LockdownGlobals.Instance.characters[1] == 1)
+			{
+				p2Char = P2Controller;
+				p2Place = P2Placeholder;
+			}
+			else
+			{
+				p2Char = P3Controller;
+				p2Place = P3Placeholder;
+			}
+
+			// Instantiate the players, and activate their cameras for two-way split screen:
+			if(p1Place != null)
+			{
+				player1 = (GameObject)Network.Instantiate(p1Char, p1Place.gameObject.transform.position, p1Place.gameObject.transform.rotation, 0);
+				GameObject p1Camera = player1.transform.Find ("Main Camera").gameObject;
+				p1Camera.GetComponent<Camera>().rect = new Rect(0f, 0.5f, 1f, 0.5f); // top half of screen
+				p1Camera.SetActive(true);
+			}
+			if(p2Place != null)
+			{
+				player2 = (GameObject)Network.Instantiate(p2Char, p2Place.gameObject.transform.position, p2Place.gameObject.transform.rotation, 0);
+				GameObject p2Camera = player2.transform.Find ("Main Camera").gameObject;
+				p2Camera.GetComponent<Camera>().rect = new Rect(0f, 0f, 1f, 0.5f); // bottom half of screen
+				p2Camera.SetActive(true);
+			}
 		}
 		else // we are the client
 		{
-			// Since this is the client, we will have control of players 3 and 4.
-			if(player3 != null) player3 = (GameObject)Network.Instantiate(P3Controller, P3Placeholder.gameObject.transform.position, P3Placeholder.gameObject.transform.rotation, 0);
-			//player4 = (GameObject)Network.Instantiate(P4Controller, P4Placeholder.gameObject.transform.position, P4Placeholder.gameObject.transform.rotation, 0);
-			// Activate P3 and P4's cameras
-			if(player3 != null) player3.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-			//player4.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+			// Since this is the client, we'll have control of player 3.
+			// Match player 3 to the prefab for the character he's playing:
+			GameObject p3Char, p3Place;
+			if(LockdownGlobals.Instance.characters[2] == 0)
+			{
+				p3Char = P1Controller;
+				p3Place = P1Placeholder;
+			}
+			else if(LockdownGlobals.Instance.characters[2] == 1)
+			{
+				p3Char = P2Controller;
+				p3Place = P2Placeholder;
+			}
+			else
+			{
+				p3Char = P3Controller;
+				p3Place = P3Placeholder;
+			}
+
+			// Instantiate the player, and activate its camera to use the whole screen
+			if(p3Place != null)
+			{
+				player3 = (GameObject)Network.Instantiate(p3Char, p3Place.gameObject.transform.position, p3Place.gameObject.transform.rotation, 0);
+				GameObject p3Camera = player3.transform.Find ("Main Camera").gameObject;
+				p3Camera.GetComponent<Camera>().rect = new Rect(0f, 0f, 1f, 1f); // whole screen
+				p3Camera.SetActive(true);
+			}
 		}
 	}
 	
@@ -147,13 +212,80 @@ public class NetworkManager : MonoBehaviour {
 			blockadeMgr.MazeManager = maze;
 			blockadeMgr.Init();
 		//}
+
+		// Match each player to the prefabs for the characters they're playing:
+		GameObject p1Char, p2Char, p3Char;
+		GameObject p1Place, p2Place, p3Place;
+		if(LockdownGlobals.Instance.characters[0] == 0)
+		{
+			p1Char = P1Controller;
+			p1Place = P1Placeholder;
+		}
+		else if(LockdownGlobals.Instance.characters[0] == 1)
+		{
+			p1Char = P2Controller;
+			p1Place = P2Placeholder;
+		}
+		else
+		{
+			p1Char = P3Controller;
+			p1Place = P3Placeholder;
+		}
 		
-		// Spawn only players 1 and 2 in offline mode (later, we'll be using 4-way split screen)
-		if(player1 != null) player1 = (GameObject)Object.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation);
-		if(player2 != null) player2 = (GameObject)Object.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation);
-		// Activate P1 and P2's cameras
-		if(player1 != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-		if(player2 != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+		if(LockdownGlobals.Instance.characters[1] == 0)
+		{
+			p2Char = P1Controller;
+			p2Place = P1Placeholder;
+		}
+		else if(LockdownGlobals.Instance.characters[1] == 1)
+		{
+			p2Char = P2Controller;
+			p2Place = P2Placeholder;
+		}
+		else
+		{
+			p2Char = P3Controller;
+			p2Place = P3Placeholder;
+		}
+
+		if(LockdownGlobals.Instance.characters[2] == 0)
+		{
+			p3Char = P1Controller;
+			p3Place = P1Placeholder;
+		}
+		else if(LockdownGlobals.Instance.characters[2] == 1)
+		{
+			p3Char = P2Controller;
+			p3Place = P2Placeholder;
+		}
+		else
+		{
+			p3Char = P3Controller;
+			p3Place = P3Placeholder;
+		}
+
+		// Spawn all three players in 3-way split screen mode
+		if(p1Place != null)
+		{
+			player1 = (GameObject)Object.Instantiate(p1Char, p1Place.gameObject.transform.position, p1Place.gameObject.transform.rotation);
+			GameObject p1Camera = player1.transform.Find ("Main Camera").gameObject;
+			p1Camera.GetComponent<Camera>().rect = new Rect(0f, 0.5f, 1f, 0.5f); // top half of screen
+			p1Camera.SetActive(true);
+		}
+		if(p2Place != null)
+		{
+			player2 = (GameObject)Object.Instantiate(p2Char, p2Place.gameObject.transform.position, p2Place.gameObject.transform.rotation);
+			GameObject p2Camera = player2.transform.Find ("Main Camera").gameObject;
+			p2Camera.GetComponent<Camera>().rect = new Rect(0f, 0f, 0.5f, 0.5f); // bottom left quadrant
+			p2Camera.SetActive(true);
+		}
+		if(p3Place != null)
+		{
+			player3 = (GameObject)Object.Instantiate(p3Char, p3Place.gameObject.transform.position, p3Place.gameObject.transform.rotation);
+			GameObject p3Camera = player3.transform.Find ("Main Camera").gameObject;
+			p3Camera.GetComponent<Camera>().rect = new Rect(0.5f, 0f, 0.5f, 0.5f); // bottom right quadrant
+			p3Camera.SetActive(true);
+		}
 	}
 	
 	// *** Networking messages ***

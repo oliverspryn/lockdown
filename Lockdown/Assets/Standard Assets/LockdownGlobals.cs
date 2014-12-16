@@ -48,4 +48,11 @@ public class LockdownGlobals : Singleton<LockdownGlobals> {
 /// </summary>
 	public int[] characters = new int[3];
 
+/// <summary>
+/// Indicates which players are located on which machines:
+/// 	0 for server, 1 for first client, 2 for second client (only in three-way networked mode)
+/// Note that right now we're only supporting 3-way local and 2-player server/1-player server modes,
+/// but this array has planned ahead. :-)
+/// </summary>
+	public int[] playerMachines = new int[3];
 }
