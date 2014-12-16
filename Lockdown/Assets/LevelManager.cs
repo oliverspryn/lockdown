@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour {
 
 	[RPC]
 	public void Trans(string newLevelName) {
-		this.newLevelName = newLevelName;
+		Next = newLevelName;
 		Transable = true;
 	}
 
