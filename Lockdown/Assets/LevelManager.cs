@@ -4,10 +4,11 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 	private bool Transable = false;
 	private string Next = string.Empty;
+	public bool AutoStart = false;
 
 	void Awake() {
 		// Make sure the level manager itself survives all level transitions
-		DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(this);
 	}
 
 /// <summary>
@@ -15,8 +16,7 @@ public class LevelManager : MonoBehaviour {
 /// </summary>
 	public void Start() {
 		GameObject netMgr = GameObject.FindGameObjectWithTag ("Network Manager");
-		//if(netMgr != null)
-			//RestoreNetMgrState(netMgr);
+		if(AutoStart && netMgr != null) RestoreNetMgrState(netMgr);
 
 	}
 

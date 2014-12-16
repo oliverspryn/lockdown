@@ -29,7 +29,7 @@ public class NetworkManager : MonoBehaviour {
 	public GameObject P1Placeholder, P2Placeholder, P3Placeholder, P4Placeholder;
 	
 	// Objects that the manager has instantiated at runtime - handles for later runtime use
-	private GameObject player1, player2, player3, player4;
+	private GameObject player1 = null, player2 = null, player3 = null, player4 = null;
 	private BlockadeManager blockadeMgr;
 
 	void Awake()
@@ -109,11 +109,11 @@ public class NetworkManager : MonoBehaviour {
 			//}
 			
 			// Since this is the server, we will have control of players 1 and 2.
-			if(player1 != null) player1 = (GameObject)Network.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation, 0);
-			if(player2 != null) player2 = (GameObject)Network.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation, 0);
+			if(P1Placeholder != null) player1 = (GameObject)Network.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation, 0);
+			if(P2Placeholder != null) player2 = (GameObject)Network.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation, 0);
 			// Activate P1 and P2's cameras
-			if(player1 != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-			if(player2 != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+			if(P1Placeholder != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+			if(P2Placeholder != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
 			
 		}
 		else // we are the client
@@ -149,11 +149,11 @@ public class NetworkManager : MonoBehaviour {
 		//}
 		
 		// Spawn only players 1 and 2 in offline mode (later, we'll be using 4-way split screen)
-		if(player1 != null) player1 = (GameObject)Object.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation);
-		if(player2 != null) player2 = (GameObject)Object.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation);
+		if(P1Placeholder != null) player1 = (GameObject)Object.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation);
+		if(P2Placeholder != null) player2 = (GameObject)Object.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation);
 		// Activate P1 and P2's cameras
-		if(player1 != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-		if(player2 != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+		if(P1Placeholder != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+		if(P2Placeholder != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
 	}
 	
 	// *** Networking messages ***
