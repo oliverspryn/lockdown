@@ -66,9 +66,10 @@ public class LobbyCodeManager : MonoBehaviour {
 			challenge[i].guiTexture.color = new Color(.0f, .7f, .8f);
 			challenge[i].SetActive(true);
 		}
-		// create a server with code
+		// TODO:create a server with code
 		// make sure to check for no collisions
 		//code;
+		
 	}
 	
 	public void enterStaticSequence (int presses)
@@ -143,8 +144,8 @@ public class LobbyCodeManager : MonoBehaviour {
 		}
 		if(pos >= challenge.Length)
 		{
-			//try to find the server with code
-
+			//TODO:try to find the server with code
+			
 			//if it fails
 			for(int i = 0; i < challenge.Length; ++i)
 				Destroy(challenge[i], 1.0f); 

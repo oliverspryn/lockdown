@@ -939,7 +939,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 49722395}
   - 95: {fileID: 49722396}
-  - 148: {fileID: 49722397}
   m_Layer: 0
   m_Name: Mia
   m_TagString: Untagged
@@ -976,18 +975,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &49722397
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 49722394}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 49722395}
-  m_ViewID:
-    m_ID: 4
-    m_Type: 1
 --- !u!1 &50172685
 GameObject:
   m_ObjectHideFlags: 0
@@ -6176,6 +6163,7 @@ GameObject:
   - 124: {fileID: 496285682}
   - 81: {fileID: 496285681}
   - 114: {fileID: 496285686}
+  - 148: {fileID: 496285687}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6270,6 +6258,18 @@ MonoBehaviour:
   Controller: 3
   model: 0
   isClient: 0
+--- !u!148 &496285687
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496285680}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 496285686}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1 &498383152
 GameObject:
   m_ObjectHideFlags: 0
@@ -9089,6 +9089,7 @@ GameObject:
   - 124: {fileID: 734052235}
   - 81: {fileID: 734052234}
   - 114: {fileID: 734052233}
+  - 148: {fileID: 734052238}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9183,6 +9184,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!148 &734052238
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734052231}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 734052233}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1 &734569819
 GameObject:
   m_ObjectHideFlags: 0
@@ -10275,7 +10288,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 784524662}
   - 95: {fileID: 784524663}
-  - 148: {fileID: 784524664}
   m_Layer: 0
   m_Name: Mia
   m_TagString: Untagged
@@ -10312,18 +10324,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &784524664
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 784524661}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 784524662}
-  m_ViewID:
-    m_ID: 7
-    m_Type: 1
 --- !u!1 &785857766
 GameObject:
   m_ObjectHideFlags: 0
@@ -16500,7 +16500,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1278910034}
   - 95: {fileID: 1278910035}
-  - 148: {fileID: 1278910036}
   m_Layer: 0
   m_Name: vincent
   m_TagString: Untagged
@@ -16537,18 +16536,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &1278910036
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1278910033}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1278910034}
-  m_ViewID:
-    m_ID: 8
-    m_Type: 1
 --- !u!1 &1279212150
 GameObject:
   m_ObjectHideFlags: 0
@@ -17725,6 +17712,7 @@ GameObject:
   - 124: {fileID: 1360553762}
   - 81: {fileID: 1360553761}
   - 114: {fileID: 1360553760}
+  - 148: {fileID: 1360553765}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -17819,6 +17807,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!148 &1360553765
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360553758}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 1360553760}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1 &1362671635
 GameObject:
   m_ObjectHideFlags: 0
@@ -18304,7 +18304,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1396572306}
   - 95: {fileID: 1396572307}
-  - 148: {fileID: 1396572308}
   m_Layer: 0
   m_Name: Mia
   m_TagString: Untagged
@@ -18341,18 +18340,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &1396572308
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1396572305}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1396572306}
-  m_ViewID:
-    m_ID: 1
-    m_Type: 1
 --- !u!1 &1396966087
 GameObject:
   m_ObjectHideFlags: 0
@@ -19546,7 +19533,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1516235346}
   - 95: {fileID: 1516235347}
-  - 148: {fileID: 1516235348}
   m_Layer: 0
   m_Name: vincent
   m_TagString: Untagged
@@ -19583,18 +19569,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &1516235348
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1516235345}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1516235346}
-  m_ViewID:
-    m_ID: 5
-    m_Type: 1
 --- !u!1 &1518192132
 GameObject:
   m_ObjectHideFlags: 0
@@ -19954,7 +19928,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1559722058}
   - 95: {fileID: 1559722059}
-  - 148: {fileID: 1559722060}
   m_Layer: 0
   m_Name: carl
   m_TagString: Untagged
@@ -19991,18 +19964,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &1559722060
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1559722057}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1559722058}
-  m_ViewID:
-    m_ID: 6
-    m_Type: 1
 --- !u!1 &1560890568
 GameObject:
   m_ObjectHideFlags: 0
@@ -20412,6 +20373,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
       propertyPath: Controller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500004, guid: 289668616e2b221428d6e17a8ed0d493, type: 2}
+      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -21269,7 +21234,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1639157273}
   - 95: {fileID: 1639157274}
-  - 148: {fileID: 1639157275}
   m_Layer: 0
   m_Name: vincent
   m_TagString: Untagged
@@ -21306,18 +21270,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &1639157275
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1639157272}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1639157273}
-  m_ViewID:
-    m_ID: 2
-    m_Type: 1
 --- !u!1 &1639159311
 GameObject:
   m_ObjectHideFlags: 0
@@ -24746,7 +24698,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1943397776}
   - 95: {fileID: 1943397777}
-  - 148: {fileID: 1943397778}
   m_Layer: 0
   m_Name: carl
   m_TagString: Untagged
@@ -24783,18 +24734,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &1943397778
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1943397775}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1943397776}
-  m_ViewID:
-    m_ID: 3
-    m_Type: 1
 --- !u!1 &1944525352
 GameObject:
   m_ObjectHideFlags: 0
@@ -26641,7 +26580,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 2097782007}
   - 95: {fileID: 2097782008}
-  - 148: {fileID: 2097782009}
   m_Layer: 0
   m_Name: carl
   m_TagString: Untagged
@@ -26678,18 +26616,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!148 &2097782009
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2097782006}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 2097782007}
-  m_ViewID:
-    m_ID: 9
-    m_Type: 1
 --- !u!1 &2098836408
 GameObject:
   m_ObjectHideFlags: 0
