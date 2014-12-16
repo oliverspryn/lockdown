@@ -25,6 +25,8 @@ public class MainMenuControl : MonoBehaviour {
 			options[cur++] = child.GetComponent<TextMesh>();
 		cur = 0;
 		options [cur].color = Color.red;
+
+		LockdownGlobals.Instance.LevelManager = GameObject.FindGameObjectWithTag("Level Manager");
 	}
 	
 	// Update is called once per frame

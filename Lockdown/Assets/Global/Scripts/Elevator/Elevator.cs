@@ -123,7 +123,8 @@ public class Elevator : MonoBehaviour {
 			Lights[i].light.intensity -= 0.01f;
 
 			if(Lights[i].light.intensity < 0.01f) {
-				LevelManager levelMgr = GameObject.Find("Level Manager").GetComponent<LevelManager>();
+				GameObject go = LockdownGlobals.Instance.LevelManager;
+				LevelManager levelMgr = go.GetComponent<LevelManager>();
 				levelMgr.TransitionLevel(Level);
 				return;
 			}

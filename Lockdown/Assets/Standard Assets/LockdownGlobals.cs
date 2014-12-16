@@ -48,4 +48,6 @@ public class LockdownGlobals : Singleton<LockdownGlobals> {
 /// </summary>
 	public int[] characters = new int[3];
 
+	public GameObject LevelManager;
+
 }
