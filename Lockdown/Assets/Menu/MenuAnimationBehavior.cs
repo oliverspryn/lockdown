@@ -37,26 +37,42 @@ public class MenuAnimationBehavior : MonoBehaviour {
 			playerInputSuffix = " P" + (Controller - 2);
 		else 
 			playerInputSuffix = " P" + Controller;
+		/*
 		if(model == 3)
 		{
 			Models[0].SetBool ("Selected", false);
 			Models[1].SetBool ("Selected", false);
 			Models[2].SetBool ("Selected", false);
 		}
+		*/
 		if (Input.GetButtonDown ("LB" + playerInputSuffix))
 		{
-			if(model != 3)
-				Models[model].SetBool ("Selected", false);
+			//if(model != 3)
+			//	Models[model].SetBool ("Selected", false);
 			model--;
 		}
 		else if (Input.GetButtonDown ("RB" + playerInputSuffix))
 		{
-			if(model != 3)
-				Models[model].SetBool ("Selected", false);
+			//if(model != 3)
+			//	Models[model].SetBool ("Selected", false);
 			model++;
 		}
 		model = (model + 4) % 4;
-		if(model != 3)
+		//if(model != 3)
+			//Models[model].SetBool ("Selected", true);
+		setModel (model);
+		networkView.RPC ("setModel", RPCMode.OthersBuffered, model);
+	}
+
+	[RPC]
+	void setModel(int mod)
+	{
+		model = mod;
+		Models[0].SetBool ("Selected", false);
+		Models[1].SetBool ("Selected", false);
+		Models[2].SetBool ("Selected", false);
+		if (model != 3)
 			Models[model].SetBool ("Selected", true);
+
 	}
 }

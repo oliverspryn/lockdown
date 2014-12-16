@@ -6163,6 +6163,7 @@ GameObject:
   - 124: {fileID: 496285682}
   - 81: {fileID: 496285681}
   - 114: {fileID: 496285686}
+  - 148: {fileID: 496285687}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6257,6 +6258,18 @@ MonoBehaviour:
   Controller: 3
   model: 0
   isClient: 0
+--- !u!148 &496285687
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496285680}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 496285686}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1 &498383152
 GameObject:
   m_ObjectHideFlags: 0
@@ -9076,6 +9089,7 @@ GameObject:
   - 124: {fileID: 734052235}
   - 81: {fileID: 734052234}
   - 114: {fileID: 734052233}
+  - 148: {fileID: 734052238}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9170,6 +9184,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!148 &734052238
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734052231}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 734052233}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1 &734569819
 GameObject:
   m_ObjectHideFlags: 0
@@ -17686,6 +17712,7 @@ GameObject:
   - 124: {fileID: 1360553762}
   - 81: {fileID: 1360553761}
   - 114: {fileID: 1360553760}
+  - 148: {fileID: 1360553765}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -17780,6 +17807,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!148 &1360553765
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360553758}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 1360553760}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1 &1362671635
 GameObject:
   m_ObjectHideFlags: 0
