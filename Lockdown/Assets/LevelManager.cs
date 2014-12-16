@@ -92,6 +92,20 @@ public class LevelManager : MonoBehaviour {
 		newNetMgr.Init();
 	}
 
+	public void JoinGame(string GameName) {
+		LockdownGlobals.Instance.GameName = GameName;
+		LockdownGlobals.Instance.Host = Host.Client;
+	}
+
+	public void HostGame(string GameName) {
+		LockdownGlobals.Instance.GameName = GameName;
+		LockdownGlobals.Instance.Host = Host.Server;
+	}
+
+	public void StartGame(string LevelName) {
+		TransitionLevel(LevelName);
+	}
+
 	public void OnLevelWasLoaded() {
 		RestoreNetMgrState(GameObject.FindGameObjectWithTag("Network Manager"));
 	}

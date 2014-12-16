@@ -203,31 +203,6 @@ public class NetworkManager : MonoBehaviour {
 		Network.DestroyPlayerObjects(Network.player);
 	}
 
-	public void JoinGame(string GameName) {
-		LockdownGlobals.Instance.GameName = GameName;
-		LockdownGlobals.Instance.Host = Host.Client;
-
-		gameName = GameName;
-		isServer = false;
-		Init();
-	}
-
-	public void HostGame(string GameName) {
-		LockdownGlobals.Instance.GameName = GameName;
-		LockdownGlobals.Instance.Host = Host.Server;
-
-		gameName = GameName;
-		isServer = true;
-		Init();
-	}
-
-	public void StartGame(string LevelName) {
-		GameObject go = GameObject.FindGameObjectWithTag("Level Manager");
-		LevelManager mgr = go.GetComponent<LevelManager>();
-
-		mgr.TransitionLevel(LevelName);
-	}
-
 	// Update is called once per frame
 	void Update () {
 		// If we've started to look for a server (host), look every frame until we have one.
