@@ -137,11 +137,11 @@ public class LOneMazeManager : MonoBehaviour {
 
 	#region Public Methods
 
-	/// <summary>
-	/// Generate each of the child mazes.
-	/// </summary>
-	/// 
-	/// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
+/// <summary>
+/// Generate each of the child mazes.
+/// </summary>
+/// 
+/// <param name="seed">An optional seed value which can be used to predictably generate a maze</param>
 	public void Init(int seed = -1) {
 		seed = (seed == -1) ? Seed : seed;
 
