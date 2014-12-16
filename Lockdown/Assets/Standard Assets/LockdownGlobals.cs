@@ -42,4 +42,10 @@ public class LockdownGlobals : Singleton<LockdownGlobals> {
 /// Whether or not the networking is enabled.
 /// </summary>
 	public bool NetworkingEnabled = true;
+
+/// <summary>
+/// Indicates which characters have been selected by each player
+/// </summary>
+	public int[] characters = new int[3];
+
 }

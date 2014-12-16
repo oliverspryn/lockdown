@@ -14,7 +14,10 @@ public class LevelManager : MonoBehaviour {
 /// Initialize the Network Manager on the first level.
 /// </summary>
 	public void Start() {
-		RestoreNetMgrState(GameObject.FindGameObjectWithTag("Network Manager"));
+		GameObject netMgr = GameObject.FindGameObjectWithTag ("Network Manager");
+		if(netMgr != null)
+			RestoreNetMgrState(netMgr);
+
 	}
 
 	public void Update() {
@@ -107,7 +110,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void OnLevelWasLoaded() {
-		RestoreNetMgrState(GameObject.FindGameObjectWithTag("Network Manager"));
+		GameObject netMgr = GameObject.FindGameObjectWithTag ("Network Manager");
+		RestoreNetMgrState(netMgr);
 	}
 
 	#region Exception Types

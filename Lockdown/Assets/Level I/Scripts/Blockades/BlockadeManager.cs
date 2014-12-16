@@ -42,6 +42,8 @@ public class BlockadeManager : MonoBehaviour {
 		Manager = new List<Blockade>();
 
 	//Put all of the tagged blockades into the master array
+		if (Blockades == null)
+			return;
 		foreach(GameObject b in Blockades) {
 			Manager.Add(b.GetComponent<Blockade>());
 		}

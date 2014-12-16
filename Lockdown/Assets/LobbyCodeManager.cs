@@ -69,7 +69,8 @@ public class LobbyCodeManager : MonoBehaviour {
 		// TODO:create a server with code
 		// make sure to check for no collisions
 		//code;
-		
+		LevelManager levelManager = GameObject.FindGameObjectWithTag("Level Manager").GetComponent<LevelManager>();
+		levelManager.HostGame(code);
 	}
 	
 	public void enterStaticSequence (int presses)
@@ -117,20 +118,24 @@ public class LobbyCodeManager : MonoBehaviour {
 				//verify the characters are appropriately selected
 				if(num1*num2*num3 == 6)//a 1, 2, and 3
 				{
+					LockdownGlobals.Instance.characters[0] = num1;
+					LockdownGlobals.Instance.characters[1] = num2;
+					LockdownGlobals.Instance.characters[2] = num3;
 					//TODO: perform actions associated with selected option
+					LevelManager levelManager = GameObject.FindGameObjectWithTag("Level Manager").GetComponent<LevelManager>();
 
 					if(options[cur].name == "New Game"){
-
+						levelManager.StartGame("Level 0");
 					} else if(options[cur].name == "Load Level 2"){
-
+						levelManager.StartGame("Level 2");
 					} else if(options[cur].name == "Load Level 3"){
-
+						levelManager.StartGame("Level 3");
 					}else if(options[cur].name == "New Local Game"){
-						
+						levelManager.StartGame("Level 0");
 					} else if(options[cur].name == "Load Local Level 2"){
-						
+						levelManager.StartGame("Level 2");
 					} else if(options[cur].name == "Load Local Level 3"){
-						
+						levelManager.StartGame("Level 3");
 					}
 					gameObject.SetActive(false);
 				}
@@ -145,7 +150,8 @@ public class LobbyCodeManager : MonoBehaviour {
 		if(pos >= challenge.Length)
 		{
 			//TODO:try to find the server with code
-			
+			LevelManager levelManager = GameObject.FindGameObjectWithTag("Level Manager").GetComponent<LevelManager>();
+			levelManager.JoinGame(code);
 			//if it fails
 			for(int i = 0; i < challenge.Length; ++i)
 				Destroy(challenge[i], 1.0f); 

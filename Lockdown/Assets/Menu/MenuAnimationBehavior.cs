@@ -61,7 +61,9 @@ public class MenuAnimationBehavior : MonoBehaviour {
 		//if(model != 3)
 			//Models[model].SetBool ("Selected", true);
 		setModel (model);
-		networkView.RPC ("setModel", RPCMode.OthersBuffered, model);
+
+		if(Network.connections.Length > 0)
+			networkView.RPC ("setModel", RPCMode.OthersBuffered, model);
 	}
 
 	[RPC]
