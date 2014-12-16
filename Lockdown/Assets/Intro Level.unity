@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1056870243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5478fe9fa0d36e4396c82400ced9f94, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c28f11470a4408419d66384c8fc6496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1064355244
@@ -2466,7 +2466,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294965759
+    m_Bits: 4294963711
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
@@ -2599,6 +2599,7 @@ MonoBehaviour:
   useFixedUpdate: 1
   animator: {fileID: 27567687}
   playerInputSuffix: ' P1'
+  networkingOn: 0
   movement:
     maxForwardSpeed: 15
     maxSidewaysSpeed: 10
