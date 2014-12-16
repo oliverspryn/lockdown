@@ -2,14 +2,8 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
-/// <summary>
-/// Retain the network settings between levels.
-/// </summary>
-	private LockdownGlobals Config;
-
 	void Awake() {
 		// Make sure the level manager itself survives all level transitions
-		Config = gameObject.GetComponent<LockdownGlobals>();
 		DontDestroyOnLoad(gameObject);
 	}
 
@@ -66,11 +60,11 @@ public class LevelManager : MonoBehaviour {
 	void RestoreNetMgrState(GameObject newNetMgrGameObj) {
 		NetworkManager newNetMgr = newNetMgrGameObj.GetComponent<NetworkManager>();
 
-		newNetMgr.AWS_URL = Config.AWSServer;
-		newNetMgr.gameName = Config.GameName;
-		newNetMgr.isServer = Config.Host == Host.Server;
-		newNetMgr.networkingOn = Config.NetworkingEnabled;
-		newNetMgr.useAWSserver = Config.AWSServerEnabled;
+		newNetMgr.AWS_URL = LockdownGlobals.Instance.AWSServer;
+		newNetMgr.gameName = LockdownGlobals.Instance.GameName;
+		newNetMgr.isServer = LockdownGlobals.Instance.Host == Host.Server;
+		newNetMgr.networkingOn = LockdownGlobals.Instance.NetworkingEnabled;
+		newNetMgr.useAWSserver = LockdownGlobals.Instance.AWSServerEnabled;
 	}
 
 	#region Exception Types

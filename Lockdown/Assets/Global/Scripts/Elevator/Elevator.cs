@@ -37,10 +37,10 @@ public class Elevator : MonoBehaviour {
 	public GameObject DoorRight;
 
 /// <summary>
-/// The index of the level to transition to after the elevator has 
+/// The name of the level to transition to after the elevator has 
 /// "completed" its movement.
 /// </summary>
-	public int LevelIndex;
+	public string Level;
 
 /// <summary>
 /// The lights which should be dimmed out when the level is
@@ -123,8 +123,8 @@ public class Elevator : MonoBehaviour {
 			Lights[i].light.intensity -= 0.01f;
 
 			if(Lights[i].light.intensity < 0.01f) {
-				LevelManager levelMgr = GameObject.Find ("LevelManager").GetComponent<LevelManager>();
-				levelMgr.TransitionLevel("Level 2");
+				LevelManager levelMgr = GameObject.Find("Level Manager").GetComponent<LevelManager>();
+				levelMgr.TransitionLevel(Level);
 				return;
 			}
 		}

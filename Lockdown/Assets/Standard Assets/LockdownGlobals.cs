@@ -12,7 +12,12 @@ public enum Host {
 /// <summary>
 /// A class for various stuff that needs to be accessible game-wide.
 /// </summary>
-public class LockdownGlobals : MonoBehaviour {
+public class LockdownGlobals : Singleton<LockdownGlobals> {
+/// <summary>
+/// Do not instantiate.
+/// </summary>
+	protected LockdownGlobals() { }
+
 /// <summary>
 /// The URL or IP address of the associated AWS server.
 /// </summary>
