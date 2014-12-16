@@ -28,7 +28,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	[RPC]
-	public void Trans() {
+	public void Trans(string newLevelName) {
+		this.newLevelName = newLevelName;
 		Transable = true;
 	}
 
@@ -46,7 +47,7 @@ public class LevelManager : MonoBehaviour {
 
 		if(!Transable) {
 			if(Network.isServer) {
-				networkView.RPC("Trans", RPCMode.OthersBuffered);
+				networkView.RPC("Trans", RPCMode.OthersBuffered, newLevelName);
 			} else {
 				Next = newLevelName;
 				return;
@@ -56,7 +57,7 @@ public class LevelManager : MonoBehaviour {
 		switch(newLevelName)
 		{
 		case "Level 0":
-			Application.LoadLevel ("Level 0");
+			Application.LoadLevel ("Level I");
 			break;
 
 		case "Level I":
