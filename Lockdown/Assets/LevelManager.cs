@@ -65,6 +65,7 @@ public class LevelManager : MonoBehaviour {
 		newNetMgr.isServer = LockdownGlobals.Instance.Host == Host.Server;
 		newNetMgr.networkingOn = LockdownGlobals.Instance.NetworkingEnabled;
 		newNetMgr.useAWSserver = LockdownGlobals.Instance.AWSServerEnabled;
+		newNetMgr.Init();
 	}
 
 	#region Exception Types
