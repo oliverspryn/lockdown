@@ -29,6 +29,7 @@ TagManager:
   - Jail Door
   - Level Manager
   - Network Manager
+  - Character Network
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
