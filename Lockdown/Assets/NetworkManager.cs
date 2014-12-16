@@ -210,12 +210,17 @@ public class NetworkManager : MonoBehaviour {
 		{
 			if(MasterServer.PollHostList().Length > 0) // We have a host!
 			{
-				refreshingHostList = false;
 				hostData = MasterServer.PollHostList();
-				
-				// TODO: implement a better way to choose a host from the list of available games
-				// (right now, it's hardcoded to connect to the first available game)
-				Network.Connect(hostData[0]);
+
+
+				foreach (HostData hd in hostData)
+				{
+					if(hd.gameName == gameName && hd.gameType == gameTypeName)
+					{
+						refreshingHostList = false;
+						Network.Connect(hd);
+					}
+				}
 			}
 		}
 	}
