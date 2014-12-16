@@ -23,17 +23,26 @@ else
 /*playerInputSuffix = " P1"; // default to player 1
 if(gameObject.tag == "Player 1")
 {
-	// If we're a network client, P1 and P2 are over on the server, so we should ignore input
-	// on their respective axes - those are being used for P3 and P4.
+	// Normally, we should ignore input from remote players.
+	// However, these axes are only used in one place in this script: to get the LB (bumper) for
+	// sprinting. This is done in Update(). However, Update() is also responsible for applying animations,
+	// something that needs to happen for remote players, too. So we can't simply skip Update(), or
+	// use a NULL AXIS to accomplish the same, because that keeps animations from being applied for remote
+	// players.
+	
+	// For now, we'll hack this by setting the axes to the local controller 2. At the moment, we only
+	// support one player on the client, so that will be safe. Even when we eventually change this,
+	// the worst that will happen is (perhaps) some minor fighting if we disagree with the remote end
+	// as to whether the player is sprinting.
 	if(networkingOn && Network.isClient)
-		playerInputSuffix = "NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
+		playerInputSuffix = " P2";//"NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
 	else
 		playerInputSuffix = " P1";
 }
 else if(gameObject.tag == "Player 2")
 {
 	if(networkingOn && Network.isClient)
-		playerInputSuffix = "NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
+		playerInputSuffix = " P2";//"NULL AXIS THAT MOST ABSOLUTELY DOES NOT EXIST";
 	else
 		playerInputSuffix = " P2";
 }
