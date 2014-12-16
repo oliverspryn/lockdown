@@ -53,8 +53,6 @@ public class LevelManager : MonoBehaviour {
 			throw new Lockdown_LevelNotFoundException(
 				string.Format ("Level '{0}' not recognized by the LevelManager. If you added a new level, did you forget to add it to LevelManager.cs?", newLevelName));
 		}
-
-		RestoreNetMgrState(GameObject.FindGameObjectWithTag("Network Manager"));
 	}
 
 	void RestoreNetMgrState(GameObject newNetMgrGameObj) {
@@ -65,6 +63,11 @@ public class LevelManager : MonoBehaviour {
 		newNetMgr.isServer = LockdownGlobals.Instance.Host == Host.Server;
 		newNetMgr.networkingOn = LockdownGlobals.Instance.NetworkingEnabled;
 		newNetMgr.useAWSserver = LockdownGlobals.Instance.AWSServerEnabled;
+		newNetMgr.Init();
+	}
+
+	public void OnLevelWasLoaded() {
+		RestoreNetMgrState(GameObject.FindGameObjectWithTag("Network Manager"));
 	}
 
 	#region Exception Types

@@ -10854,7 +10854,7 @@ Transform:
   - {fileID: 58077077}
   - {fileID: 1282066740}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &739717082
 GameObject:
   m_ObjectHideFlags: 0
@@ -14406,6 +14406,10 @@ Prefab:
     - target: {fileID: 400034, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
+      propertyPath: Level
+      value: Level 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe8fc5662a991df4cb95b756414f1542, type: 2}
@@ -23206,7 +23210,7 @@ Transform:
   - {fileID: 1719354458}
   - {fileID: 1319453792}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &1695118157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23224,7 +23228,7 @@ MonoBehaviour:
   Container: {fileID: 1062712084}
   DoorLeft: {fileID: 2092427928}
   DoorRight: {fileID: 1002371643}
-  Level: 
+  Level: Level 2
   Lights:
   - {fileID: 630629578}
   - {fileID: 1434896090}

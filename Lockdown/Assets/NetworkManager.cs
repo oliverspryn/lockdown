@@ -44,7 +44,7 @@ public class NetworkManager : MonoBehaviour {
 	}
 	
 	// Use this for initialization
-	void Start () {
+	public void Init () {
 		if(useAWSserver)
 		{
 			MasterServer.ipAddress = AWS_URL;
