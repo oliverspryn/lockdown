@@ -109,20 +109,20 @@ public class NetworkManager : MonoBehaviour {
 			//}
 			
 			// Since this is the server, we will have control of players 1 and 2.
-			if(player1 != null) player1 = (GameObject)Network.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation, 0);
-			if(player2 != null) player2 = (GameObject)Network.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation, 0);
+			if(P1Placeholder != null) player1 = (GameObject)Network.Instantiate(P1Controller, P1Placeholder.gameObject.transform.position, P1Placeholder.gameObject.transform.rotation, 0);
+			if(P2Placeholder != null) player2 = (GameObject)Network.Instantiate(P2Controller, P2Placeholder.gameObject.transform.position, P2Placeholder.gameObject.transform.rotation, 0);
 			// Activate P1 and P2's cameras
-			if(player1 != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
-			if(player2 != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+			if(P1Placeholder != null) player1.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+			if(P2Placeholder != null) player2.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
 			
 		}
 		else // we are the client
 		{
 			// Since this is the client, we will have control of players 3 and 4.
-			if(player3 != null) player3 = (GameObject)Network.Instantiate(P3Controller, P3Placeholder.gameObject.transform.position, P3Placeholder.gameObject.transform.rotation, 0);
+			if(P3Placeholder != null) player3 = (GameObject)Network.Instantiate(P3Controller, P3Placeholder.gameObject.transform.position, P3Placeholder.gameObject.transform.rotation, 0);
 			//player4 = (GameObject)Network.Instantiate(P4Controller, P4Placeholder.gameObject.transform.position, P4Placeholder.gameObject.transform.rotation, 0);
 			// Activate P3 and P4's cameras
-			if(player3 != null) player3.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
+			if(P3Placeholder != null) player3.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
 			//player4.gameObject.transform.Find("Main Camera").gameObject.SetActive(true);
 		}
 	}

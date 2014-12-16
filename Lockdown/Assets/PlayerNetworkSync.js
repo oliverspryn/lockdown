@@ -21,6 +21,6 @@ function OnSerializeNetworkView(stream : BitStream, info : NetworkMessageInfo) :
 	else // receive data
 	{
 		stream.Serialize(myVel);
-		charMotor.movement.velocity = myVel;
+		if(charMotor != null) charMotor.movement.velocity = myVel;
 	}
 }
