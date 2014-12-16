@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
+	private bool Transable = false;
+	private string Next = string.Empty;
+
 	void Awake() {
 		// Make sure the level manager itself survives all level transitions
 		DontDestroyOnLoad(gameObject);
@@ -12,6 +15,13 @@ public class LevelManager : MonoBehaviour {
 /// </summary>
 	public void Start() {
 		RestoreNetMgrState(GameObject.FindGameObjectWithTag("Network Manager"));
+	}
+
+	[RPC]
+	public void Trans() {
+		Transable = true;
+		TransitionLevel(Next);
+		Transable = false;
 	}
 
 	// Use this function for any level transitions in the game.
@@ -25,6 +35,15 @@ public class LevelManager : MonoBehaviour {
 		//			objects, loads all objects from new level)
 		//		*Restore state (NetworkManager, etc.)
 		//		*Set up new level
+
+		if(Network.isClient && !Transable) {
+			Next = newLevelName;
+			return;
+		} else if(Network.isServer) {
+			networkView.RPC("Trans", RPCMode.OthersBuffered);
+		} else {
+			return;
+		}
 
 		switch(newLevelName)
 		{
