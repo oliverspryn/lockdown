@@ -12,7 +12,7 @@ GameObject:
   - 148: {fileID: 14800000}
   m_Layer: 0
   m_Name: NetworkManager
-  m_TagString: Untagged
+  m_TagString: Network Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,18 +40,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f3aee957946c747a3fd9b06328cd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkingOn: 1
-  isServer: 1
-  gameName: Birms
+  networkingOn: 0
+  isServer: 0
+  gameName: 
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
-  useAWSserver: 1
-  AWS_URL: 54.69.3.209
+  useAWSserver: 0
+  AWS_URL: 
   maze: {fileID: 0}
+  Blockades:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   P1Controller: {fileID: 100136, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
   P2Controller: {fileID: 100028, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
   P3Controller: {fileID: 100016, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
-  P4Controller: {fileID: 100016, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
+  P4Controller: {fileID: 0}
   BlockadeManager: {fileID: 100000, guid: 4f68760f6f334a24da7ee4f0fa389011, type: 2}
   P1Placeholder: {fileID: 0}
   P2Placeholder: {fileID: 0}

@@ -18,7 +18,7 @@ function Start()
 	// to signal whether we're in "networked/online" or "offline" mode.
 	if(netOnOffFoobarThing != null && netOnOffFoobarThing.activeInHierarchy)
 		networkingOn = true;*/
-	if(LockdownGlobals.Instance.networkingOn)
+	//if(LockdownGlobals.Instance.networkingOn)
 		networkingOn = true;
 	
 	playerInputSuffix = " P1"; // default to player 1

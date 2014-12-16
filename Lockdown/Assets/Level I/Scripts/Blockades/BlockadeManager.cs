@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// This class provides and interface to manage all of the
@@ -66,7 +66,7 @@ public class BlockadeManager : MonoBehaviour {
 	//Now assign a network ID to each blockade
 		for(int i = 0; i < Manager.Count; ++i) {
 			Manager[i].NetID = i;
-			Manager[i].Opened += BlockadeManager_Opened;
+			Manager[i].Opened += Opened;
 		}
 	}
 
@@ -84,7 +84,13 @@ public class BlockadeManager : MonoBehaviour {
 		Manager[netID].Open();
 	}
 
-	public void BlockadeManager_Opened(int netID) {
+/// <summary>
+/// A method to call an RPC function to open other doors over the
+/// network.
+/// </summary>
+/// 
+/// <param name="netID">The network ID of the door to open</param>
+	public void Opened(int netID) {
 		if(networkView != null) networkView.RPC("Open", RPCMode.OthersBuffered, netID);
 	}
 

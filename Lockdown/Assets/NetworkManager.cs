@@ -41,12 +41,6 @@ public class NetworkManager : MonoBehaviour {
 			netOnOffFoobarThing.SetActive (true);
 		else
 			netOnOffFoobarThing.SetActive (false);*/
-
-		// A much better way to do this!
-		if(networkingOn)
-			LockdownGlobals.Instance.networkingOn = true;
-		else
-			LockdownGlobals.Instance.networkingOn = false;
 	}
 	
 	// Use this for initialization
