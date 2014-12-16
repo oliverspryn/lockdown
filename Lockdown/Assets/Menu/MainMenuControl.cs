@@ -61,13 +61,13 @@ public class MainMenuControl : MonoBehaviour {
 				C3.GetComponent<MenuAnimationBehavior>().isClient = 0;
 			} else if(options[cur].name == "Host Game 1"){
 				HostScreen.gameObject.SetActive(true);
-				HostScreen.GetComponent<LobbyCodeManager>().showStaticSequence(1);
+				HostScreen.GetComponent<LobbyCodeManager>().showStaticSequence(3);
 				C1.GetComponent<MenuAnimationBehavior>().isClient = 1;
 				C2.GetComponent<MenuAnimationBehavior>().isClient = 1;
 				C3.GetComponent<MenuAnimationBehavior>().isClient = 1;
 			} else if(options[cur].name == "Join Game 1"){
 				ClientScreen.gameObject.SetActive(true);
-				ClientScreen.GetComponent<LobbyCodeManager>().enterStaticSequence(1);
+				ClientScreen.GetComponent<LobbyCodeManager>().enterStaticSequence(3);
 				C1.GetComponent<MenuAnimationBehavior>().isClient = 2;
 				C2.GetComponent<MenuAnimationBehavior>().isClient = 2;
 				C3.GetComponent<MenuAnimationBehavior>().isClient = 2;
