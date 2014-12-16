@@ -19970,6 +19970,66 @@ Transform:
   - {fileID: 1698157801}
   m_Father: {fileID: 2017398725}
   m_RootOrder: 0
+--- !u!1001 &1557549681
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: Blockades.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 14800000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_ViewID.m_ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 14800000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_ViewID.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+  m_RootGameObject: {fileID: 1822844788}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1558065152
 GameObject:
   m_ObjectHideFlags: 0
@@ -23672,6 +23732,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1347860001}
   m_RootOrder: 0
+--- !u!1 &1822844788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+  m_PrefabInternal: {fileID: 1557549681}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1822844791}
+  - 114: {fileID: 1822844790}
+  - 148: {fileID: 1822844789}
+  m_Layer: 0
+  m_Name: NetworkManager
+  m_TagString: Network Manager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!148 &1822844789
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14800000, guid: feba0e90f2d8a0d4ea8158957e48387e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1557549681}
+  m_GameObject: {fileID: 1822844788}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 1822844790}
+  m_ViewID:
+    m_ID: 2
+    m_Type: 1
+--- !u!114 &1822844790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: feba0e90f2d8a0d4ea8158957e48387e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1557549681}
+  m_GameObject: {fileID: 1822844788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f3aee957946c747a3fd9b06328cd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkingOn: 0
+  isServer: 0
+  gameName: 
+  gameComment: Change gameName if you don't want to join the same game as other team
+    members.
+  useAWSserver: 0
+  AWS_URL: 
+  maze: {fileID: 0}
+  Blockades: []
+  P1Controller: {fileID: 100136, guid: 6c40d88836b07a74e980a50b9bb8848c, type: 2}
+  P2Controller: {fileID: 100028, guid: e6b139b9b94d7ad48ae36b82460bbaac, type: 2}
+  P3Controller: {fileID: 100016, guid: ef3649ad5ad32cf45b0b73ac16292b78, type: 2}
+  P4Controller: {fileID: 0}
+  BlockadeManager: {fileID: 100000, guid: 4f68760f6f334a24da7ee4f0fa389011, type: 2}
+  P1Placeholder: {fileID: 0}
+  P2Placeholder: {fileID: 0}
+  P3Placeholder: {fileID: 0}
+  P4Placeholder: {fileID: 0}
+--- !u!4 &1822844791
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: feba0e90f2d8a0d4ea8158957e48387e, type: 2}
+  m_PrefabInternal: {fileID: 1557549681}
+  m_GameObject: {fileID: 1822844788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1 &1823908524
 GameObject:
   m_ObjectHideFlags: 0
