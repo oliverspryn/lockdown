@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour {
 
 	void Awake() {
 		// Make sure the level manager itself survives all level transitions
-		DontDestroyOnLoad(this);
+		DontDestroyOnLoad(this.transform.gameObject);
 	}
 
 /// <summary>

@@ -3521,6 +3521,10 @@ Prefab:
       propertyPath: m_ViewID.m_Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c5d7c6b0dcd2dfb4ab9a42a8c1c06bfe, type: 2}
+      propertyPath: m_TagString
+      value: Level Manager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5d7c6b0dcd2dfb4ab9a42a8c1c06bfe, type: 2}
   m_RootGameObject: {fileID: 245090544}
@@ -3610,7 +3614,7 @@ GameObject:
   - 148: {fileID: 245090545}
   m_Layer: 0
   m_Name: Network Manager
-  m_TagString: Network Manager
+  m_TagString: Level Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
