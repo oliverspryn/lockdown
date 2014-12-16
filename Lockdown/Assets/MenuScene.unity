@@ -1325,9 +1325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e60776b10e91bb4ea0f5a96f68887d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  c1: {fileID: 0}
-  c2: {fileID: 0}
-  c3: {fileID: 0}
+  c1: {fileID: 734052237}
+  c2: {fileID: 1360553764}
+  c3: {fileID: 496285684}
 --- !u!148 &82493908
 NetworkView:
   m_ObjectHideFlags: 0
