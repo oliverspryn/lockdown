@@ -29,8 +29,9 @@ public class LevelManager : MonoBehaviour {
 
 	[RPC]
 	public void Trans(string newLevelName) {
-		Next = newLevelName;
-		Transable = true;
+		Application.LoadLevel(newLevelName);
+		//Next = newLevelName;
+		//Transable = true;
 	}
 
 	// Use this function for any level transitions in the game.

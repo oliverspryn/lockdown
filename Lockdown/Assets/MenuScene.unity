@@ -11193,6 +11193,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 854792676}
   - 114: {fileID: 854792675}
+  - 148: {fileID: 854792678}
   - 148: {fileID: 854792677}
   m_Layer: 0
   m_Name: LevelManager
@@ -11230,6 +11231,19 @@ NetworkView:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 854792674}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 854792675}
+  m_ViewID:
+    m_ID: 4
+    m_Type: 1
+--- !u!148 &854792678
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14800000, guid: 30090b1f27ec0a845b911e6909bdd576,
+    type: 2}
+  m_PrefabInternal: {fileID: 657412134}
   m_GameObject: {fileID: 854792674}
   m_Enabled: 1
   m_StateSynchronization: 1
@@ -23838,6 +23852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkingOn: 0
   isServer: 0
+  mazeseed: -1
   gameName: 
   gameComment: Change gameName if you don't want to join the same game as other team
     members.
