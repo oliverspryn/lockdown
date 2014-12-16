@@ -14,13 +14,8 @@ var networkingOn = false;
 //	networkingOn = true;
 // TODO: Fix this! Right now, the compilation order is keeping us from accessing LockdownGlobals here.
 networkingOn = true; // temporary hack
-
-if(gameObject.tag == "Player 1" || gameObject.tag == "Player 3")
-	playerInputSuffix = " P1";
-else
-  playerInputSuffix = " P2";
 	
-/*playerInputSuffix = " P1"; // default to player 1
+playerInputSuffix = " P1"; // default to player 1
 if(gameObject.tag == "Player 1")
 {
 	// Normally, we should ignore input from remote players.
@@ -61,7 +56,7 @@ else if(gameObject.tag == "Player 4")
 		playerInputSuffix = " P2";
 	else
 		playerInputSuffix = " P4";
-}*/
+}
 
 
 // For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
