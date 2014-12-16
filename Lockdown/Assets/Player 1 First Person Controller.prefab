@@ -2670,7 +2670,7 @@ MonoBehaviour:
   playerInputSuffix: ' P1'
   networkingOn: 0
   movement:
-    maxForwardSpeed: 15
+    maxForwardSpeed: 20
     maxSidewaysSpeed: 10
     maxBackwardsSpeed: 10
     slopeSpeedMultiplier:

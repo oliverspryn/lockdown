@@ -2669,7 +2669,7 @@ MonoBehaviour:
   playerInputSuffix: ' P1'
   networkingOn: 0
   movement:
-    maxForwardSpeed: 15
+    maxForwardSpeed: 20
     maxSidewaysSpeed: 10
     maxBackwardsSpeed: 10
     slopeSpeedMultiplier:
@@ -2698,8 +2698,8 @@ MonoBehaviour:
     maxFallSpeed: 20
   jumping:
     enabled: 1
-    baseHeight: 4
-    extraHeight: 1
+    baseHeight: 7
+    extraHeight: 3
     perpAmount: 0
     steepPerpAmount: .5
   movingPlatform:

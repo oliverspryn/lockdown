@@ -41,5 +41,5 @@ public class LockdownGlobals : Singleton<LockdownGlobals> {
 /// <summary>
 /// Whether or not the networking is enabled.
 /// </summary>
-	public bool NetworkingEnabled = true;
+	public bool NetworkingEnabled = false;
 }
