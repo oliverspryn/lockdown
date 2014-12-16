@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour {
 /// </summary>
 	public void Start() {
 		GameObject netMgr = GameObject.FindGameObjectWithTag ("Network Manager");
-		if(netMgr != null)
-			RestoreNetMgrState(netMgr);
+		//if(netMgr != null)
+			//RestoreNetMgrState(netMgr);
 
 	}
 
